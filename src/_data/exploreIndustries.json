@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "surf-camps",
+    "name": "Surf Camps",
+    "title": "Surf Camps | Hightide Explore",
+    "description": "Run surf camps with connected accommodation, lessons, packages and partner referrals in one operations platform.",
+    "image": "/assets/images/use-surf-camp.jpg",
+    "imageAlt": "Surf camp group lesson",
+    "icon": "/assets/images/icons/surf-camps.png",
+    "featured": true,
+    "showOnExploreHome": true,
+    "cardTeaser": "Sell beds, lessons and weekly packages from one store — then run the camp week from a shared booking workspace.",
+    "heroLead": "Sell packages, manage beds and lessons together, and coordinate partners without juggling disconnected tools.",
+    "challenges": [
+      "Rooms, lessons and packages sold through different systems",
+      "Partner and agent bookings tracked in spreadsheets",
+      "Daily schedules spread across calendars, WhatsApp and email"
+    ],
+    "solutions": [
+      "Multi-listing sales: accommodation, weekly packages and fixed-date camps from one store",
+      "Partner referral URLs, commission tracking and settlement reporting",
+      "Day planner and booking lists so managers see the full picture each morning"
+    ]
+  },
+  {
+    "slug": "yoga-retreats",
+    "name": "Yoga Retreats",
+    "cardName": "Retreats",
+    "title": "Yoga Retreats | Hightide Explore",
+    "description": "Flexible and fixed-date retreat booking with guest management, payments and operations in one place.",
+    "image": "/assets/images/use-retreat.jpg",
+    "imageAlt": "Yoga retreat",
+    "icon": "/assets/images/icons/retreats.png",
+    "featured": true,
+    "showOnExploreHome": true,
+    "cardTeaser": "Offer fixed-date programmes or flexible stays, take deposits online, and keep guest details on every booking.",
+    "heroLead": "Offer flexible dates or set programs, take deposits online, and run the retreat from a single operational workspace.",
+    "challenges": [
+      "Fixed-date and flexible retreats need different selling models",
+      "Guest dietary and room preferences lost between booking and arrival",
+      "Balance payments and add-ons handled manually"
+    ],
+    "solutions": [
+      "Fixed-date retreats and open-date stays as separate listings on the same inventory",
+      "Guest notes, flags and internal comments on every booking",
+      "Deposits, payment requests and balance tracking with Stripe"
+    ]
+  },
+  {
+    "slug": "accommodation",
+    "name": "Accommodation Businesses",
+    "title": "Multi-Service Accommodation | Hightide Explore",
+    "description": "Accommodation businesses combining rooms, services and packages — beyond a simple PMS.",
+    "image": "/assets/images/use-accommodation.jpg",
+    "imageAlt": "Accommodation exterior",
+    "icon": "/assets/images/icons/accommodation.png",
+    "featured": false,
+    "showOnExploreHome": true,
+    "cardTeaser": "When you sell more than nights — tours, rentals and packages — manage the full stay in one platform.",
+    "heroLead": "When you sell more than nights — tours, rentals, retreats and packages — you need more than a booking engine.",
+    "challenges": [
+      "PMS handles rooms but not tours, rentals or packages",
+      "Operations live in email, spreadsheets and separate channel tools",
+      "Owners want control without hiring an ops manager"
+    ],
+    "solutions": [
+      "Accommodation, activities, rentals and packages in one platform",
+      "Every booking is an operational workspace — not just a reservation row",
+      "Guided setup based on how your business sells, books and runs day to day"
+    ]
+  },
+  {
+    "slug": "activity-providers",
+    "name": "Activity Providers",
+    "title": "Activity Providers | Hightide Explore",
+    "description": "Sell lessons, tours and rentals online with linked availability when guides or equipment are shared.",
+    "image": "/assets/images/use-tours.jpg",
+    "imageAlt": "Guided outdoor activity",
+    "icon": "/assets/images/icons/dive-centres.png",
+    "featured": false,
+    "showOnExploreHome": true,
+    "cardTeaser": "Take bookings for daily tours, lessons and rentals — with linked availability when resources are shared.",
+    "heroLead": "Sell activities online, coordinate shared guides and equipment, and keep every booking in one operational workspace.",
+    "challenges": [
+      "Multiple activity types compete for the same instructors or gear",
+      "Website enquiries and walk-ins tracked separately from online sales",
+      "Payment collection and schedule changes handled over email"
+    ],
+    "solutions": [
+      "Linked availability across activities that share guides, boats or equipment",
+      "Online store for instant booking or request-only workflows",
+      "Day planner and booking workspace for the whole team"
+    ]
+  },
+  {
+    "slug": "adventure-lodges",
+    "name": "Adventure Lodges",
+    "title": "Adventure Lodges | Hightide Explore",
+    "description": "Adventure lodges: sell stays, guided activities and extras from one connected operation.",
+    "image": "/assets/images/use-adventure.jpg",
+    "imageAlt": "Adventure lodge",
+    "icon": "/assets/images/icons/adventure-lodges.png",
+    "featured": false,
+    "showOnExploreHome": true,
+    "cardTeaser": "Guests book lodging and guided adventures together; your team runs the week from one hub.",
+    "heroLead": "Guests book lodging and adventures together; your team runs the week from one operational hub.",
+    "challenges": [
+      "Lodging plus daily activities with different capacity rules",
+      "Channel manager beds while activities stay direct",
+      "On-site changes need to reach the whole team instantly"
+    ],
+    "solutions": [
+      "Channel manager for Airbnb and Booking.com plus direct activity sales",
+      "Booking workspace with notes, flags and staff comments",
+      "Accommodation and activity overviews for each day"
+    ]
+  },
+  {
+    "slug": "dive-centres",
+    "name": "Dive Centres",
+    "title": "Dive Centres & Resorts | Hightide Explore",
+    "description": "Dive centres and resorts: courses, trips, rentals and accommodation in one platform.",
+    "image": "/assets/images/use-boat.jpg",
+    "imageAlt": "Boat on the water",
+    "icon": "/assets/images/icons/dive-centres.png",
+    "featured": false,
+    "showOnExploreHome": true,
+    "cardTeaser": "Coordinate courses, boat trips, rental gear and lodge beds without double bookings on shared resources.",
+    "heroLead": "Coordinate courses, boat trips, equipment rental and lodge beds without double bookings on shared resources.",
+    "challenges": [
+      "Instructors and boats shared across multiple trip types",
+      "Rental gear and course slots with different availability rules",
+      "Resort beds sold alongside daily dive products"
+    ],
+    "solutions": [
+      "Linked availability across activities that share guides or boats",
+      "Rentals, courses and accommodation in one account",
+      "Daily schedules and team visibility for busy seasons"
+    ]
+  },
+  {
+    "slug": "wellness-retreats",
+    "name": "Wellness Retreats",
+    "title": "Wellness Retreats | Hightide Explore",
+    "description": "Wellness retreat operators: centralise bookings, guest care and daily operations.",
+    "image": "/assets/images/use-retreat.jpg",
+    "imageAlt": "Wellness retreat",
+    "icon": "/assets/images/icons/retreats.png",
+    "featured": false,
+    "showOnExploreHome": false,
+    "cardTeaser": "Bundle programmes, accommodation and treatments — with guest care visible from booking to check-out.",
+    "heroLead": "From enquiry to check-out, keep programmes, accommodation and guest communication in one structured system.",
+    "challenges": [
+      "Programmes, extras and accommodation bundled in custom ways",
+      "Staff need visibility on arrivals, dietary needs and room moves",
+      "Invoicing and reporting split across tools"
+    ],
+    "solutions": [
+      "Packages that bundle rooms, treatments and activities",
+      "Check-in / check-out and status tracking per booking",
+      "Invoicing, external integrations and operational reporting"
+    ]
+  }
+]

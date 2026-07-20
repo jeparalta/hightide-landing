@@ -1,0 +1,14 @@
+{
+  "name": "hightide-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static marketing site for hightide.io",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "download-assets": "node scripts/download-assets.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

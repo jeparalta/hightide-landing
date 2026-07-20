@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/assets/images/logo.svg" alt="" width="36" height="36">
+      <div>
+        <strong>{{ site.name }}</strong>
+        <p>{% if bodyClass == 'page-explore' %}{{ explore.footerTagline }}{% else %}{{ site.tagline }}{% endif %}</p>
+      </div>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/about/">About</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/video-tutorials/">Tutorials</a>
+      <a href="/contact/">Contact</a>
+      <a href="/terms-conditions/">Terms</a>
+      <a href="/cookie-policy/">Cookie Policy</a>
+    </nav>
+    <p class="footer-copy">Copyright &copy; {{ site.name }}. Made with <span class="footer-heart" aria-hidden="true">♥</span> by the Hightide Team.</p>
+  </div>
+</footer>

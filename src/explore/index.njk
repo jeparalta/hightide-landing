@@ -1,0 +1,301 @@
+---
+layout: layouts/explore.njk
+title: Booking & Operations Software for Accommodation, Activities & Packages | Hightide
+description: Hightide helps businesses sell accommodation, activities and packages online while managing bookings, payments, guest communication and daily operations in one place.
+permalink: /explore/
+bodyClass: page-explore
+---
+
+{% macro sellCallout(callout, hidden=false) %}
+<article class="explore-callout explore-callout-carousel-item"{% if hidden %} aria-hidden="true"{% endif %}>
+  {% if callout.logos %}
+  <div class="explore-callout-logos" aria-hidden="true">
+    {% for logo in callout.logos %}
+    <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="explore-callout-logo" loading="lazy" width="72" height="24">
+    {% endfor %}
+  </div>
+  {% elif callout.icon %}
+  <img src="{{ callout.icon }}" alt="" class="explore-callout-icon" loading="lazy" width="48" height="48">
+  {% endif %}
+  <h3>{{ callout.title }}</h3>
+  <p>{{ callout.text }}</p>
+</article>
+{% endmacro %}
+
+{% macro manageFeature(feature) %}
+<article class="explore-feature-card">
+  {% if feature.icon %}
+  <img src="{{ feature.icon }}" alt="" class="explore-feature-icon" loading="lazy" width="48" height="48">
+  {% endif %}
+  <h3>{{ feature.title }}</h3>
+  <p>{{ feature.text }}</p>
+</article>
+{% endmacro %}
+
+{% macro integrationGroup(group) %}
+<article class="explore-integration-group explore-integration-orbit-card" data-integration-card>
+  <h3>{{ group.title }}</h3>
+  <ul>
+    {% for item in group.items %}
+    <li class="explore-integration-item">
+      {% if item.logo %}
+      <img src="{{ item.logo }}" alt="" class="explore-integration-logo" loading="lazy" width="72" height="20">
+      {% elif item.icon %}
+      <img src="{{ item.icon }}" alt="" class="explore-integration-icon" loading="lazy" width="28" height="28">
+      {% endif %}
+      <span>{{ item.name }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+{% endmacro %}
+
+{% macro industryCard(industry) %}
+<a
+  href="/explore/industries/{{ industry.slug }}/"
+  class="explore-industry-card{% if industry.featured %} explore-industry-card-featured{% endif %}"
+>
+  <img
+    src="{{ industry.image }}"
+    alt="{{ industry.imageAlt }}"
+    class="explore-industry-card-image"
+    loading="lazy"
+    width="640"
+    height="360"
+  >
+  <div class="explore-industry-card-body">
+    <h3>{{ industry.cardName or industry.name }}</h3>
+    <p>{{ industry.cardTeaser }}</p>
+    <span class="explore-industry-card-cta">{{ exploreHome.industries.cardCta }}</span>
+  </div>
+</a>
+{% endmacro %}
+
+{% macro proofStory(story) %}
+<article class="explore-proof-card">
+  <header class="explore-proof-card-header">
+    {% if story.logo %}
+    <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="56" height="56">
+    {% endif %}
+    <div class="explore-proof-card-heading">
+      <h3 class="explore-proof-title">{{ story.business }}</h3>
+    </div>
+  </header>
+  <blockquote class="explore-proof-quote">
+    <p>{{ story.quote }}</p>
+  </blockquote>
+  <footer class="explore-proof-attribution">
+    <cite>{{ story.name }}</cite>
+    <span>{{ story.role }}</span>
+  </footer>
+</article>
+{% endmacro %}
+
+{% set integrationOrbits = [
+  { x: 40, y: 16 },
+  { x: 84, y: 24 },
+  { x: 90, y: 62 },
+  { x: 50, y: 80 },
+  { x: 10, y: 54 }
+] %}
+
+<section class="explore-hero">
+  <div class="explore-hero-stage">
+    <div class="container explore-hero-content">
+      <p class="explore-eyebrow">{{ explore.heroEyebrow }}</p>
+      <h1 class="explore-hero-title">
+        <span class="explore-hero-title-stack">
+          <span class="explore-hero-title-line">
+            <span class="explore-hero-title-main">Sell your</span><span class="explore-hero-rotate" data-hero-rotate aria-live="polite">
+              <span class="explore-hero-rotate-sizer" aria-hidden="true">activities</span>
+              {% for word in explore.heroRotateWords %}
+              <span class="explore-hero-rotate-word{% if loop.first %} is-active{% endif %}">{{ word }}</span>
+              {% endfor %}
+            </span>
+          </span>
+          <span class="explore-hero-title-sub">{{ explore.heroSubline }}</span>
+        </span>
+      </h1>
+      <p class="explore-hero-lead">{{ explore.heroLead }}</p>
+      <div class="explore-hero-cta-row">
+        <img src="/assets/images/hero-sun.png" alt="" class="explore-hero-deco explore-hero-deco-sun" loading="lazy" decoding="async">
+        <div class="explore-hero-actions">
+          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
+          <a class="btn btn-secondary" href="{{ explore.secondaryCtaUrl }}">{{ explore.secondaryCtaLabel }}</a>
+        </div>
+        <img src="/assets/images/hero-moon.png" alt="" class="explore-hero-deco explore-hero-deco-moon" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt explore-story explore-story-sell">
+  <div class="explore-sell-scroll-stage" data-callout-scroll>
+    <div class="explore-sell-scroll-pin">
+      <div class="container explore-sell-scroll-inner">
+        <div class="explore-sell-scroll-intro">
+          <h2 class="section-title">{{ exploreHome.sell.title }}</h2>
+          <p class="section-lead">{{ exploreHome.sell.lead }}</p>
+        </div>
+
+        <div class="explore-sell-montage">
+          {% for image in exploreHome.sell.images %}
+          <img
+            class="explore-sell-shot explore-sell-shot-{{ loop.index }}"
+            src="{{ image.src }}"
+            alt="{{ image.alt }}"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          {% endfor %}
+        </div>
+
+        <div class="explore-callout-carousel" data-callout-carousel>
+          <div class="explore-callout-track" data-callout-track>
+            {% for callout in exploreHome.sell.callouts %}
+            {{ sellCallout(callout) }}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="explore-tool-band" data-callout-tools aria-label="Supported integrations for selling online">
+          {% for tool in exploreHome.sell.tools %}
+          <span class="explore-tool-item">
+            <img src="{{ tool.logo }}" alt="" class="explore-tool-logo" loading="lazy" width="72" height="20">
+            <span>{{ tool.name }}</span>
+          </span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section explore-story explore-story-manage">
+  <div class="explore-manage-scroll-stage" data-manage-scroll>
+    <div class="explore-manage-scroll-pin">
+      <div class="container explore-manage-scroll-inner">
+        <div class="explore-manage-scroll-intro">
+          <h2 class="section-title">{{ exploreHome.manage.title }}</h2>
+          <p class="section-lead">{{ exploreHome.manage.lead }}</p>
+        </div>
+
+        <div class="explore-manage-montage" aria-hidden="true">
+          <img
+            class="explore-montage-shot explore-montage-calendar"
+            src="{{ exploreHome.manage.montage.calendar.src }}"
+            alt=""
+            loading="lazy"
+            width="873"
+            height="480"
+          >
+          <img
+            class="explore-montage-shot explore-montage-workspace"
+            src="{{ exploreHome.manage.montage.workspace.src }}"
+            alt=""
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <img
+            class="explore-montage-shot explore-montage-planner"
+            src="{{ exploreHome.manage.montage.planner.src }}"
+            alt=""
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+        </div>
+
+        <div class="explore-manage-feature-stage" data-manage-feature-stage>
+          <div class="explore-manage-feature-row" data-manage-feature-row>
+            {% for feature in exploreHome.manage.features %}
+            {% if loop.index0 < 4 %}
+            {{ manageFeature(feature) }}
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div class="explore-manage-feature-row" data-manage-feature-row>
+            {% for feature in exploreHome.manage.features %}
+            {% if loop.index0 >= 4 %}
+            {{ manageFeature(feature) }}
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt explore-story explore-story-integrations">
+  <div class="explore-integrations-scroll-stage" data-integrations-scroll>
+    <div class="explore-integrations-scroll-pin">
+      <div class="container explore-integrations-scroll-inner">
+        <div class="explore-integrations-scroll-intro">
+          <h2 class="section-title">{{ exploreHome.integrations.title }}</h2>
+          <p class="section-lead">{{ exploreHome.integrations.lead }}</p>
+        </div>
+
+        <div class="explore-integrations-hub" data-integrations-hub>
+          <svg class="explore-integrations-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" data-integrations-lines>
+            {% for orbit in integrationOrbits %}
+            <line
+              class="explore-integration-line"
+              data-integration-line
+              data-orbit-x="{{ orbit.x }}"
+              data-orbit-y="{{ orbit.y }}"
+              x1="50"
+              y1="50"
+              x2="50"
+              y2="50"
+              vector-effect="non-scaling-stroke"
+            ></line>
+            {% endfor %}
+          </svg>
+          <div class="explore-integrations-logo" aria-hidden="true">
+            <img src="/assets/images/logo.svg" alt="" width="72" height="72" loading="lazy" decoding="async">
+          </div>
+          {% for group in exploreHome.integrations.groups %}
+          <div
+            class="explore-integration-orbit-slot"
+            data-integration-slot
+            data-orbit-x="{{ integrationOrbits[loop.index0].x }}"
+            data-orbit-y="{{ integrationOrbits[loop.index0].y }}"
+          >
+            {{ integrationGroup(group) }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section explore-industries-section">
+  <div class="container">
+    <h2 class="section-title">{{ exploreHome.industries.title }}</h2>
+    <p class="section-lead">{{ exploreHome.industries.lead }}</p>
+    <div class="explore-industry-grid">
+      {% for industry in exploreIndustries %}
+      {% if industry.showOnExploreHome != false %}
+      {{ industryCard(industry) }}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section explore-story-proof">
+  <div class="container">
+    <h2 class="section-title">{{ exploreHome.testimonials.title }}</h2>
+    <div class="explore-proof-grid">
+      {% for story in exploreHome.testimonials.stories %}
+      {{ proofStory(story) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/explore-cta.njk" %}

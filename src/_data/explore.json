@@ -1,0 +1,20 @@
+{
+  "primaryCtaLabel": "Book a Discovery Call",
+  "primaryCtaUrl": "/explore/book-a-call/",
+  "calendlyUrl": "https://calendly.com/jose-hightide/free-initial-consulting-call?hide_event_type_details=1&hide_gdpr_banner=1",
+  "secondaryCtaLabel": "Explore the Platform",
+  "secondaryCtaUrl": "/explore/platform/",
+  "heroEyebrow": "Booking & Operations Software",
+  "heroLead": "One platform for accommodation, activities and packages.",
+  "heroSubline": "Manage everything together.",
+  "heroRotateWords": [
+    "rooms",
+    "beds",
+    "activities",
+    "packages",
+    "retreats",
+    "tours",
+    "lessons"
+  ],
+  "footerTagline": "Booking and operations software for accommodation, activities and packages."
+}

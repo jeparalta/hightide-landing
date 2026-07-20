@@ -1,0 +1,348 @@
+---
+layout: layouts/base.njk
+title: Booking Software for Surf Camps, Retreats & Tour Operators | Hightide
+description: Hightide helps surf camps, retreats, and tour operators get more bookings without paying commissions. Manage accommodation and activities in one easy system.
+permalink: /
+bodyClass: page-home
+preloadImage: /assets/images/tab-calendar-1.webp
+jsonLd: |
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is Hightide different from other booking systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We're built for businesses that got frustrated with existing options. Most booking software is either too rigid or overly complex and expensive. Hightide gives you simple, flexible tools whether you're managing just accommodation, just activities, or both together."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What actually makes Hightide flexible?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hightide's unique multi-listing approach lets you sell the same resource in completely different ways. One room becomes nightly accommodation, weekly surf packages, and fixed-date retreats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Hightide easy to set up and start using?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Hightide is designed for DIY setup, with no technical skills required. We offer a free onboarding call and a 30-day free trial."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I turn off instant bookings and approve requests instead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can choose between instant booking or request-only mode where you approve each booking and send a payment link when ready."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I share my Online Store with customers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your online store has its own unique URL at hightide.app/bookings/your-business which you can add to your website or social media."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I connect to a channel manager?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Hightide supports channel manager integrations for Airbnb, Booking.com, and similar platforms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Linked Availability?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Linked availability connects two services so when one gets booked the other is blocked — perfect when you share guides or instructors across tour types."
+        }
+      }
+    ]
+  }
+---
+
+<section class="hero">
+  <div class="container hero-head">
+    <h1>Your Bookings, Simplified.</h1>
+    <p class="hero-lead">Simple but flexible reservation management for accommodation &amp; tours.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ site.signupUrl }}">Start Free Trial</a>
+      <p class="hero-note">No credit card required. No commitment.</p>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-composition">
+      <div class="hero-cluster hero-cluster-calendar">
+        <img
+          class="hero-shot"
+          src="/assets/images/tab-calendar-1.webp"
+          alt="Hightide calendar interface"
+          width="873"
+          height="480"
+          loading="eager"
+        >
+        <div class="hero-callout hero-callout-manage">
+          <p class="hero-callout-label">Easy to Manage</p>
+          <img src="/assets/images/arrow-up-left.svg" alt="" class="hero-callout-arrow hero-callout-arrow-manage">
+        </div>
+      </div>
+      <div class="hero-cluster hero-cluster-store">
+        <img
+          class="hero-shot"
+          src="/assets/images/tab-store-2.webp"
+          alt="Hightide online store listing"
+          width="800"
+          height="480"
+          loading="eager"
+        >
+        <div class="hero-callout hero-callout-book">
+          <img src="/assets/images/arrow-down-right.svg" alt="" class="hero-callout-arrow hero-callout-arrow-book">
+          <p class="hero-callout-label">Easier to Book</p>
+        </div>
+      </div>
+      <img src="/assets/images/hero-moon.png" alt="" class="hero-deco hero-deco-moon" loading="lazy">
+      <img src="/assets/images/hero-sun.png" alt="" class="hero-deco hero-deco-sun" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">For Businesses That Do Things Differently</h2>
+    <p class="section-lead">Flexible booking software for surf camps, yoga retreats, adventure lodges, and any business that's truly unique.</p>
+    <div class="tabs">
+      <div class="tab-list" role="tablist" aria-label="Product features">
+        <button class="tab-btn" type="button" role="tab" aria-selected="true" aria-controls="tab-store">
+          <span class="tab-btn-content">
+            <img src="/assets/images/store.png" alt="" class="tab-btn-icon" width="72" height="72" loading="lazy">
+            <span class="tab-btn-text">
+              <span class="tab-btn-title">Online Store</span>
+              <span class="tab-btn-subtitle">Showcase and Sell Your Services</span>
+            </span>
+          </span>
+        </button>
+        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-calendar">
+          <span class="tab-btn-content">
+            <img src="/assets/images/calendar.png" alt="" class="tab-btn-icon" width="72" height="72" loading="lazy">
+            <span class="tab-btn-text">
+              <span class="tab-btn-title">Calendar</span>
+              <span class="tab-btn-subtitle">Manage Your Bookings in One Place</span>
+            </span>
+          </span>
+        </button>
+        <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-bookings">
+          <span class="tab-btn-content">
+            <img src="/assets/images/bookings.png" alt="" class="tab-btn-icon" width="72" height="72" loading="lazy">
+            <span class="tab-btn-text">
+              <span class="tab-btn-title">Bookings</span>
+              <span class="tab-btn-subtitle">Organise and Track Your Bookings</span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div id="tab-store" class="tab-panel" role="tabpanel" aria-hidden="false">
+        <div class="tab-panel-inner">
+          <div class="tab-panel-copy">
+            <div class="tab-panel-text">
+              <h3>Online Store</h3>
+              <p><strong>Showcase and Sell Your Services</strong><br>Display your accommodations, tours, activities, and extras in a modern online store. Connect it to your website or socials so customers can shop for multiple services, build their perfect booking, and confirm instantly with online payment or send an inquiry.</p>
+            </div>
+          </div>
+          <div class="tab-panel-media" data-tab-carousel>
+            <img src="/assets/images/tab-store-1.webp" alt="Hightide online store" class="tab-screenshot is-active" loading="eager">
+            <img src="/assets/images/tab-store-2.webp" alt="Hightide store listing" class="tab-screenshot" loading="lazy" hidden>
+            <img src="/assets/images/tab-store-3.webp" alt="Hightide store cart" class="tab-screenshot" loading="lazy" hidden>
+            <div class="tab-screenshot-nav" hidden>
+              <button type="button" class="tab-screenshot-btn" data-carousel-prev aria-label="Previous screenshot">‹</button>
+              <button type="button" class="tab-screenshot-btn" data-carousel-next aria-label="Next screenshot">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tab-calendar" class="tab-panel" role="tabpanel" aria-hidden="true">
+        <div class="tab-panel-inner">
+          <div class="tab-panel-copy">
+            <div class="tab-panel-text">
+              <h3>Calendar</h3>
+              <p><strong>Manage Your Bookings in One Place</strong><br>All your bookings at a glance — accommodations, activities, and tours. Add or update bookings easily, share the calendar with your team, and rely on real-time updates to prevent double bookings.</p>
+            </div>
+          </div>
+          <div class="tab-panel-media" data-tab-carousel>
+            <img src="/assets/images/tab-calendar-1.webp" alt="Hightide calendar view" class="tab-screenshot is-active" loading="lazy">
+            <img src="/assets/images/tab-calendar-2.webp" alt="Hightide calendar booking form" class="tab-screenshot" loading="lazy" hidden>
+            <div class="tab-screenshot-nav" hidden>
+              <button type="button" class="tab-screenshot-btn" data-carousel-prev aria-label="Previous screenshot">‹</button>
+              <button type="button" class="tab-screenshot-btn" data-carousel-next aria-label="Next screenshot">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tab-bookings" class="tab-panel" role="tabpanel" aria-hidden="true">
+        <div class="tab-panel-inner">
+          <div class="tab-panel-copy">
+            <div class="tab-panel-text">
+              <h3>Bookings</h3>
+              <p><strong>Organise and Track Your Bookings</strong><br>Filter your services by resources and dates, track payment status and see key details like guest names, items booked, and payments at a glance.</p>
+            </div>
+          </div>
+          <div class="tab-panel-media" data-tab-carousel>
+            <img src="/assets/images/tab-bookings-1.webp" alt="Hightide bookings list" class="tab-screenshot is-active" loading="lazy">
+            <img src="/assets/images/tab-bookings-2.webp" alt="Hightide booking details" class="tab-screenshot" loading="lazy" hidden>
+            <div class="tab-screenshot-nav" hidden>
+              <button type="button" class="tab-screenshot-btn" data-carousel-prev aria-label="Previous screenshot">‹</button>
+              <button type="button" class="tab-screenshot-btn" data-carousel-next aria-label="Next screenshot">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Core Features You Will Actually Use</h2>
+    <p class="section-lead">We focus on the essentials — the features you need to streamline your business, without the clutter.</p>
+    <div class="feature-grid">
+      <article class="feature-card _1">
+        <img src="/assets/images/feature-flexible.png" alt="" loading="lazy">
+        <h3>Simple, yet flexible</h3>
+        <p>Effortlessly simple, yet built to adapt. Designed to fit naturally into the way your business operates.</p>
+      </article>
+      <article class="feature-card _2">
+        <img src="/assets/images/feature-accom-tours.png" alt="" loading="lazy">
+        <h3>Accommodation &amp; Tours</h3>
+        <p>Easily manage both accommodations and tours within a single, unified account.</p>
+      </article>
+      <article class="feature-card _3">
+        <img src="/assets/images/feature-packages.png" alt="" loading="lazy">
+        <h3>Build Packages</h3>
+        <p>Bundle multiple services together into a single package to let customers book unique experiences.</p>
+      </article>
+      <article class="feature-card _4">
+        <img src="/assets/images/feature-extras.png" alt="" loading="lazy">
+        <h3>Extras &amp; Add-ons</h3>
+        <p>Easily upsell by offering additional services and products during the online booking process.</p>
+      </article>
+      <article class="feature-card _5">
+        <img src="/assets/images/feature-channels.png" alt="" loading="lazy">
+        <h3>Channel Manager</h3>
+        <p>Sync availability and prices across Airbnb, Booking.com, Hostelworld and other channels.</p>
+      </article>
+      <article class="feature-card _6">
+        <img src="/assets/images/feature-collaborate.png" alt="" loading="lazy">
+        <h3>Share &amp; Collaborate</h3>
+        <p>Keep your team members in sync by sharing your calendar, ensuring everyone stays up to date.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-inline">
+      <h2 class="section-title">See if Hightide is right for your business</h2>
+      <p class="section-lead">Try the full platform free for 30 days, with an optional free consulting call.</p>
+      <a class="btn btn-primary" href="{{ site.signupUrl }}">Start Free Trial</a>
+      <p class="hero-note">No credit card required. No commitment.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Designed to Fit Your Business</h2>
+    <p class="section-lead">Built to adapt to different types of accommodation and activity businesses.</p>
+    <div class="use-case-grid">
+      <article class="use-case-card">
+        <img src="/assets/images/use-surf-camp.jpg" alt="Surf camp group lesson" loading="lazy">
+        <h3>Surf Camps</h3>
+        <p>Manage room bookings and surf lessons in one place. Let guests build custom all-inclusive packages.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-retreat.jpg" alt="Wellness retreat" loading="lazy">
+        <h3>Wellness Retreats</h3>
+        <p>Offer flexible or fixed-date retreats. Let guests pick dates or choose from set programs.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-accommodation.jpg" alt="Accommodation exterior" loading="lazy">
+        <h3>Accommodation Providers</h3>
+        <p>For beds, rooms, tents, cabins, or hybrid shared and private options.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-tours.jpg" alt="Jeep tour" loading="lazy">
+        <h3>Tour Operators</h3>
+        <p>Manage daily tours with linked availability to coordinate shared resources.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-kite.jpg" alt="Kite surfing" loading="lazy">
+        <h3>Kite Surf Camps</h3>
+        <p>Organise lessons, fixed-date camps, and equipment rentals — all in one place.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-boat.jpg" alt="Boat charter" loading="lazy">
+        <h3>Boat Charters</h3>
+        <p>Manage and sell half-day, full-day, or multi-night charters with a customisable calendar.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-rental.jpg" alt="Sports equipment rental" loading="lazy">
+        <h3>Sports Equipment Rental</h3>
+        <p>Manage on-site and online bookings with ease.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-adventure.jpg" alt="Adventure tour" loading="lazy">
+        <h3>Adventure Tours</h3>
+        <p>Set availability in advance and focus on your experiences.</p>
+      </article>
+      <article class="use-case-card">
+        <img src="/assets/images/use-more.jpg" alt="Outdoor adventure" loading="lazy">
+        <h3>And More...</h3>
+        <p>If your services vary depending on time and resources, this could be your solution.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-faq">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How is Hightide different from other booking systems?</summary>
+        <p>We're built for businesses that got frustrated with existing options. Most booking software is either too rigid (forcing you into one way of selling) or overly complex and expensive. Hightide gives you simple, flexible tools whether you're managing just accommodation, just activities, or both together.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What actually makes Hightide flexible?</summary>
+        <p>Hightide's unique multi-listing approach lets you sell the same resource in completely different ways. One room becomes: nightly accommodation + weekly surf packages + fixed-date retreats. Customers see 3 different options in your store, but they're booking the same physical unit. And by "room" we mean anything — tipis, boats, lessons, whatever you're selling.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is Hightide easy to set up and start using?</summary>
+        <p>Yes. Hightide is designed for DIY setup, with no technical skills required. Smaller or simpler businesses can get started quickly, while larger or more complex setups may take a bit more time. We offer a free onboarding call and a 30-day free trial to explore everything at your own pace.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I turn off instant bookings and approve requests instead?</summary>
+        <p>Yes! You can choose between instant booking (with full or partial payment) or request-only mode. With requests, you approve each booking and send a payment link when you're ready — giving you full control.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I share my Online Store with customers?</summary>
+        <p>Your online store has its own unique URL — hightide.app/bookings/your-business — which you can add to your website as a "Book Now" button, link from your social media, or even use as a standalone mini-site.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I connect to a channel manager?</summary>
+        <p>Yes. Hightide supports channel manager integrations for Airbnb, Booking.com, and similar platforms, allowing you to manage availability and rates all in one place.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is Linked Availability?</summary>
+        <p>Linked availability allows you to connect two services, so that when one gets booked the other is blocked. Perfect if you only have one guide or instructor, but offer multiple tour types.</p>
+      </details>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+{
+  "name": "Hightide",
+  "tagline": "Simple Reservation Management for Accommodation & Tours",
+  "url": "https://www.hightide.io",
+  "signupUrl": "https://hightide.app/accounts/signup/",
+  "loginUrl": "https://hightide.app/accounts/login/",
+  "contactEmail": "support@hightide.io",
+  "legalEmail": "contact@hightide.io",
+  "defaultOgImage": "/assets/images/og-default.png",
+  "gaId": "G-18LWGB6QV4",
+  "ahrefsKey": "wvQHgmypdHZuKmIE5pEPow",
+  "social": {
+    "facebook": "https://facebook.com/hightideapp",
+    "linkedin": "https://linkedin.com/company/hightide-io"
+  }
+}

@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+---
+<article class="section">
+  <div class="container">
+    <header class="post-header">
+      <span class="blog-badge">{{ category }}</span>
+      <h1>{{ title }}</h1>
+      <p class="post-meta">{{ date | readableDate }} · {{ author or "José Paralta" }}</p>
+      {% if excerpt %}<p>{{ excerpt }}</p>{% endif %}
+    </header>
+    {% if image %}
+    <div class="post-content">
+      <img src="{{ image }}" alt="{{ title }}" width="940" height="528" loading="eager">
+    </div>
+    {% endif %}
+    <div class="post-content">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  "description": {{ (excerpt or description) | dump | safe }},
+  "datePublished": "{{ date | isoDate }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ (author or "José Paralta") | dump | safe }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hightide",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.hightide.io/assets/images/logo.svg"
+    }
+  },
+  "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+  {% if image %}"image": "{{ site.url }}{{ image }}",{% endif %}
+  "url": "{{ site.url }}{{ page.url }}"
+}
+</script>

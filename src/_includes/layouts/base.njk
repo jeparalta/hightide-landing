@@ -1,0 +1,33 @@
+{% set pageTitle = title or site.name %}
+{% set pageDescription = description or site.tagline %}
+{% set pageUrl = canonicalUrl or (site.url + page.url) %}
+{% set pageImage = ogImage or site.defaultOgImage %}
+{% set fullImage = pageImage if (pageImage and pageImage.indexOf('http') == 0) else (site.url + pageImage) %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "partials/seo.njk" %}
+  <link rel="preload" href="/assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/caveat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/main.css?v=14">
+  {% if bodyClass == 'page-explore' %}
+  <link rel="stylesheet" href="/css/explore.css?v=69">
+  {% endif %}
+  {% if preloadImage %}
+  <link rel="preload" as="image" href="{{ preloadImage }}">
+  {% endif %}
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  {% include "partials/analytics.njk" %}
+  <script src="/js/main.js?v=21" defer></script>
+</body>
+</html>

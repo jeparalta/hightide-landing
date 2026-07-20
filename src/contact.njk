@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+title: Contact Hightide | Booking Software for Surf Camps, Retreats & Tours
+description: Get in touch with Hightide. We're here to help surf camps, retreats, and tour operators with questions about our booking software.
+permalink: /contact/
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="section-lead">Have a question? Just drop us a message — we'll get back to you soon.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-box">
+      <p>We typically respond within 24–48 hours.</p>
+      <a class="btn btn-primary" href="mailto:{{ site.contactEmail }}?subject=Question%20about%20Hightide" style="margin-top:1rem">Email {{ site.contactEmail }}</a>
+      <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--text-muted)">For legal or billing inquiries: <a href="mailto:{{ site.legalEmail }}">{{ site.legalEmail }}</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-lead">Looking for more info? See our <a href="/">homepage FAQ</a> for common questions about Hightide.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Is there a free trial?</summary>
+        <p>Yes. You can try the full platform free for 30 days with no credit card required.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does Hightide have native mobile apps?</summary>
+        <p>Hightide is a responsive web app that works on mobile browsers. A dedicated mobile app is on our roadmap.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a plan for teams?</summary>
+        <p>Yes. All plans include team collaboration. The Pro plan includes additional collaborators.</p>
+      </details>
+    </div>
+    <p style="text-align:center;margin-top:2rem">Couldn't find the answer you're looking for? <a href="mailto:{{ site.contactEmail }}">Send us a message</a> and we'll help.</p>
+  </div>
+</section>

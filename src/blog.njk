@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: Hightide Blog | Booking Tips for Surf Camps, Retreats & Tour Operators
+description: Tips, strategies, and updates from Hightide to help surf camps, retreats, and tour operators simplify bookings, increase sales, and grow online.
+permalink: /blog/
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>Blog</h1>
+    <p class="section-lead">Tips and guides for managing bookings at surf camps, retreats, and tour operators.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="blog-grid">
+      {% for post in collections.posts %}
+      <a href="{{ post.url }}" class="blog-card">
+        {% if post.data.image %}
+        <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+        {% endif %}
+        <div class="blog-card-body">
+          <span class="blog-badge">{{ post.data.category }}</span>
+          <h2 style="font-size:1.15rem;margin:0.5rem 0">{{ post.data.title }}</h2>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin:0">{{ post.data.excerpt }}</p>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin:0.75rem 0 0">{{ post.date | readableDate }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Ready to simplify your bookings?</h2>
+      <p>Try Hightide free for 30 days — no credit card required.</p>
+      <a class="btn btn-primary" href="{{ site.signupUrl }}" style="margin-top:1rem">Start Free Trial</a>
+    </div>
+  </div>
+</section>

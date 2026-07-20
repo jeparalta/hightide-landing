@@ -1,0 +1,51 @@
+---
+layout: layouts/explore.njk
+title: Book a Discovery Call | Hightide
+description: Schedule a discovery call to discuss how your business takes bookings, runs day-to-day operations, and whether Hightide is the right fit.
+permalink: /explore/book-a-call/
+bodyClass: page-explore
+---
+
+<section class="page-header explore-book-header">
+  <div class="container">
+    <h1>{{ explore.primaryCtaLabel }}</h1>
+    <p class="section-lead">A practical conversation about how your business takes bookings and runs day-to-day operations.</p>
+  </div>
+</section>
+
+<section class="section explore-calendly-section">
+  <div class="container">
+    <div class="explore-calendly-layout">
+      <div class="explore-calendly-widget">
+        <div
+          class="calendly-inline-widget"
+          data-url="{{ explore.calendlyUrl }}"
+          style="min-width:320px;height:700px;"
+        ></div>
+      </div>
+
+      <div class="explore-calendly-side">
+        <div class="explore-calendly-cover">
+          <h2>During the call</h2>
+          <ul class="explore-list-check">
+            <li>How you currently take bookings for accommodation, activities and packages</li>
+            <li>Where time is being lost across your booking and operational workflow</li>
+            <li>How partners, agents and channel managers fit into your business (if relevant)</li>
+            <li>Whether Hightide is the right fit for your business</li>
+            <li>What onboarding would look like if you decide to move forward</li>
+          </ul>
+        </div>
+
+        <div class="explore-calendly-aside">
+          <p class="explore-calendly-intro">Hightide helps accommodation businesses, activity providers and retreats simplify bookings and operations.</p>
+          <div class="explore-calendly-alt">
+            <p>Not ready for a call?</p>
+            <p><a href="{{ site.signupUrl }}">Start a free 30-day trial →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
