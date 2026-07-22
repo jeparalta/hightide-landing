@@ -2,30 +2,28 @@
 layout: layouts/explore.njk
 title: Booking & Operations Software for Accommodation, Activities & Packages | Hightide
 description: Hightide helps businesses sell accommodation, activities and packages online while managing bookings, payments, guest communication and daily operations in one place.
-permalink: /explore/
+permalink: /
 bodyClass: page-explore
 ---
 
-{% macro sellCallout(callout, hidden=false) %}
-<article class="explore-callout explore-callout-carousel-item"{% if hidden %} aria-hidden="true"{% endif %}>
-  {% if callout.logos %}
-  <div class="explore-callout-logos" aria-hidden="true">
-    {% for logo in callout.logos %}
-    <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="explore-callout-logo" loading="lazy" width="72" height="24">
-    {% endfor %}
-  </div>
-  {% elif callout.icon %}
-  <img src="{{ callout.icon }}" alt="" class="explore-callout-icon" loading="lazy" width="48" height="48">
-  {% endif %}
-  <h3>{{ callout.title }}</h3>
-  <p>{{ callout.text }}</p>
+{% macro sellStoryCard(card) %}
+<article class="explore-sell-story-card explore-callout-carousel-item" tabindex="0">
+  <h3>{{ card.title }}</h3>
+  <p>{{ card.text }}</p>
 </article>
 {% endmacro %}
 
 {% macro manageFeature(feature) %}
 <article class="explore-feature-card">
   {% if feature.icon %}
-  <img src="{{ feature.icon }}" alt="" class="explore-feature-icon" loading="lazy" width="48" height="48">
+  <img
+    src="{{ feature.icon }}"
+    alt=""
+    class="explore-feature-icon{% if feature.iconClass %} {{ feature.iconClass }}{% endif %}"
+    loading="lazy"
+    width="48"
+    height="48"
+  >
   {% endif %}
   <h3>{{ feature.title }}</h3>
   <p>{{ feature.text }}</p>
@@ -33,57 +31,109 @@ bodyClass: page-explore
 {% endmacro %}
 
 {% macro integrationGroup(group) %}
-<article class="explore-integration-group explore-integration-orbit-card" data-integration-card>
+<article class="explore-integration-group explore-integration-orbit-card{% if group.layout %} is-{{ group.layout }}{% endif %}{% if group.wide %} is-wide-card{% endif %}" data-integration-card>
   <h3>{{ group.title }}</h3>
-  <ul>
+  <ul{% if group.columns == 2 %} class="explore-integration-list-columns"{% endif %}>
     {% for item in group.items %}
-    <li class="explore-integration-item">
+    <li class="explore-integration-entry{% if item.logoOnly %} explore-integration-entry-logo-only{% endif %}">
       {% if item.logo %}
-      <img src="{{ item.logo }}" alt="" class="explore-integration-logo" loading="lazy" width="72" height="20">
+      <img
+        src="{{ item.logo }}"
+        alt="{{ item.name if item.logoOnly else '' }}"
+        class="explore-integration-logo{% if item.logoOnly %} explore-integration-logo-only{% endif %}"
+        loading="lazy"
+        width="72"
+        height="20"
+      >
+      {% elif item.faIcon %}
+      <span class="explore-integration-fa-icon" aria-hidden="true"><i class="{{ item.faIcon }}"></i></span>
       {% elif item.icon %}
       <img src="{{ item.icon }}" alt="" class="explore-integration-icon" loading="lazy" width="28" height="28">
       {% endif %}
-      <span>{{ item.name }}</span>
+      {% if not item.logoOnly %}
+      <span{% if item.muted %} class="explore-integration-more"{% endif %}>{{ item.name }}</span>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>
 </article>
 {% endmacro %}
 
-{% macro industryCard(industry) %}
+{% macro industryCard(card, industry) %}
+{% set cardTitle = card.name or industry.cardName or industry.name %}
+{% set cardHref = card.href or ('/explore/industries/' ~ industry.slug ~ '/') %}
+{% set cardTeaser = card.cardTeaser or industry.cardTeaser %}
+{% set cardImage = card.image or industry.image %}
+{% set cardImageAlt = card.imageAlt or industry.imageAlt %}
+{% set cardFeatured = industry.featured %}
+{% set cardAriaLabel = card.ariaLabel or ('Explore Hightide for ' ~ cardTitle) %}
 <a
-  href="/explore/industries/{{ industry.slug }}/"
-  class="explore-industry-card{% if industry.featured %} explore-industry-card-featured{% endif %}"
+  href="{{ cardHref }}"
+  class="explore-industry-card{% if cardFeatured %} explore-industry-card-featured{% endif %}"
+  data-industry-card
+  aria-label="{{ cardAriaLabel }}"
 >
   <img
-    src="{{ industry.image }}"
-    alt="{{ industry.imageAlt }}"
+    src="{{ cardImage }}"
+    alt="{{ cardImageAlt }}"
     class="explore-industry-card-image"
     loading="lazy"
     width="640"
     height="360"
   >
   <div class="explore-industry-card-body">
-    <h3>{{ industry.cardName or industry.name }}</h3>
-    <p>{{ industry.cardTeaser }}</p>
-    <span class="explore-industry-card-cta">{{ exploreHome.industries.cardCta }}</span>
+    <h3 class="explore-industry-card-heading">
+      <span class="explore-industry-card-title">{{ cardTitle }}</span>
+      <span class="explore-industry-card-arrow" aria-hidden="true">↗</span>
+    </h3>
+    <p>{{ cardTeaser }}</p>
   </div>
 </a>
 {% endmacro %}
 
 {% macro proofStory(story) %}
-<article class="explore-proof-card">
-  <header class="explore-proof-card-header">
-    {% if story.logo %}
-    <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="56" height="56">
-    {% endif %}
-    <div class="explore-proof-card-heading">
-      <h3 class="explore-proof-title">{{ story.business }}</h3>
+<article
+  class="explore-proof-card"
+  data-proof-card
+  data-proof-business="{{ story.business }}"
+  data-proof-name="{{ story.name }}"
+  data-proof-role="{{ story.role }}"
+  {% if story.logo %}data-proof-logo="{{ story.logo }}"{% endif %}
+  {% if story.logoAlt %}data-proof-logo-alt="{{ story.logoAlt }}"{% endif %}
+  {% if story.websiteUrl %}data-proof-website="{{ story.websiteUrl }}"{% endif %}
+>
+  <div class="explore-proof-card-body">
+    <header class="explore-proof-card-header">
+      {% if story.logo %}
+      {% if story.websiteUrl %}
+      <a href="{{ story.websiteUrl }}" class="explore-proof-logo-link" target="_blank" rel="noopener noreferrer" aria-label="{{ story.logoAlt or story.business }}">
+        <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="56" height="56">
+      </a>
+      {% else %}
+      <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="56" height="56">
+      {% endif %}
+      {% endif %}
+      <div class="explore-proof-card-heading">
+        {% if story.websiteUrl %}
+        <h3 class="explore-proof-title">
+          <a href="{{ story.websiteUrl }}" target="_blank" rel="noopener noreferrer">{{ story.business }}</a>
+        </h3>
+        {% else %}
+        <h3 class="explore-proof-title">{{ story.business }}</h3>
+        {% endif %}
+        {% if story.industry %}
+        <span class="explore-proof-industry">{{ story.industry }}</span>
+        {% endif %}
+      </div>
+    </header>
+    <blockquote class="explore-proof-quote">
+      <p data-proof-excerpt>{{ story.quote }}</p>
+    </blockquote>
+    <div class="explore-proof-read-more-slot">
+      <button type="button" class="explore-proof-read-more" data-proof-read hidden aria-label="Read full review from {{ story.name }}">Read full review</button>
     </div>
-  </header>
-  <blockquote class="explore-proof-quote">
-    <p>{{ story.quote }}</p>
-  </blockquote>
+    <div hidden data-proof-full>{{ story.quote }}</div>
+  </div>
   <footer class="explore-proof-attribution">
     <cite>{{ story.name }}</cite>
     <span>{{ story.role }}</span>
@@ -91,12 +141,30 @@ bodyClass: page-explore
 </article>
 {% endmacro %}
 
+{% macro integrationLineArt(src, width, height, from, to, orbit, index) %}
+<img
+  class="explore-integration-line explore-integration-line-art"
+  data-integration-line
+  data-integration-index="{{ index }}"
+  data-line-art="{{ src }}"
+  data-line-art-width="{{ width }}"
+  data-line-art-height="{{ height }}"
+  data-line-art-from="{{ from }}"
+  data-line-art-to="{{ to }}"
+  data-orbit-x="{{ orbit.x }}"
+  data-orbit-y="{{ orbit.y }}"
+  src="{{ src }}"
+  alt=""
+  decoding="async"
+>
+{% endmacro %}
+
 {% set integrationOrbits = [
-  { x: 40, y: 16 },
-  { x: 84, y: 24 },
-  { x: 90, y: 62 },
-  { x: 50, y: 80 },
-  { x: 10, y: 54 }
+  { x: 32, y: 14 },
+  { x: 81, y: 27 },
+  { x: 86, y: 61 },
+  { x: 50, y: 86 },
+  { x: 14, y: 54 }
 ] %}
 
 <section class="explore-hero">
@@ -121,7 +189,7 @@ bodyClass: page-explore
         <img src="/assets/images/hero-sun.png" alt="" class="explore-hero-deco explore-hero-deco-sun" loading="lazy" decoding="async">
         <div class="explore-hero-actions">
           <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
-          <a class="btn btn-secondary" href="{{ explore.secondaryCtaUrl }}">{{ explore.secondaryCtaLabel }}</a>
+          <a class="btn btn-secondary" href="{{ explore.secondaryCtaUrl }}" target="_blank" rel="noopener noreferrer">{{ explore.secondaryCtaLabel }}</a>
         </div>
         <img src="/assets/images/hero-moon.png" alt="" class="explore-hero-deco explore-hero-deco-moon" loading="lazy" decoding="async">
       </div>
@@ -130,7 +198,7 @@ bodyClass: page-explore
 </section>
 
 <section class="section section-alt explore-story explore-story-sell">
-  <div class="explore-sell-scroll-stage" data-callout-scroll>
+  <div class="explore-sell-scroll-stage is-static" data-callout-scroll>
     <div class="explore-sell-scroll-pin">
       <div class="container explore-sell-scroll-inner">
         <div class="explore-sell-scroll-intro">
@@ -138,34 +206,74 @@ bodyClass: page-explore
           <p class="section-lead">{{ exploreHome.sell.lead }}</p>
         </div>
 
+        <div class="explore-sell-montage-wrap">
         <div class="explore-sell-montage">
           {% for image in exploreHome.sell.images %}
-          <img
-            class="explore-sell-shot explore-sell-shot-{{ loop.index }}"
-            src="{{ image.src }}"
-            alt="{{ image.alt }}"
-            loading="lazy"
-            width="800"
-            height="480"
+          <button
+            type="button"
+            class="explore-sell-shot-wrap explore-sell-shot-wrap-{{ loop.index }}"
+            data-montage-open
+            aria-label="View {{ image.alt }} in full size"
           >
+            <img
+              class="explore-sell-shot explore-sell-shot-{{ loop.index }}"
+              src="{{ image.src }}"
+              alt="{{ image.alt }}"
+              loading="lazy"
+              width="800"
+              height="480"
+            >
+          </button>
           {% endfor %}
+          <a
+            class="btn btn-secondary explore-sell-demo-btn"
+            href="{{ explore.demoStoreUrl }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{{ exploreHome.sell.demoStore.label }}</a>
+        </div>
         </div>
 
-        <div class="explore-callout-carousel" data-callout-carousel>
-          <div class="explore-callout-track" data-callout-track>
-            {% for callout in exploreHome.sell.callouts %}
-            {{ sellCallout(callout) }}
-            {% endfor %}
+        <div class="explore-sell-story" data-callout-story>
+          <div
+            class="explore-sell-story-progress"
+            role="progressbar"
+            aria-label="Online store story progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            data-callout-progress-wrap
+          >
+            <span class="explore-sell-story-progress-bar" data-callout-progress></span>
+          </div>
+          <div class="explore-callout-carousel" data-callout-carousel>
+            <div class="explore-callout-track" data-callout-track>
+              {% for card in exploreHome.sell.storyCards %}
+              {{ sellStoryCard(card) }}
+              {% endfor %}
+            </div>
           </div>
         </div>
 
-        <div class="explore-tool-band" data-callout-tools aria-label="Supported integrations for selling online">
+        <div class="explore-sell-tools" data-callout-tools>
+          <p class="explore-sell-tools-label">{{ exploreHome.sell.toolsLabel }}</p>
+          <div class="explore-tool-band" aria-label="Supported integrations for selling online">
           {% for tool in exploreHome.sell.tools %}
-          <span class="explore-tool-item">
-            <img src="{{ tool.logo }}" alt="" class="explore-tool-logo" loading="lazy" width="72" height="20">
+          <span class="explore-tool-item{% if tool.logoOnly %} explore-tool-item-logo-only{% endif %}">
+            <img
+              src="{{ tool.logo }}"
+              alt="{{ tool.name if tool.logoOnly else '' }}"
+              class="explore-tool-logo{% if tool.logoOnly %} explore-tool-logo-only{% endif %}"
+              loading="lazy"
+              width="72"
+              height="20"
+            >
+            {% if not tool.logoOnly %}
             <span>{{ tool.name }}</span>
+            {% endif %}
           </span>
           {% endfor %}
+          </div>
         </div>
       </div>
     </div>
@@ -181,31 +289,52 @@ bodyClass: page-explore
           <p class="section-lead">{{ exploreHome.manage.lead }}</p>
         </div>
 
-        <div class="explore-manage-montage" aria-hidden="true">
-          <img
-            class="explore-montage-shot explore-montage-calendar"
-            src="{{ exploreHome.manage.montage.calendar.src }}"
-            alt=""
-            loading="lazy"
-            width="873"
-            height="480"
+        <div class="explore-manage-montage" data-manage-montage>
+          <button
+            type="button"
+            class="explore-montage-item"
+            data-montage-open
+            aria-label="View {{ exploreHome.manage.montage.calendar.alt }} in full size"
           >
-          <img
-            class="explore-montage-shot explore-montage-workspace"
-            src="{{ exploreHome.manage.montage.workspace.src }}"
-            alt=""
-            loading="lazy"
-            width="800"
-            height="480"
+            <img
+              class="explore-montage-shot explore-montage-calendar"
+              src="{{ exploreHome.manage.montage.calendar.src }}"
+              alt="{{ exploreHome.manage.montage.calendar.alt }}"
+              loading="lazy"
+              width="873"
+              height="480"
+            >
+          </button>
+          <button
+            type="button"
+            class="explore-montage-item"
+            data-montage-open
+            aria-label="View {{ exploreHome.manage.montage.workspace.alt }} in full size"
           >
-          <img
-            class="explore-montage-shot explore-montage-planner"
-            src="{{ exploreHome.manage.montage.planner.src }}"
-            alt=""
-            loading="lazy"
-            width="800"
-            height="480"
+            <img
+              class="explore-montage-shot explore-montage-workspace"
+              src="{{ exploreHome.manage.montage.workspace.src }}"
+              alt="{{ exploreHome.manage.montage.workspace.alt }}"
+              loading="lazy"
+              width="1024"
+              height="602"
+            >
+          </button>
+          <button
+            type="button"
+            class="explore-montage-item"
+            data-montage-open
+            aria-label="View {{ exploreHome.manage.montage.planner.alt }} in full size"
           >
+            <img
+              class="explore-montage-shot explore-montage-planner"
+              src="{{ exploreHome.manage.montage.planner.src }}"
+              alt="{{ exploreHome.manage.montage.planner.alt }}"
+              loading="lazy"
+              width="800"
+              height="480"
+            >
+          </button>
         </div>
 
         <div class="explore-manage-feature-stage" data-manage-feature-stage>
@@ -239,21 +368,13 @@ bodyClass: page-explore
         </div>
 
         <div class="explore-integrations-hub" data-integrations-hub>
-          <svg class="explore-integrations-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" data-integrations-lines>
-            {% for orbit in integrationOrbits %}
-            <line
-              class="explore-integration-line"
-              data-integration-line
-              data-orbit-x="{{ orbit.x }}"
-              data-orbit-y="{{ orbit.y }}"
-              x1="50"
-              y1="50"
-              x2="50"
-              y2="50"
-              vector-effect="non-scaling-stroke"
-            ></line>
-            {% endfor %}
-          </svg>
+          <div class="explore-integrations-line-art-layer" aria-hidden="true">
+            {{ integrationLineArt("/assets/images/integrations/connectors/channel-manager-arrow.png?v=2", 235, 307, "br", "tl", integrationOrbits[0], 0) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/payments-arrow.png?v=2", 284, 200, "bl", "tr", integrationOrbits[1], 1) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/invoicing-arrow-v2.png", 350, 135, "tl", "br", integrationOrbits[2], 2) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png", 64, 304, "tl", "bl", integrationOrbits[3], 3) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/partners-arrow.png", 480, 108, "tr", "tl", integrationOrbits[4], 4) }}
+          </div>
           <div class="explore-integrations-logo" aria-hidden="true">
             <img src="/assets/images/logo.svg" alt="" width="72" height="72" loading="lazy" decoding="async">
           </div>
@@ -277,10 +398,16 @@ bodyClass: page-explore
   <div class="container">
     <h2 class="section-title">{{ exploreHome.industries.title }}</h2>
     <p class="section-lead">{{ exploreHome.industries.lead }}</p>
-    <div class="explore-industry-grid">
+    <div class="explore-industry-grid" data-industry-cards>
+      {% for card in exploreHome.industries.homeCards %}
+      {% if card.href %}
+      {{ industryCard(card, card) }}
+      {% else %}
       {% for industry in exploreIndustries %}
-      {% if industry.showOnExploreHome != false %}
-      {{ industryCard(industry) }}
+      {% if industry.slug == card.slug %}
+      {{ industryCard(card, industry) }}
+      {% endif %}
+      {% endfor %}
       {% endif %}
       {% endfor %}
     </div>
@@ -290,12 +417,65 @@ bodyClass: page-explore
 <section class="section explore-story-proof">
   <div class="container">
     <h2 class="section-title">{{ exploreHome.testimonials.title }}</h2>
-    <div class="explore-proof-grid">
-      {% for story in exploreHome.testimonials.stories %}
-      {{ proofStory(story) }}
-      {% endfor %}
+    <div class="explore-proof-carousel" data-proof-carousel>
+      <div
+        class="explore-proof-carousel-viewport"
+        data-proof-viewport
+        tabindex="0"
+        role="region"
+        aria-label="Customer testimonials"
+      >
+        <div class="explore-proof-carousel-track" data-proof-track>
+          {% for story in exploreHome.testimonials.stories %}
+          {{ proofStory(story) }}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="explore-proof-carousel-controls">
+        <button type="button" class="explore-proof-carousel-btn" data-proof-prev aria-label="Previous testimonials" disabled>
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <p class="explore-proof-carousel-status" data-proof-status aria-live="polite"></p>
+        <button type="button" class="explore-proof-carousel-btn" data-proof-next aria-label="Next testimonials">
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
+{% set faqSectionClass = "explore-faq" %}
+{% include "partials/faq.njk" %}
+
 {% include "partials/explore-cta.njk" %}
+
+<dialog class="explore-image-lightbox" data-montage-lightbox aria-label="Screenshot preview">
+  <button type="button" class="explore-image-lightbox-close" data-montage-lightbox-close aria-label="Close preview">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <img class="explore-image-lightbox-image" data-montage-lightbox-image src="" alt="">
+</dialog>
+
+<dialog class="explore-proof-modal" data-proof-modal aria-labelledby="proof-modal-title">
+  <div class="explore-proof-modal-panel">
+    <button type="button" class="explore-proof-modal-close" data-proof-modal-close aria-label="Close full review">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <header class="explore-proof-modal-header">
+      <img class="explore-proof-modal-logo" data-proof-modal-logo src="" alt="" width="56" height="56" hidden>
+      <div class="explore-proof-modal-heading">
+        <h3 class="explore-proof-modal-business" id="proof-modal-title" data-proof-modal-business></h3>
+      </div>
+    </header>
+    <blockquote class="explore-proof-modal-quote">
+      <p data-proof-modal-quote></p>
+    </blockquote>
+    <footer class="explore-proof-modal-footer">
+      <div class="explore-proof-modal-attribution">
+        <cite data-proof-modal-name></cite>
+        <span data-proof-modal-role></span>
+      </div>
+      <a class="explore-proof-modal-website" data-proof-modal-website href="#" target="_blank" rel="noopener noreferrer" hidden>Visit website</a>
+    </footer>
+  </div>
+</dialog>

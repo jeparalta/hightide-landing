@@ -3,76 +3,60 @@ layout: layouts/base.njk
 title: About Hightide | Booking Software for Surf Camps, Retreats & Tours
 description: Learn why Hightide was built for surf camps, retreats, and tour operators. Our mission is to help independent operators grow on their own terms.
 permalink: /about/
+bodyClass: page-about
 ---
 
-<section class="page-header">
-  <div class="container">
-    <h1>About Hightide</h1>
-    <p class="section-lead">Built by an operator, for operators.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container prose">
-    <p>Hightide was created by José Paralta, a former surf camp owner and developer, with support from a small group of friends and collaborators who share a passion for surfing, travel, and independent businesses.</p>
-    <p>Frustrated by clunky and overpriced booking tools, José started building something simpler and more flexible. Hightide is the result — a tool designed for small operators by someone who understands their everyday challenges.</p>
+<section class="about-hero section">
+  <div class="container about-hero-inner">
+    <div class="about-hero-copy">
+      <h1>{{ aboutPage.hero.title }}</h1>
+      <p class="section-lead">{{ aboutPage.hero.lead }}</p>
+      {% for paragraph in aboutPage.hero.paragraphs %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+    <div class="about-hero-media">
+      <img
+        src="{{ aboutPage.hero.image }}"
+        alt="{{ aboutPage.hero.imageAlt }}"
+        loading="eager"
+        width="640"
+        height="520"
+      >
+    </div>
   </div>
 </section>
 
 <section class="section section-alt">
   <div class="container">
-    <h2 class="section-title">The People Who Helped Shape Hightide</h2>
-    <p class="section-lead">Building something special requires bringing together all of our strengths.</p>
+    <h2 class="section-title">{{ aboutPage.team.title }}</h2>
+    <p class="section-lead">{{ aboutPage.team.lead }}</p>
     <div class="team-grid">
+      {% for member in aboutPage.team.members %}
       <article class="team-card">
-        <h3>José Paralta</h3>
-        <p>Founder. A lifelong techie with 20 years of surf camp experience, José builds user-focused software that tackles everyday challenges.</p>
+        <img src="{{ member.image }}" alt="{{ member.name }}" loading="lazy" width="160" height="160">
+        <h3>{{ member.name }}</h3>
+        {% if member.role %}
+        <p class="team-card-role">{{ member.role }}</p>
+        {% endif %}
+        <p>{{ member.bio }}</p>
       </article>
-      <article class="team-card">
-        <h3>Katharina Joebstl</h3>
-        <p>With a strong background in design and brand strategy, Kat helps businesses find clarity and direction.</p>
-      </article>
-      <article class="team-card">
-        <h3>Allessandro Rista</h3>
-        <p>A master head coach with years of experience running surf schools of all sizes.</p>
-      </article>
-      <article class="team-card">
-        <h3>Giuliana Biagioni</h3>
-        <p>Giuliana knows property and booking management inside out, keeping everything running smoothly.</p>
-      </article>
-      <article class="team-card">
-        <h3>Saman Heiwawtihrana</h3>
-        <p>With years of coaching, shaping, and engineering know-how, focused on making everything work for the perfect surf experience.</p>
-      </article>
-      <article class="team-card">
-        <h3>Sarah</h3>
-        <p>The artist and illustrator behind Hightide's design, adding beauty and style to every element of the app's experience.</p>
-      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container prose">
-    <h2>We want to build tools that people love to use</h2>
-    <p>Our goal is to support people who have turned their passion into a business by giving them simple and powerful tools to manage their work and share what they love with others.</p>
-    <h2>Let's do our part to level the playing field</h2>
-    <p>The tourism world is dominated by large platforms, but it's the small, independent operators who create the most authentic experiences. Hightide exists to support them, helping them grow on their own terms and connect directly with their customers.</p>
-    <p>Hightide is a small, bootstrapped company focused on quality over speed. We care about building a product we're proud of and keeping our relationships respectful and supportive as we grow.</p>
+  <div class="container about-mission">
+    <h2 class="section-title">{{ aboutPage.mission.title }}</h2>
+    {% for item in aboutPage.mission.items %}
+    <div class="about-mission-item">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
+    </div>
+    {% endfor %}
+    <p class="about-mission-closing">{{ aboutPage.mission.closing }}</p>
   </div>
 </section>
 
-<section class="section section-alt">
-  <div class="container">
-    <div class="cta-band">
-      <h2>Get Started for free</h2>
-      <p>Sign up, add your services, and get set up in minutes — no credit card needed. Enjoy Hightide free for the first month.</p>
-      <a class="btn btn-primary" href="{{ site.signupUrl }}" style="margin-top:1rem">Start Free Trial</a>
-    </div>
-    <div class="cta-band" style="margin-top:1.5rem;background:#2a2a2a">
-      <h2>Need Help Setting Up?</h2>
-      <p>Tell us how your business works and we'll build a tailored demo for you.</p>
-      <a class="btn btn-secondary" href="mailto:{{ site.contactEmail }}?subject=Help%20setting%20up%20Hightide" style="margin-top:1rem">Email Us</a>
-    </div>
-  </div>
-</section>
+{% include "partials/explore-cta.njk" %}

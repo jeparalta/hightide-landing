@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "About Hightide",
+    "lead": "Built by an operator, for operators.",
+    "image": "/assets/images/about/about-couple.png",
+    "imageAlt": "Illustration of two people using Hightide on a laptop and phone",
+    "paragraphs": [
+      "Hightide was created by José Paralta, a former surf camp owner and developer, with support from a small group of friends and collaborators who share a passion for surfing, travel, and independent businesses.",
+      "Frustrated by clunky and overpriced booking tools, José started building something simpler and more flexible. Hightide is the result: a tool designed for small operators by someone who understands their everyday challenges."
+    ]
+  },
+  "team": {
+    "title": "The People Who Helped Shape Hightide",
+    "lead": "Building something special requires bringing together all of our strengths.",
+    "members": [
+      {
+        "name": "José Paralta",
+        "image": "/assets/images/author-jose.jpg",
+        "bio": "A lifelong techie with 20 years of surf camp experience, José builds user-focused software that tackles everyday challenges and improves workflows."
+      },
+      {
+        "name": "Katharina Joebstl",
+        "image": "/assets/images/about/team-katharina.png",
+        "bio": "With a strong background in design and brand strategy, Kat helps businesses find clarity and direction, always adding a splash of surfing and sunshine."
+      },
+      {
+        "name": "Allessandro Rista",
+        "image": "/assets/images/about/team-alessandro.png",
+        "bio": "A master head coach with years of experience running surf schools of all sizes, offering rare insight into what makes operations run smoothly and sustainably."
+      },
+      {
+        "name": "Giuliana Biagioni",
+        "image": "/assets/images/about/team-giuliana.png",
+        "bio": "Giuliana knows property and booking management inside out, keeping everything running smoothly, from calendars to listings, with a keen eye for detail."
+      },
+      {
+        "name": "Saman Heiwawtihrana",
+        "image": "/assets/images/about/team-saman.png",
+        "bio": "With years of coaching, shaping, and engineering know-how, he is all about the waves and making everything work just right for the perfect surf experience."
+      },
+      {
+        "name": "Sarah Hardie",
+        "image": "/assets/images/about/team-sarah.png",
+        "bio": "As the artist and illustrator behind Hightide's design, Sarah brings her unique touch, adding beauty and style to every element of the app's experience."
+      }
+    ]
+  },
+  "mission": {
+    "title": "Our Mission",
+    "items": [
+      {
+        "title": "We want to build tools that people love to use",
+        "text": "Our goal is to support people who have turned their passion into a business by giving them simple and powerful tools to manage their work and share what they love with others."
+      },
+      {
+        "title": "Let's do our part to level the playing field",
+        "text": "The tourism world is dominated by large platforms, but it is the small, independent operators who create the most authentic experiences. Hightide exists to support them, helping them grow on their own terms and connect directly with their customers."
+      }
+    ],
+    "closing": "Hightide is a small, bootstrapped company focused on quality over speed. We care about building a product we are proud of and keeping our relationships respectful and supportive as we grow."
+  }
+}

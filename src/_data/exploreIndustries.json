@@ -9,7 +9,7 @@
     "icon": "/assets/images/icons/surf-camps.png",
     "featured": true,
     "showOnExploreHome": true,
-    "cardTeaser": "Sell beds, lessons and weekly packages from one store — then run the camp week from a shared booking workspace.",
+    "cardTeaser": "Sell beds, lessons and packages through one store. Keep bookings, payments and camp operations together.",
     "heroLead": "Sell packages, manage beds and lessons together, and coordinate partners without juggling disconnected tools.",
     "challenges": [
       "Rooms, lessons and packages sold through different systems",
@@ -33,7 +33,7 @@
     "icon": "/assets/images/icons/retreats.png",
     "featured": true,
     "showOnExploreHome": true,
-    "cardTeaser": "Offer fixed-date programmes or flexible stays, take deposits online, and keep guest details on every booking.",
+    "cardTeaser": "Offer fixed-date programmes or flexible stays. Manage rooms, activities, deposits and guest details in one place.",
     "heroLead": "Offer flexible dates or set programs, take deposits online, and run the retreat from a single operational workspace.",
     "challenges": [
       "Fixed-date and flexible retreats need different selling models",
@@ -49,6 +49,7 @@
   {
     "slug": "accommodation",
     "name": "Accommodation Businesses",
+    "cardName": "Accommodation",
     "title": "Multi-Service Accommodation | Hightide Explore",
     "description": "Accommodation businesses combining rooms, services and packages — beyond a simple PMS.",
     "image": "/assets/images/use-accommodation.jpg",
@@ -56,7 +57,7 @@
     "icon": "/assets/images/icons/accommodation.png",
     "featured": false,
     "showOnExploreHome": true,
-    "cardTeaser": "When you sell more than nights — tours, rentals and packages — manage the full stay in one platform.",
+    "cardTeaser": "Sell rooms, beds, extras and activities. Manage the complete guest stay from one platform.",
     "heroLead": "When you sell more than nights — tours, rentals, retreats and packages — you need more than a booking engine.",
     "challenges": [
       "PMS handles rooms but not tours, rentals or packages",
@@ -79,7 +80,7 @@
     "icon": "/assets/images/icons/dive-centres.png",
     "featured": false,
     "showOnExploreHome": true,
-    "cardTeaser": "Take bookings for daily tours, lessons and rentals — with linked availability when resources are shared.",
+    "cardTeaser": "Take bookings for tours, lessons and rentals with linked availability for shared resources.",
     "heroLead": "Sell activities online, coordinate shared guides and equipment, and keep every booking in one operational workspace.",
     "challenges": [
       "Multiple activity types compete for the same instructors or gear",
@@ -102,7 +103,7 @@
     "icon": "/assets/images/icons/adventure-lodges.png",
     "featured": false,
     "showOnExploreHome": true,
-    "cardTeaser": "Guests book lodging and guided adventures together; your team runs the week from one hub.",
+    "cardTeaser": "Sell lodging and guided activities together. Give your team one place to manage every booking.",
     "heroLead": "Guests book lodging and adventures together; your team runs the week from one operational hub.",
     "challenges": [
       "Lodging plus daily activities with different capacity rules",
@@ -124,7 +125,7 @@
     "imageAlt": "Boat on the water",
     "icon": "/assets/images/icons/dive-centres.png",
     "featured": false,
-    "showOnExploreHome": true,
+    "showOnExploreHome": false,
     "cardTeaser": "Coordinate courses, boat trips, rental gear and lodge beds without double bookings on shared resources.",
     "heroLead": "Coordinate courses, boat trips, equipment rental and lodge beds without double bookings on shared resources.",
     "challenges": [

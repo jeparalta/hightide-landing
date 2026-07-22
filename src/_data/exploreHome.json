@@ -1,7 +1,11 @@
 {
   "sell": {
-    "title": "Sell directly from your own website",
-    "lead": "Turn your website into a complete booking experience that converts visitors into direct bookings.",
+    "title": "Your Online Store for direct bookings",
+    "lead": "Customise your store to match your brand and sell accommodation, activities and packages.",
+    "demoStore": {
+      "label": "Try the Demo Store",
+      "text": "Experience a real Hightide Online Store. Browse the available options, submit a test booking request and receive the same confirmation email a guest would receive."
+    },
     "images": [
       {
         "src": "/assets/images/tab-store-1.webp",
@@ -12,67 +16,52 @@
         "alt": "Hightide store checkout and cart"
       }
     ],
-    "callouts": [
+    "storyCards": [
       {
-        "title": "Online Store",
-        "text": "A complete customer-facing booking experience.",
-        "icon": "/assets/images/icons/online-store.png"
+        "title": "Designed around your business",
+        "text": "Choose what you offer, how it is presented and how guests can book.",
+        "faIcon": "fa-solid fa-paintbrush"
       },
       {
-        "title": "Live availability",
-        "text": "Keep bookable inventory current.",
-        "icon": "/assets/images/icons/linked-availability.png"
+        "title": "Everything in one store",
+        "text": "Bring accommodation, activities, tours and packages together.",
+        "faIcon": "fa-solid fa-boxes-stacked"
       },
       {
-        "title": "Stripe + PayPal",
-        "text": "Accept online payments using familiar providers.",
-        "logos": [
-          { "src": "/assets/images/integrations/stripe.svg", "alt": "Stripe" },
-          { "src": "/assets/images/integrations/paypal.svg", "alt": "PayPal" }
-        ]
+        "title": "Build flexible packages",
+        "text": "Offer ready-made packages or let guests build their own.",
+        "faIcon": "fa-solid fa-puzzle-piece"
       },
       {
-        "title": "GA4 + Meta Pixel",
-        "text": "Measure demand and marketing performance.",
-        "logos": [
-          { "src": "/assets/images/integrations/google-analytics.svg", "alt": "Google Analytics 4" },
-          { "src": "/assets/images/integrations/meta-pixel.svg", "alt": "Meta Pixel" }
-        ]
+        "title": "Keep availability connected",
+        "text": "Manage availability whether something is booked separately or within a package.",
+        "faIcon": "fa-solid fa-calendar-check"
       },
       {
-        "title": "Discounts",
-        "text": "Support promotional pricing and campaigns.",
-        "icon": "/assets/images/icons/discounts.png"
+        "title": "Choose how guests book",
+        "text": "Offer instant booking or review requests before confirming them.",
+        "faIcon": "fa-solid fa-bolt"
       },
       {
-        "title": "Gift vouchers",
-        "text": "Create an additional route to purchase.",
-        "icon": "/assets/images/icons/gift-vouchers.png"
+        "title": "Share it anywhere",
+        "text": "Link your store from your website, social media and campaigns.",
+        "faIcon": "fa-solid fa-share-nodes"
       },
       {
-        "title": "Partner URLs + codes",
-        "text": "Let hotels, agents, creators and partners place bookings under predefined terms.",
-        "icon": "/assets/images/icons/partners.png"
+        "title": "Grow through partners",
+        "text": "Use trackable referral links, booking codes and commission reporting.",
+        "faIcon": "fa-solid fa-handshake"
       },
       {
-        "title": "Automated emails",
-        "text": "Send routine confirmations and updates automatically.",
-        "icon": "/assets/images/icons/automated-emails.png"
-      },
-      {
-        "title": "Request or instant booking",
-        "text": "Match the booking method to the offer.",
-        "icon": "/assets/images/icons/instant-booking.png"
-      },
-      {
-        "title": "Zero commission",
-        "text": "Keep the value of direct bookings.",
-        "icon": "/assets/images/icons/zero-commission.png"
+        "title": "Keep your direct revenue",
+        "text": "Pay no commission on direct bookings made through your store.",
+        "faIcon": "fa-solid fa-wallet"
       }
     ],
+    "toolsLabel": "Works with the tools you already use",
     "tools": [
-      { "name": "Stripe", "logo": "/assets/images/integrations/stripe.svg" },
-      { "name": "PayPal", "logo": "/assets/images/integrations/paypal.svg" },
+      { "name": "Stripe", "logo": "/assets/images/integrations/stripe.svg", "logoOnly": true },
+      { "name": "PayPal", "logo": "/assets/images/integrations/paypal-wordmark.svg", "logoOnly": true },
       { "name": "Google Analytics 4", "logo": "/assets/images/integrations/google-analytics.svg" },
       { "name": "Meta Pixel", "logo": "/assets/images/integrations/meta-pixel.svg" },
       { "name": "Google Translate", "logo": "/assets/images/integrations/google-translate.svg" }
@@ -80,15 +69,15 @@
   },
   "manage": {
     "title": "Manage every booking in one place",
-    "lead": "From first enquiry to check-out, keep your team, guests, payments and daily operations organised in one shared workspace.",
+    "lead": "From booking to check-out, keep your team, guests, payments and daily operations organised in one place.",
     "montage": {
       "calendar": {
         "src": "/assets/images/tab-calendar-1.webp",
         "alt": "Hightide calendar"
       },
       "workspace": {
-        "src": "/assets/images/tab-calendar-2.webp",
-        "alt": "Hightide booking workspace"
+        "src": "/assets/images/tab-bookings-list.jpg",
+        "alt": "Hightide bookings list"
       },
       "planner": {
         "src": "/assets/images/tab-bookings-2.webp",
@@ -98,62 +87,71 @@
     "features": [
       {
         "title": "Calendar",
-        "text": "Unified availability across accommodation, activities and packaged services.",
+        "text": "See accommodation, activities and packaged services in one connected calendar.",
         "icon": "/assets/images/icons/calendar.png"
       },
       {
         "title": "Booking Workspace",
-        "text": "Guest details, items, balances, notes, comments, statuses and communication in one place.",
+        "text": "Keep guest details, items, balances, notes, comments, statuses and communication together.",
         "icon": "/assets/images/icons/booking-workspace.png"
       },
       {
         "title": "Day Planner",
-        "text": "See what is happening today across accommodation and activities.",
-        "icon": "/assets/images/icons/day-planner.png"
+        "text": "See today's accommodation, activities, arrivals and departures at a glance.",
+        "icon": "/assets/images/icons/day-planner.png",
+        "iconClass": "explore-feature-icon-day-planner"
       },
       {
         "title": "Automated emails",
-        "text": "Remove repetitive communication while retaining manual control when needed.",
+        "text": "Automate routine confirmations and updates while keeping control of guest communication.",
         "icon": "/assets/images/icons/automated-emails.png"
       },
       {
         "title": "Payments",
-        "text": "Track paid and due amounts, accept online payment and send additional requests.",
+        "text": "Track balances, accept payments and send payment requests.",
         "icon": "/assets/images/icons/payments.png"
       },
       {
         "title": "Invoices",
-        "text": "Create native invoices or connect suitable invoicing tools.",
+        "text": "Create invoices in Hightide or use our invoicing integration.",
         "icon": "/assets/images/icons/invoices.png"
       },
       {
         "title": "Reports",
-        "text": "Understand bookings, operations, revenue and partner settlements.",
+        "text": "Understand bookings, operations, revenue and partner performance.",
         "icon": "/assets/images/icons/reports.png"
       },
       {
-        "title": "Team access",
-        "text": "Give staff a shared source of truth that survives handovers and seasonal turnover.",
-        "icon": "/assets/images/icons/team-access.png"
+        "title": "Team collaboration",
+        "text": "Keep everyone informed with the right level of access.",
+        "icon": "/assets/images/icons/team-access.png",
+        "iconClass": "explore-feature-icon-team-access"
       }
     ]
   },
   "integrations": {
     "title": "Connect the rest of your booking operation",
-    "lead": "Connect the channels, payment tools and services involved in selling, distributing and running your business — without losing operational control inside Hightide.",
+    "lead": "Bring your booking channels, payments, partners, reporting and marketing together in Hightide.",
     "groups": [
       {
-        "title": "Channels",
+        "title": "Channel Manager",
+        "columns": 2,
         "items": [
           { "name": "Airbnb", "logo": "/assets/images/integrations/airbnb.svg" },
-          { "name": "Booking.com", "logo": "/assets/images/integrations/booking-com.svg" }
+          { "name": "Booking.com", "logo": "/assets/images/integrations/booking-com.svg" },
+          { "name": "Hostelworld", "logo": "/assets/images/integrations/hostelworld.svg" },
+          { "name": "Expedia", "logo": "/assets/images/integrations/expedia.svg" },
+          { "name": "Vrbo", "logo": "/assets/images/integrations/vrbo.svg" },
+          { "name": "TripAdvisor", "logo": "/assets/images/integrations/tripadvisor.svg" },
+          { "name": "& more", "muted": true }
         ]
       },
       {
         "title": "Payments",
+        "layout": "payment-logos",
         "items": [
-          { "name": "Stripe", "logo": "/assets/images/integrations/stripe.svg" },
-          { "name": "PayPal", "logo": "/assets/images/integrations/paypal.svg" }
+          { "name": "Stripe", "logo": "/assets/images/integrations/stripe.svg", "logoOnly": true },
+          { "name": "PayPal", "logo": "/assets/images/integrations/paypal-wordmark.svg", "logoOnly": true }
         ]
       },
       {
@@ -165,15 +163,19 @@
       },
       {
         "title": "Analytics & marketing",
+        "wide": true,
         "items": [
           { "name": "Google Analytics 4", "logo": "/assets/images/integrations/google-analytics.svg" },
           { "name": "Meta Pixel", "logo": "/assets/images/integrations/meta-pixel.svg" }
         ]
       },
       {
-        "title": "Partners",
+        "title": "Partners and affiliates",
+        "layout": "partner-features",
         "items": [
-          { "name": "Partner URLs & codes", "icon": "/assets/images/icons/partners.png" }
+          { "name": "Trackable referral links", "faIcon": "fa-solid fa-link" },
+          { "name": "Partner booking codes", "faIcon": "fa-solid fa-ticket" },
+          { "name": "Commission reporting", "faIcon": "fa-solid fa-chart-line" }
         ]
       }
     ]
@@ -182,34 +184,72 @@
     "title": "What our customers say",
     "stories": [
       {
+        "logo": "/assets/images/testimonials/the-village-alentejo.png",
+        "logoAlt": "The Village, Alentejo",
+        "websiteUrl": "https://www.instagram.com/thevillage.alentejo",
+        "quote": "Hightide has made it much easier to organise reservations, track payments and share availability. We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence. Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability.",
+        "name": "Pete Webb",
+        "role": "Founder",
+        "business": "The Village, Alentejo",
+        "industry": "Accommodation"
+      },
+      {
+        "logo": "/assets/images/testimonials/surf-clinic-lagos.png",
+        "logoAlt": "Surf Clinic Lagos",
+        "websiteUrl": "https://www.surfcliniclagos.com/",
+        "quote": "Direct bookings have been a game changer for us. Hightide makes bookings much easier to manage and brings everything together at a reasonable price, without hidden fees. Before Hightide, I managed everything through Google Calendar, which made the booking flow, blocking unavailable dates and offering direct bookings difficult. I am very happy with it.",
+        "name": "Alessandro Rista",
+        "role": "Owner",
+        "business": "Surf Clinic Lagos",
+        "industry": "Surf School"
+      },
+      {
         "logo": "/assets/images/testimonials/atlantic-surf-lodge.svg",
         "logoAlt": "Atlantic Surf Lodge",
-        "quote": "We used to rely on OTAs for most surf-week packages. Once beds, lessons and weekly bundles lived on our own store, guests started booking direct — and we stopped retyping the same reservation details into three places.",
+        "quote": "Once beds, lessons and weekly bundles lived on our own store, guests started booking direct — and we stopped retyping the same reservation details into three places. We used to rely on OTAs for most surf-week packages, which meant less margin and more manual coordination across beds and lessons.",
         "name": "Marta Silva",
         "role": "Co-founder",
-        "business": "Atlantic Surf Lodge"
+        "business": "Atlantic Surf Lodge",
+        "industry": "Surf Camp"
       },
       {
         "logo": "/assets/images/testimonials/sage-sea-retreats.svg",
         "logoAlt": "Sage & Sea Retreats",
-        "quote": "Retreat season used to mean chasing deposits in email and updating a shared spreadsheet every morning. Now balances, dietary notes and room moves sit on the booking — and the team opens one day planner instead of five tabs.",
+        "quote": "Now balances, dietary notes and room moves sit on the booking — and the team opens one day planner instead of five tabs. Retreat season used to mean chasing deposits in email and updating a shared spreadsheet every morning.",
         "name": "Elena Vasquez",
         "role": "Retreat director",
-        "business": "Sage & Sea Retreats"
+        "business": "Sage & Sea Retreats",
+        "industry": "Retreat"
       },
       {
         "logo": "/assets/images/testimonials/cascada-adventure-lodge.svg",
         "logoAlt": "Cascada Adventure Lodge",
-        "quote": "Lodge beds, guided hikes and partner agent bookings all shared the same calendar chaos. Hightide let us sell the full stay online, then run arrivals, payments and partner settlements from the same booking record.",
+        "quote": "Hightide let us sell the full stay online, then run arrivals, payments and partner settlements from the same booking record. Lodge beds, guided hikes and partner agent bookings all shared the same calendar chaos before we moved everything into one workspace.",
         "name": "James Okonkwo",
         "role": "Operations manager",
-        "business": "Cascada Adventure Lodge"
+        "business": "Cascada Adventure Lodge",
+        "industry": "Adventure Lodge"
       }
     ]
   },
   "industries": {
     "title": "Built for accommodation, activities and packages",
-    "lead": "Hightide fits many types of operation. Pick the segment closest to yours — each page explains how sell and manage work for a business like yours, without narrowing what the platform can do.",
-    "cardCta": "See how it fits"
+    "lead": "Hightide fits many types of operation. Pick the segment closest to yours. Each page explains how sell and manage work for a business like yours, without narrowing what the platform can do.",
+    "homeCards": [
+      { "slug": "surf-camps" },
+      { "slug": "yoga-retreats" },
+      { "slug": "accommodation" },
+      { "slug": "activity-providers" },
+      { "slug": "adventure-lodges" },
+      {
+        "slug": "and-more",
+        "name": "And more",
+        "cardTeaser": "For businesses selling accommodation, activities or packages with connected availability.",
+        "href": "/explore/book-a-call/",
+        "image": "/assets/images/use-more.jpg",
+        "imageAlt": "Mixed accommodation and outdoor activities",
+        "ariaLabel": "Book a discovery call for your business"
+      }
+    ]
   }
 }

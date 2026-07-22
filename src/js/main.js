@@ -83,7 +83,7 @@
   const heroRotate = document.querySelector('[data-hero-rotate]');
   if (heroRotate) {
     const words = heroRotate.querySelectorAll('.explore-hero-rotate-word');
-    const displayMs = 2000;
+    const displayMs = 1400;
     const fadeMs = 180;
     let index = 0;
 
@@ -113,11 +113,15 @@
   const calloutTrack = calloutStage && calloutStage.querySelector('[data-callout-track]');
   const calloutCarousel = calloutStage && calloutStage.querySelector('[data-callout-carousel]');
   const calloutTools = calloutStage && calloutStage.querySelector('[data-callout-tools]');
+  const calloutProgress = calloutStage && calloutStage.querySelector('[data-callout-progress]');
+  const calloutProgressWrap = calloutStage && calloutStage.querySelector('[data-callout-progress-wrap]');
 
   if (calloutStage && calloutTrack && calloutCarousel) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const sellSection = calloutStage.closest('.explore-story-sell');
     let carouselScrollDistance = 0;
+    let carouselEdgeInset = 0;
+    let carouselHoldDistance = 0;
     let toolRevealDistance = 0;
     let toolRevealStart = 0;
     let totalScrollDistance = 0;
@@ -146,7 +150,7 @@
     }
 
     function useStaticCarousel() {
-      return reducedMotion;
+      return reducedMotion || window.matchMedia('(max-width: 1020px)').matches;
     }
 
     function resetTransforms() {
@@ -154,6 +158,13 @@
       if (calloutTools) {
         calloutTools.style.transform = '';
         calloutTools.style.opacity = '';
+        calloutTools.style.pointerEvents = '';
+      }
+      if (calloutProgress) {
+        calloutProgress.style.width = '0%';
+      }
+      if (calloutProgressWrap) {
+        calloutProgressWrap.setAttribute('aria-valuenow', '0');
       }
     }
 
@@ -165,6 +176,23 @@
       }
     }
 
+    function updateStoryCardWidth() {
+      const viewportWidth = calloutCarousel.clientWidth;
+      const gap = parseFloat(getComputedStyle(calloutTrack).gap) || 16;
+      const cardWidth = Math.max(200, (viewportWidth - (gap * 3)) / 4.15);
+      calloutCarousel.style.setProperty('--sell-story-card-width', `${cardWidth}px`);
+    }
+
+    function updateProgress(carouselProgress) {
+      const progressPercent = Math.round(carouselProgress * 100);
+      if (calloutProgress) {
+        calloutProgress.style.width = `${progressPercent}%`;
+      }
+      if (calloutProgressWrap) {
+        calloutProgressWrap.setAttribute('aria-valuenow', String(progressPercent));
+      }
+    }
+
     function measure() {
       if (useStaticCarousel()) {
         setStaticMode(true);
@@ -173,19 +201,20 @@
 
       setStaticMode(false);
       scrollStart = getScrollStart();
+      updateStoryCardWidth();
       const trackWidth = calloutTrack.scrollWidth;
       const viewportWidth = calloutCarousel.clientWidth;
+      carouselEdgeInset = Math.round(viewportWidth * 0.028);
       carouselScrollDistance = Math.max(0, trackWidth - viewportWidth);
       toolRevealDistance = calloutTools
-        ? Math.max(140, calloutTools.offsetHeight + 56)
+        ? Math.max(120, calloutTools.offsetHeight + 48)
         : 0;
-      toolRevealStart = carouselScrollDistance > 0
-        ? carouselScrollDistance * 0.3
-        : 0;
-      totalScrollDistance = Math.max(
-        carouselScrollDistance,
-        toolRevealStart + toolRevealDistance
-      );
+
+      const pin = calloutStage.querySelector('.explore-sell-scroll-pin');
+      const pinHeight = pin ? pin.offsetHeight : window.innerHeight;
+      carouselHoldDistance = Math.max(120, pinHeight * 0.1);
+      toolRevealStart = carouselHoldDistance + (carouselScrollDistance * 0.5);
+      totalScrollDistance = carouselHoldDistance + carouselScrollDistance + toolRevealDistance;
 
       if (totalScrollDistance <= 0) {
         calloutStage.style.height = '';
@@ -193,8 +222,6 @@
         return;
       }
 
-      const pin = calloutStage.querySelector('.explore-sell-scroll-pin');
-      const pinHeight = pin ? pin.offsetHeight : window.innerHeight;
       calloutStage.style.height = `${pinHeight + totalScrollDistance}px`;
       update();
     }
@@ -205,25 +232,29 @@
       }
 
       const scrolled = Math.max(0, window.scrollY - scrollStart);
+      const carouselScrolled = Math.max(0, scrolled - carouselHoldDistance);
       const carouselProgress = carouselScrollDistance > 0
-        ? Math.min(1, scrolled / carouselScrollDistance)
+        ? Math.min(1, carouselScrolled / carouselScrollDistance)
         : 1;
-      calloutTrack.style.transform = `translate3d(${-carouselProgress * carouselScrollDistance}px, 0, 0)`;
+      const carouselTravel = carouselScrollDistance + (carouselEdgeInset * 2);
+      const carouselOffset = carouselEdgeInset - (carouselProgress * carouselTravel);
+      calloutTrack.style.transform = `translate3d(${carouselOffset}px, 0, 0)`;
+      updateProgress(carouselProgress);
 
       if (!calloutTools || toolRevealDistance <= 0) {
         return;
       }
 
       if (scrolled < toolRevealStart) {
-        calloutTools.style.transform = 'translateY(115%)';
         calloutTools.style.opacity = '0';
+        calloutTools.style.pointerEvents = 'none';
         return;
       }
 
       const toolProgress = Math.min(1, (scrolled - toolRevealStart) / toolRevealDistance);
       const eased = easeOutQuad(toolProgress);
-      calloutTools.style.transform = `translateY(${(1 - eased) * 115}%)`;
-      calloutTools.style.opacity = String(Math.min(1, eased * 1.2));
+      calloutTools.style.opacity = String(Math.min(1, eased * 1.15));
+      calloutTools.style.pointerEvents = eased > 0.2 ? '' : 'none';
     }
 
     function onScroll() {
@@ -356,11 +387,75 @@
     }
   }
 
+  const montageLightbox = document.querySelector('[data-montage-lightbox]');
+  const montageOpeners = document.querySelectorAll('[data-montage-open]');
+
+  if (montageLightbox && montageOpeners.length) {
+    const montageLightboxImage = montageLightbox.querySelector('[data-montage-lightbox-image]');
+    const montageLightboxClose = montageLightbox.querySelector('[data-montage-lightbox-close]');
+    let montageLightboxTrigger = null;
+
+    function openMontageLightbox(opener) {
+      const shot = opener.querySelector('img');
+      if (!shot || !montageLightboxImage) {
+        return;
+      }
+
+      montageLightboxTrigger = opener;
+      montageLightboxImage.src = shot.currentSrc || shot.src;
+      montageLightboxImage.alt = shot.alt;
+      montageLightbox.showModal();
+    }
+
+    function closeMontageLightbox() {
+      montageLightbox.close();
+    }
+
+    montageOpeners.forEach(function (opener) {
+      opener.addEventListener('click', function () {
+        openMontageLightbox(opener);
+      });
+    });
+
+    if (montageLightboxClose) {
+      montageLightboxClose.addEventListener('click', closeMontageLightbox);
+    }
+
+    montageLightbox.addEventListener('click', function (event) {
+      const bounds = montageLightbox.getBoundingClientRect();
+      const clickedBackdrop = event.clientX < bounds.left
+        || event.clientX > bounds.right
+        || event.clientY < bounds.top
+        || event.clientY > bounds.bottom;
+
+      if (clickedBackdrop) {
+        closeMontageLightbox();
+      }
+    });
+
+    montageLightbox.addEventListener('close', function () {
+      if (montageLightboxTrigger) {
+        montageLightboxTrigger.focus();
+        montageLightboxTrigger = null;
+      }
+
+      if (montageLightboxImage) {
+        montageLightboxImage.removeAttribute('src');
+        montageLightboxImage.alt = '';
+      }
+    });
+  }
+
   const integrationsStage = document.querySelector('[data-integrations-scroll]');
   const integrationSlots = integrationsStage
     && integrationsStage.querySelectorAll('[data-integration-slot]');
-  const integrationLines = integrationsStage
+  const integrationLineNodes = integrationsStage
     && integrationsStage.querySelectorAll('[data-integration-line]');
+  const integrationLines = integrationLineNodes
+    ? Array.from(integrationLineNodes).sort(function (lineA, lineB) {
+      return parseInt(lineA.dataset.integrationIndex, 10) - parseInt(lineB.dataset.integrationIndex, 10);
+    })
+    : [];
 
   if (integrationsStage && integrationSlots.length) {
     const integrationsReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -400,6 +495,7 @@
       });
       integrationLines.forEach(function (line) {
         line.style.opacity = '';
+        line.style.removeProperty('--line-art-reveal');
       });
     }
 
@@ -411,7 +507,158 @@
       }
     }
 
-    function getIntegrationLineEndpoints(hub, logo, orbitX, orbitY, cardEl) {
+    function rayAxisAlignedBoxEntry(originX, originY, dirX, dirY, rect) {
+      const planes = [
+        { axis: 'x', edge: rect.left, dir: dirX },
+        { axis: 'x', edge: rect.right, dir: dirX },
+        { axis: 'y', edge: rect.top, dir: dirY },
+        { axis: 'y', edge: rect.bottom, dir: dirY },
+      ];
+      let nearest = null;
+
+      planes.forEach(function (plane) {
+        if (Math.abs(plane.dir) < 1e-6) {
+          return;
+        }
+
+        const origin = plane.axis === 'x' ? originX : originY;
+        const distance = (plane.edge - origin) / plane.dir;
+        if (distance <= 0) {
+          return;
+        }
+
+        const hitX = originX + (dirX * distance);
+        const hitY = originY + (dirY * distance);
+        const onBox = hitX >= rect.left - 0.5
+          && hitX <= rect.right + 0.5
+          && hitY >= rect.top - 0.5
+          && hitY <= rect.bottom + 0.5;
+
+        if (onBox && (nearest === null || distance < nearest)) {
+          nearest = distance;
+        }
+      });
+
+      return nearest;
+    }
+
+    function integrationPointToViewBox(hubRect, px, py) {
+      return {
+        x: ((px - hubRect.left) / hubRect.width) * 100,
+        y: ((py - hubRect.top) / hubRect.height) * 100,
+      };
+    }
+
+    function formatIntegrationPoint(hubRect, point) {
+      const viewPoint = integrationPointToViewBox(hubRect, point.x, point.y);
+      return `${viewPoint.x.toFixed(2)} ${viewPoint.y.toFixed(2)}`;
+    }
+
+    function sampleDoodlePoints(startPx, endPx, lineStyle, index) {
+      const dx = endPx.x - startPx.x;
+      const dy = endPx.y - startPx.y;
+      const len = Math.hypot(dx, dy);
+
+      if (len < 16) {
+        return null;
+      }
+
+      const ux = dx / len;
+      const uy = dy / len;
+      const nx = -uy;
+      const ny = ux;
+      const sign = index % 2 === 0 ? 1 : -1;
+      const waveAmp = len * 0.08 * sign;
+      const loopRadius = Math.min(len * 0.15, 26);
+      const loopCenter = 0.46 + ((index % 3) * 0.04);
+      const points = [];
+
+      function waveOffset(t) {
+        return Math.sin(t * Math.PI * 1.45 + (index * 0.35)) * waveAmp;
+      }
+
+      function addPoint(t, extraNormal, extraTangent) {
+        const normalOffset = waveOffset(t) + (extraNormal || 0);
+        const tangentOffset = extraTangent || 0;
+        points.push({
+          x: startPx.x + (dx * t) + (nx * normalOffset) + (ux * tangentOffset),
+          y: startPx.y + (dy * t) + (ny * normalOffset) + (uy * tangentOffset),
+        });
+      }
+
+      if (lineStyle === 'loop') {
+        const approachEnd = loopCenter - 0.11;
+        const departStart = loopCenter + 0.11;
+        const loopAnchor = {
+          x: startPx.x + (dx * loopCenter),
+          y: startPx.y + (dy * loopCenter),
+        };
+
+        for (let i = 0; i <= 18; i += 1) {
+          addPoint((approachEnd * i) / 18, 0, 0);
+        }
+
+        for (let i = 0; i <= 40; i += 1) {
+          const angle = ((i / 40) * Math.PI * 2) - (Math.PI / 2);
+          points.push({
+            x: loopAnchor.x + (nx * Math.sin(angle) * loopRadius * sign) + (ux * Math.cos(angle) * loopRadius * 0.18),
+            y: loopAnchor.y + (ny * Math.sin(angle) * loopRadius * sign) + (uy * Math.cos(angle) * loopRadius * 0.18),
+          });
+        }
+
+        for (let i = 0; i <= 18; i += 1) {
+          const t = departStart + (((1 - departStart) * i) / 18);
+          addPoint(t, 0, 0);
+        }
+
+        return points;
+      }
+
+      const steps = lineStyle === 'wave' ? 44 : 36;
+      for (let i = 0; i <= steps; i += 1) {
+        const t = i / steps;
+        let normalOffset = waveOffset(t);
+
+        if (lineStyle === 'wave') {
+          normalOffset = Math.sin(t * Math.PI * 2.1) * waveAmp * 1.05;
+        } else {
+          normalOffset += Math.sin(t * Math.PI * 2.8) * waveAmp * 0.4;
+        }
+
+        points.push({
+          x: startPx.x + (dx * t) + (nx * normalOffset),
+          y: startPx.y + (dy * t) + (ny * normalOffset),
+        });
+      }
+
+      return points;
+    }
+
+    function pointsToSketchPath(hubRect, points) {
+      if (!points || points.length < 2) {
+        return null;
+      }
+
+      let path = `M ${formatIntegrationPoint(hubRect, points[0])}`;
+
+      for (let i = 1; i < points.length - 1; i += 1) {
+        const midPoint = {
+          x: (points[i].x + points[i + 1].x) / 2,
+          y: (points[i].y + points[i + 1].y) / 2,
+        };
+        path += ` Q ${formatIntegrationPoint(hubRect, points[i])} ${formatIntegrationPoint(hubRect, midPoint)}`;
+      }
+
+      path += ` T ${formatIntegrationPoint(hubRect, points[points.length - 1])}`;
+      return path;
+    }
+
+    function buildIntegrationConnectorPath(hubRect, startPx, endPx, lineStyle, index) {
+      const points = sampleDoodlePoints(startPx, endPx, lineStyle, index);
+      return pointsToSketchPath(hubRect, points);
+    }
+
+    function getIntegrationConnectorSpan(hub, logo, orbitX, orbitY, cardEl) {
       const hubRect = hub.getBoundingClientRect();
       if (!hubRect.width || !hubRect.height) {
         return null;
@@ -433,44 +680,135 @@
       const uy = dy / fullDist;
       const logoRect = logo.getBoundingClientRect();
       const logoRadius = Math.max(logoRect.width, logoRect.height) / 2;
-      const innerPx = logoRadius + 28;
+      const innerPx = logoRadius + 14;
+      const edgeGap = 10;
 
-      let cardRadius = 0;
+      let cardEntryPx = fullDist;
       if (cardEl) {
         const cardRect = cardEl.getBoundingClientRect();
-        cardRadius = Math.max(cardRect.width, cardRect.height) / 2;
-      }
-      const outerPx = cardRadius + 32;
+        const rayEntry = rayAxisAlignedBoxEntry(centerX, centerY, ux, uy, cardRect);
 
-      if (fullDist <= innerPx + outerPx) {
+        if (rayEntry !== null) {
+          cardEntryPx = rayEntry - edgeGap;
+        } else {
+          const hw = cardRect.width / 2;
+          const hh = cardRect.height / 2;
+          cardEntryPx = fullDist - ((hw * Math.abs(ux)) + (hh * Math.abs(uy))) - edgeGap;
+        }
+      }
+
+      const availablePx = cardEntryPx - innerPx;
+      if (availablePx < 16) {
         return null;
       }
 
-      const availablePx = fullDist - innerPx - outerPx;
-      const linePx = Math.min(availablePx * 0.42, 72);
-      const lineMidPx = innerPx + (availablePx / 2);
-
-      const startX = centerX + (ux * (lineMidPx - (linePx / 2)));
-      const startY = centerY + (uy * (lineMidPx - (linePx / 2)));
-      const endX = centerX + (ux * (lineMidPx + (linePx / 2)));
-      const endY = centerY + (uy * (lineMidPx + (linePx / 2)));
-
-      const toViewBox = function (px, py) {
-        return {
-          x: ((px - hubRect.left) / hubRect.width) * 100,
-          y: ((py - hubRect.top) / hubRect.height) * 100,
-        };
-      };
-
-      const start = toViewBox(startX, startY);
-      const end = toViewBox(endX, endY);
-
       return {
-        x1: start.x,
-        y1: start.y,
-        x2: end.x,
-        y2: end.y,
+        hubRect: hubRect,
+        startPx: {
+          x: centerX + (ux * innerPx),
+          y: centerY + (uy * innerPx),
+        },
+        endPx: {
+          x: centerX + (ux * (cardEntryPx - 4)),
+          y: centerY + (uy * (cardEntryPx - 4)),
+        },
       };
+    }
+
+    function getIntegrationLineArtNativeLength(imageEl) {
+      const from = imageEl.dataset.lineArtFrom || 'tl';
+      const to = imageEl.dataset.lineArtTo || 'br';
+      const artWidth = parseFloat(imageEl.dataset.lineArtWidth) || 1;
+      const artHeight = parseFloat(imageEl.dataset.lineArtHeight) || 1;
+      const points = {
+        tl: { x: -artWidth / 2, y: -artHeight / 2 },
+        tr: { x: artWidth / 2, y: -artHeight / 2 },
+        bl: { x: -artWidth / 2, y: artHeight / 2 },
+        br: { x: artWidth / 2, y: artHeight / 2 },
+      };
+      const start = points[from];
+      const end = points[to];
+
+      if (!start || !end) {
+        return artWidth;
+      }
+
+      return Math.hypot(end.x - start.x, end.y - start.y);
+    }
+
+    function getIntegrationLineArtNativeAngle(imageEl) {
+      const from = imageEl.dataset.lineArtFrom || 'tl';
+      const to = imageEl.dataset.lineArtTo || 'br';
+      const width = parseFloat(imageEl.dataset.lineArtWidth) || 1;
+      const height = parseFloat(imageEl.dataset.lineArtHeight) || 1;
+      const points = {
+        tl: { x: -width / 2, y: -height / 2 },
+        tr: { x: width / 2, y: -height / 2 },
+        bl: { x: -width / 2, y: height / 2 },
+        br: { x: width / 2, y: height / 2 },
+      };
+      const start = points[from];
+      const end = points[to];
+
+      if (!start || !end) {
+        return Math.atan2(1, 1);
+      }
+
+      return Math.atan2(end.y - start.y, end.x - start.x);
+    }
+
+    function getIntegrationLineArtTransformOrigin(from) {
+      const origins = {
+        tl: '0% 0%',
+        tr: '100% 0%',
+        bl: '0% 100%',
+        br: '100% 100%',
+      };
+
+      return origins[from] || '50% 50%';
+    }
+
+    function getIntegrationArrowRevealScale(cardProgress) {
+      const revealStart = 0.9;
+
+      if (cardProgress <= revealStart) {
+        return 0;
+      }
+
+      const arrowProgress = Math.min(1, (cardProgress - revealStart) / (1 - revealStart));
+      return easeOutQuadIntegrations(arrowProgress);
+    }
+
+    function applyIntegrationLineReveal(line, cardProgress) {
+      const revealScale = getIntegrationArrowRevealScale(cardProgress);
+      line.style.setProperty('--line-art-reveal', String(revealScale));
+      line.style.opacity = revealScale > 0 ? '1' : '0';
+    }
+
+    function positionIntegrationLineArt(hubRect, startPx, endPx, imageEl) {
+      const dx = endPx.x - startPx.x;
+      const dy = endPx.y - startPx.y;
+      const angle = Math.atan2(dy, dx);
+      const nativeAngle = getIntegrationLineArtNativeAngle(imageEl);
+      const rotateDeg = ((angle - nativeAngle) * 180) / Math.PI;
+      const artWidth = parseFloat(imageEl.dataset.lineArtWidth) || 1;
+      const artHeight = parseFloat(imageEl.dataset.lineArtHeight) || 1;
+      const nativeLength = getIntegrationLineArtNativeLength(imageEl);
+      const arrowLengthPx = parseFloat(imageEl.dataset.lineArtSize) || 129;
+      const width = arrowLengthPx * (artWidth / nativeLength);
+      const height = width * (artHeight / artWidth);
+      const cx = (startPx.x + endPx.x) / 2;
+      const cy = (startPx.y + endPx.y) / 2;
+
+      const from = imageEl.dataset.lineArtFrom || 'tl';
+
+      imageEl.style.left = `${cx - hubRect.left}px`;
+      imageEl.style.top = `${cy - hubRect.top}px`;
+      imageEl.style.width = `${width}px`;
+      imageEl.style.height = `${height}px`;
+      imageEl.style.transformOrigin = getIntegrationLineArtTransformOrigin(from);
+      imageEl.style.transform = 'translate(-50%, -50%) rotate('
+        + `${rotateDeg}deg) scale(var(--line-art-reveal, 0))`;
     }
 
     function measureIntegrationLines() {
@@ -480,26 +818,56 @@
         return;
       }
 
+      integrationSlots.forEach(function (slot) {
+        const orbitX = parseFloat(slot.dataset.orbitX);
+        const orbitY = parseFloat(slot.dataset.orbitY);
+        slot.style.left = `${orbitX}%`;
+        slot.style.top = `${orbitY}%`;
+        slot.style.transform = 'translate(-50%, -50%)';
+      });
+
       integrationLines.forEach(function (line, index) {
         const orbitX = parseFloat(line.dataset.orbitX);
         const orbitY = parseFloat(line.dataset.orbitY);
+        const lineStyle = line.dataset.lineStyle || 'curve';
         const slot = integrationSlots[index];
         const card = slot && slot.querySelector('[data-integration-card]');
-        const endpoints = getIntegrationLineEndpoints(hub, logo, orbitX, orbitY, card);
+        const span = getIntegrationConnectorSpan(hub, logo, orbitX, orbitY, card);
+
+        if (!span) {
+          if (line.dataset.lineArt) {
+            line.style.width = '0';
+            line.style.height = '0';
+          } else {
+            line.setAttribute('d', 'M 50 50 L 50 50');
+          }
+          line.style.opacity = '0';
+          line.style.removeProperty('--line-art-reveal');
+          return;
+        }
+
+        if (line.dataset.lineArt) {
+          positionIntegrationLineArt(span.hubRect, span.startPx, span.endPx, line);
+          line.style.opacity = '0';
+          line.style.setProperty('--line-art-reveal', '0');
+          return;
+        }
+
+        const endpoints = buildIntegrationConnectorPath(
+          span.hubRect,
+          span.startPx,
+          span.endPx,
+          lineStyle,
+          index
+        );
 
         if (!endpoints) {
-          line.setAttribute('x1', '50');
-          line.setAttribute('y1', '50');
-          line.setAttribute('x2', '50');
-          line.setAttribute('y2', '50');
+          line.setAttribute('d', 'M 50 50 L 50 50');
           line.style.opacity = '0';
           return;
         }
 
-        line.setAttribute('x1', String(endpoints.x1));
-        line.setAttribute('y1', String(endpoints.y1));
-        line.setAttribute('x2', String(endpoints.x2));
-        line.setAttribute('y2', String(endpoints.y2));
+        line.setAttribute('d', endpoints);
         line.style.opacity = '0';
       });
     }
@@ -554,7 +922,7 @@
 
         const line = integrationLines[index];
         if (line) {
-          line.style.opacity = String(eased);
+          applyIntegrationLineReveal(line, eased);
         }
       });
     }
@@ -577,4 +945,370 @@
       window.addEventListener('resize', measureIntegrations, { passive: true });
     }
   }
+
+  const industrySection = document.querySelector('[data-industry-cards]');
+  const industryCards = industrySection
+    && industrySection.querySelectorAll('[data-industry-card]');
+  const industryBlock = industrySection
+    && industrySection.closest('.explore-industries-section');
+  const industryTitle = industryBlock
+    && industryBlock.querySelector('.section-title');
+
+  if (industrySection && industryCards && industryCards.length) {
+    const industryReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function groupIndustryCardsByRow(cards) {
+      const rowTolerance = 28;
+      const rows = [];
+
+      cards.forEach(function (card) {
+        const top = card.getBoundingClientRect().top;
+        let row = rows.find(function (existingRow) {
+          return Math.abs(existingRow.top - top) <= rowTolerance;
+        });
+
+        if (!row) {
+          row = { top: top, cards: [] };
+          rows.push(row);
+        }
+
+        row.cards.push(card);
+        row.top = Math.min(row.top, top);
+      });
+
+      return rows.sort(function (rowA, rowB) {
+        return rowA.top - rowB.top;
+      });
+    }
+
+    function revealIndustryRow(row) {
+      row.cards.forEach(function (card) {
+        card.style.setProperty('--industry-reveal-delay', '0ms');
+        card.classList.add('is-visible');
+      });
+    }
+
+    let industryRowObservers = [];
+    let industryResizeTimer = null;
+
+    function disconnectIndustryRowObservers() {
+      industryRowObservers.forEach(function (observer) {
+        observer.disconnect();
+      });
+      industryRowObservers = [];
+    }
+
+    function setupIndustryRowObservers() {
+      disconnectIndustryRowObservers();
+
+      const rows = groupIndustryCardsByRow(Array.from(industryCards));
+
+      rows.forEach(function (row, rowIndex) {
+        const alreadyVisible = row.cards.every(function (card) {
+          return card.classList.contains('is-visible');
+        });
+
+        if (alreadyVisible) {
+          return;
+        }
+
+        let trigger;
+        let observerOptions;
+
+        if (rowIndex === 0 && industryTitle) {
+          trigger = industryTitle;
+          observerOptions = {
+            threshold: 0,
+            rootMargin: '0px 0px 0px 0px',
+          };
+        } else {
+          trigger = row.cards.reduce(function (best, card) {
+            const top = card.getBoundingClientRect().top;
+            if (!best || top < best.top) {
+              return { element: card, top: top };
+            }
+
+            return best;
+          }, null).element;
+          observerOptions = {
+            threshold: 0,
+            rootMargin: '0px 0px 12% 0px',
+          };
+        }
+
+        const rowObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            revealIndustryRow(row);
+            rowObserver.unobserve(entry.target);
+          });
+        }, observerOptions);
+
+        rowObserver.observe(trigger);
+        industryRowObservers.push(rowObserver);
+      });
+    }
+
+    if (industryReducedMotion) {
+      Array.from(industryCards).forEach(function (card) {
+        card.classList.add('is-visible');
+      });
+    } else {
+      setupIndustryRowObservers();
+      window.addEventListener('resize', function () {
+        window.clearTimeout(industryResizeTimer);
+        industryResizeTimer = window.setTimeout(setupIndustryRowObservers, 150);
+      }, { passive: true });
+    }
+  }
+
+  const proofCarousel = document.querySelector('[data-proof-carousel]');
+  if (proofCarousel) {
+    const proofViewport = proofCarousel.querySelector('[data-proof-viewport]');
+    const proofTrack = proofCarousel.querySelector('[data-proof-track]');
+    const proofPrev = proofCarousel.querySelector('[data-proof-prev]');
+    const proofNext = proofCarousel.querySelector('[data-proof-next]');
+    const proofStatus = proofCarousel.querySelector('[data-proof-status]');
+    const proofCards = proofTrack ? Array.from(proofTrack.querySelectorAll('[data-proof-card]')) : [];
+    const proofModal = document.querySelector('[data-proof-modal]');
+    const proofModalClose = proofModal && proofModal.querySelector('[data-proof-modal-close]');
+    const proofModalLogo = proofModal && proofModal.querySelector('[data-proof-modal-logo]');
+    const proofModalBusiness = proofModal && proofModal.querySelector('[data-proof-modal-business]');
+    const proofModalQuote = proofModal && proofModal.querySelector('[data-proof-modal-quote]');
+    const proofModalName = proofModal && proofModal.querySelector('[data-proof-modal-name]');
+    const proofModalRole = proofModal && proofModal.querySelector('[data-proof-modal-role]');
+    const proofModalWebsite = proofModal && proofModal.querySelector('[data-proof-modal-website]');
+    let proofReadTrigger = null;
+    let proofResizeTimer = null;
+
+    function getProofCardStep() {
+      if (!proofTrack || !proofCards.length) {
+        return 0;
+      }
+
+      const gap = parseFloat(window.getComputedStyle(proofTrack).gap) || 0;
+      return proofCards[0].offsetWidth + gap;
+    }
+
+    function getProofVisibleRange() {
+      if (!proofViewport || !proofCards.length) {
+        return { first: 1, last: 1, total: proofCards.length };
+      }
+
+      const viewportRect = proofViewport.getBoundingClientRect();
+      let first = null;
+      let last = null;
+
+      proofCards.forEach(function (card, index) {
+        const rect = card.getBoundingClientRect();
+        const intersection = Math.min(rect.right, viewportRect.right)
+          - Math.max(rect.left, viewportRect.left);
+        if (intersection > rect.width * 0.45) {
+          if (first === null) {
+            first = index;
+          }
+          last = index;
+        }
+      });
+
+      if (first === null) {
+        first = 0;
+        last = 0;
+      }
+
+      return {
+        first: first + 1,
+        last: last + 1,
+        total: proofCards.length,
+      };
+    }
+
+    function updateProofCarouselState() {
+      if (!proofViewport || !proofStatus) {
+        return;
+      }
+
+      const range = getProofVisibleRange();
+      const maxScroll = proofViewport.scrollWidth - proofViewport.clientWidth;
+      const atStart = proofViewport.scrollLeft <= 1;
+      const atEnd = proofViewport.scrollLeft >= maxScroll - 1;
+
+      if (range.first === range.last) {
+        proofStatus.textContent = `${range.first} of ${range.total}`;
+      } else {
+        proofStatus.textContent = `${range.first}\u2013${range.last} of ${range.total}`;
+      }
+
+      if (proofPrev) {
+        proofPrev.disabled = atStart;
+      }
+
+      if (proofNext) {
+        proofNext.disabled = atEnd;
+      }
+    }
+
+    function scrollProofCarousel(direction) {
+      if (!proofViewport) {
+        return;
+      }
+
+      const step = getProofCardStep();
+      if (!step) {
+        return;
+      }
+
+      proofViewport.scrollBy({
+        left: direction * step,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      });
+    }
+
+    function updateProofReadMoreButtons() {
+      proofCards.forEach(function (card) {
+        const excerpt = card.querySelector('[data-proof-excerpt]');
+        const button = card.querySelector('[data-proof-read]');
+        if (!excerpt || !button) {
+          return;
+        }
+
+        const truncated = excerpt.scrollHeight > excerpt.clientHeight + 1;
+        button.hidden = !truncated;
+      });
+    }
+
+    function openProofModal(card) {
+      if (!proofModal || !card) {
+        return;
+      }
+
+      proofReadTrigger = card.querySelector('[data-proof-read]') || card;
+
+      if (proofModalBusiness) {
+        proofModalBusiness.textContent = card.dataset.proofBusiness || '';
+      }
+
+      if (proofModalQuote) {
+        const fullText = card.querySelector('[data-proof-full]');
+        proofModalQuote.textContent = fullText ? fullText.textContent : '';
+      }
+
+      if (proofModalName) {
+        proofModalName.textContent = card.dataset.proofName || '';
+      }
+
+      if (proofModalRole) {
+        proofModalRole.textContent = card.dataset.proofRole || '';
+      }
+
+      if (proofModalLogo) {
+        if (card.dataset.proofLogo) {
+          proofModalLogo.src = card.dataset.proofLogo;
+          proofModalLogo.alt = card.dataset.proofLogoAlt || '';
+          proofModalLogo.hidden = false;
+        } else {
+          proofModalLogo.removeAttribute('src');
+          proofModalLogo.alt = '';
+          proofModalLogo.hidden = true;
+        }
+      }
+
+      if (proofModalWebsite) {
+        if (card.dataset.proofWebsite) {
+          proofModalWebsite.href = card.dataset.proofWebsite;
+          proofModalWebsite.hidden = false;
+        } else {
+          proofModalWebsite.href = '#';
+          proofModalWebsite.hidden = true;
+        }
+      }
+
+      proofModal.showModal();
+    }
+
+    function closeProofModal() {
+      if (proofModal) {
+        proofModal.close();
+      }
+    }
+
+    if (proofPrev) {
+      proofPrev.addEventListener('click', function () {
+        scrollProofCarousel(-1);
+      });
+    }
+
+    if (proofNext) {
+      proofNext.addEventListener('click', function () {
+        scrollProofCarousel(1);
+      });
+    }
+
+    if (proofViewport) {
+      proofViewport.addEventListener('scroll', function () {
+        window.requestAnimationFrame(updateProofCarouselState);
+      }, { passive: true });
+
+      proofViewport.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          scrollProofCarousel(-1);
+        }
+
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          scrollProofCarousel(1);
+        }
+      });
+    }
+
+    proofCards.forEach(function (card) {
+      const readButton = card.querySelector('[data-proof-read]');
+      if (readButton) {
+        readButton.addEventListener('click', function () {
+          openProofModal(card);
+        });
+      }
+    });
+
+    if (proofModalClose) {
+      proofModalClose.addEventListener('click', closeProofModal);
+    }
+
+    if (proofModal) {
+      proofModal.addEventListener('click', function (event) {
+        const bounds = proofModal.getBoundingClientRect();
+        const clickedBackdrop = event.clientX < bounds.left
+          || event.clientX > bounds.right
+          || event.clientY < bounds.top
+          || event.clientY > bounds.bottom;
+
+        if (clickedBackdrop) {
+          closeProofModal();
+        }
+      });
+
+      proofModal.addEventListener('close', function () {
+        if (proofReadTrigger) {
+          proofReadTrigger.focus();
+          proofReadTrigger = null;
+        }
+      });
+    }
+
+    window.addEventListener('resize', function () {
+      window.clearTimeout(proofResizeTimer);
+      proofResizeTimer = window.setTimeout(function () {
+        updateProofReadMoreButtons();
+        updateProofCarouselState();
+      }, 150);
+    }, { passive: true });
+
+    updateProofReadMoreButtons();
+    updateProofCarouselState();
+  }
+
 })();

@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 title: Booking Software for Surf Camps, Retreats & Tour Operators | Hightide
 description: Hightide helps surf camps, retreats, and tour operators get more bookings without paying commissions. Manage accommodation and activities in one easy system.
-permalink: /
+permalink: /original/
 bodyClass: page-home
 preloadImage: /assets/images/tab-calendar-1.webp
 jsonLd: |
@@ -311,38 +311,4 @@ jsonLd: |
   </div>
 </section>
 
-<section class="section section-faq">
-  <div class="container">
-    <h2 class="section-title">FAQ</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>How is Hightide different from other booking systems?</summary>
-        <p>We're built for businesses that got frustrated with existing options. Most booking software is either too rigid (forcing you into one way of selling) or overly complex and expensive. Hightide gives you simple, flexible tools whether you're managing just accommodation, just activities, or both together.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What actually makes Hightide flexible?</summary>
-        <p>Hightide's unique multi-listing approach lets you sell the same resource in completely different ways. One room becomes: nightly accommodation + weekly surf packages + fixed-date retreats. Customers see 3 different options in your store, but they're booking the same physical unit. And by "room" we mean anything — tipis, boats, lessons, whatever you're selling.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Is Hightide easy to set up and start using?</summary>
-        <p>Yes. Hightide is designed for DIY setup, with no technical skills required. Smaller or simpler businesses can get started quickly, while larger or more complex setups may take a bit more time. We offer a free onboarding call and a 30-day free trial to explore everything at your own pace.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can I turn off instant bookings and approve requests instead?</summary>
-        <p>Yes! You can choose between instant booking (with full or partial payment) or request-only mode. With requests, you approve each booking and send a payment link when you're ready — giving you full control.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How do I share my Online Store with customers?</summary>
-        <p>Your online store has its own unique URL — hightide.app/bookings/your-business — which you can add to your website as a "Book Now" button, link from your social media, or even use as a standalone mini-site.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can I connect to a channel manager?</summary>
-        <p>Yes. Hightide supports channel manager integrations for Airbnb, Booking.com, and similar platforms, allowing you to manage availability and rates all in one place.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What is Linked Availability?</summary>
-        <p>Linked availability allows you to connect two services, so that when one gets booked the other is blocked. Perfect if you only have one guide or instructor, but offer multiple tour types.</p>
-      </details>
-    </div>
-  </div>
-</section>
+{% include "partials/faq.njk" %}

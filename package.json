@@ -5,7 +5,7 @@
   "description": "Static marketing site for hightide.io",
   "scripts": {
     "dev": "eleventy --serve",
-    "build": "eleventy",
+    "build": "rm -rf _site && eleventy",
     "download-assets": "node scripts/download-assets.js"
   },
   "devDependencies": {
