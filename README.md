@@ -61,9 +61,25 @@ Repo: **https://github.com/jeparalta/hightide-landing**
 
 This project uses **Workers static assets** via Wrangler (same setup as Cantinho).
 
-### Cloudflare dashboard settings
+### Auto-deploy on push (GitHub Actions)
 
-When connecting the GitHub repo, use:
+Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds Eleventy and runs `wrangler deploy`.
+
+**One-time setup:** add a repository secret in GitHub → **Settings → Secrets and variables → Actions**:
+
+| Secret | Value |
+|--------|-------|
+| `CLOUDFLARE_API_TOKEN` | API token with **Workers Scripts → Edit** for your account |
+
+Create the token in Cloudflare → **My Profile → API Tokens → Create Token** (use the “Edit Cloudflare Workers” template).
+
+Preview URL after deploy: **https://hightide-landing.jose-453.workers.dev/**
+
+### Cloudflare dashboard (optional)
+
+You can also connect the repo in **Workers & Pages → hightide-landing → Settings → Build**. If you use GitHub Actions above, you do not need dashboard builds — pick one method to avoid double deploys.
+
+If using dashboard builds only:
 
 | Setting | Value |
 |---------|-------|
