@@ -246,12 +246,45 @@ bodyClass: page-explore
           >
             <span class="explore-sell-story-progress-bar" data-callout-progress></span>
           </div>
-          <div class="explore-callout-carousel" data-callout-carousel>
+          <div
+            class="explore-callout-carousel"
+            data-callout-carousel
+            tabindex="0"
+            role="region"
+            aria-label="Online store features"
+          >
             <div class="explore-callout-track" data-callout-track>
               {% for card in exploreHome.sell.storyCards %}
               {{ sellStoryCard(card) }}
               {% endfor %}
             </div>
+          </div>
+          <div class="explore-callout-carousel-controls" data-callout-controls hidden>
+            <button
+              type="button"
+              class="explore-callout-carousel-btn"
+              data-callout-prev
+              aria-label="Previous feature"
+              disabled
+            >
+              <span aria-hidden="true">&larr;</span>
+            </button>
+            <div class="explore-callout-carousel-meta">
+              <p class="explore-callout-carousel-status" data-callout-status aria-live="polite"></p>
+              <div class="explore-callout-carousel-segments" data-callout-segments aria-hidden="true">
+                {% for card in exploreHome.sell.storyCards %}
+                <span class="explore-callout-carousel-segment" data-callout-segment></span>
+                {% endfor %}
+              </div>
+            </div>
+            <button
+              type="button"
+              class="explore-callout-carousel-btn"
+              data-callout-next
+              aria-label="Next feature"
+            >
+              <span aria-hidden="true">&rarr;</span>
+            </button>
           </div>
         </div>
 

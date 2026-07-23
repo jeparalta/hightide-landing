@@ -115,6 +115,15 @@
   const calloutTools = calloutStage && calloutStage.querySelector('[data-callout-tools]');
   const calloutProgress = calloutStage && calloutStage.querySelector('[data-callout-progress]');
   const calloutProgressWrap = calloutStage && calloutStage.querySelector('[data-callout-progress-wrap]');
+  const calloutControls = calloutStage && calloutStage.querySelector('[data-callout-controls]');
+  const calloutPrev = calloutStage && calloutStage.querySelector('[data-callout-prev]');
+  const calloutNext = calloutStage && calloutStage.querySelector('[data-callout-next]');
+  const calloutStatus = calloutStage && calloutStage.querySelector('[data-callout-status]');
+  const calloutSegments = calloutStage
+    && calloutStage.querySelectorAll('[data-callout-segment]');
+  const calloutCards = calloutTrack
+    ? Array.from(calloutTrack.querySelectorAll('.explore-sell-story-card'))
+    : [];
 
   if (calloutStage && calloutTrack && calloutCarousel) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -127,6 +136,7 @@
     let totalScrollDistance = 0;
     let scrollStart = 0;
     let ticking = false;
+    let calloutResizeTimer = null;
 
     function easeOutQuad(value) {
       return 1 - (1 - value) * (1 - value);
@@ -173,7 +183,105 @@
       if (isStatic) {
         calloutStage.style.height = '';
         resetTransforms();
+        if (calloutControls) {
+          calloutControls.hidden = !useStaticCarousel();
+        }
+        updateCalloutCarouselState();
+      } else if (calloutControls) {
+        calloutControls.hidden = true;
       }
+    }
+
+    function getCalloutCardStep() {
+      if (!calloutCards.length) {
+        return 0;
+      }
+
+      const gap = parseFloat(getComputedStyle(calloutTrack).gap) || 0;
+      return calloutCards[0].offsetWidth + gap;
+    }
+
+    function getCalloutActiveIndex() {
+      if (!calloutCarousel || !calloutCards.length) {
+        return 0;
+      }
+
+      const viewportRect = calloutCarousel.getBoundingClientRect();
+      let activeIndex = 0;
+      let bestIntersection = -1;
+
+      calloutCards.forEach(function (card, index) {
+        const rect = card.getBoundingClientRect();
+        const intersection = Math.min(rect.right, viewportRect.right)
+          - Math.max(rect.left, viewportRect.left);
+        if (intersection > bestIntersection) {
+          bestIntersection = intersection;
+          activeIndex = index;
+        }
+      });
+
+      return activeIndex;
+    }
+
+    function updateCalloutCarouselState() {
+      if (!useStaticCarousel() || !calloutCarousel) {
+        return;
+      }
+
+      const activeIndex = getCalloutActiveIndex();
+      const total = calloutCards.length;
+      const maxScroll = calloutCarousel.scrollWidth - calloutCarousel.clientWidth;
+      const atStart = calloutCarousel.scrollLeft <= 1;
+      const atEnd = calloutCarousel.scrollLeft >= maxScroll - 1;
+
+      if (calloutStatus && total) {
+        calloutStatus.textContent = `${activeIndex + 1} / ${total}`;
+      }
+
+      if (calloutSegments && calloutSegments.length) {
+        calloutSegments.forEach(function (segment, index) {
+          segment.classList.toggle('is-active', index === activeIndex);
+        });
+      }
+
+      if (calloutPrev) {
+        calloutPrev.disabled = atStart;
+      }
+
+      if (calloutNext) {
+        calloutNext.disabled = atEnd;
+      }
+    }
+
+    function scrollCalloutCarousel(direction) {
+      if (!calloutCarousel || !useStaticCarousel()) {
+        return;
+      }
+
+      const step = getCalloutCardStep();
+      if (!step) {
+        return;
+      }
+
+      calloutCarousel.scrollBy({
+        left: direction * step,
+        behavior: reducedMotion ? 'auto' : 'smooth',
+      });
+    }
+
+    function setupCalloutMobileCarousel() {
+      if (!useStaticCarousel()) {
+        if (calloutControls) {
+          calloutControls.hidden = true;
+        }
+        return;
+      }
+
+      if (calloutControls) {
+        calloutControls.hidden = false;
+      }
+
+      updateCalloutCarouselState();
     }
 
     function updateStoryCardWidth() {
@@ -196,6 +304,7 @@
     function measure() {
       if (useStaticCarousel()) {
         setStaticMode(true);
+        setupCalloutMobileCarousel();
         return;
       }
 
@@ -269,11 +378,57 @@
 
     if (useStaticCarousel()) {
       setStaticMode(true);
+      setupCalloutMobileCarousel();
     } else {
       measure();
       window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', measure, { passive: true });
     }
+
+    if (calloutPrev) {
+      calloutPrev.addEventListener('click', function () {
+        scrollCalloutCarousel(-1);
+      });
+    }
+
+    if (calloutNext) {
+      calloutNext.addEventListener('click', function () {
+        scrollCalloutCarousel(1);
+      });
+    }
+
+    if (calloutCarousel) {
+      calloutCarousel.addEventListener('scroll', function () {
+        window.requestAnimationFrame(updateCalloutCarouselState);
+      }, { passive: true });
+
+      calloutCarousel.addEventListener('keydown', function (event) {
+        if (!useStaticCarousel()) {
+          return;
+        }
+
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          scrollCalloutCarousel(-1);
+        }
+
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          scrollCalloutCarousel(1);
+        }
+      });
+    }
+
+    window.addEventListener('resize', function () {
+      window.clearTimeout(calloutResizeTimer);
+      calloutResizeTimer = window.setTimeout(function () {
+        if (useStaticCarousel()) {
+          setStaticMode(true);
+          setupCalloutMobileCarousel();
+        } else {
+          measure();
+        }
+      }, 150);
+    }, { passive: true });
   }
 
   const manageStage = document.querySelector('[data-manage-scroll]');
