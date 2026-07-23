@@ -68,10 +68,17 @@ When connecting the GitHub repo, use:
 | Setting | Value |
 |---------|-------|
 | Production branch | `main` |
-| Build command | `npm run build` |
+| Build command | *(leave empty)* |
 | Deploy command | `npm run deploy` |
 
-`wrangler.jsonc` points deploys at `./_site` and the custom domains `hightide.io` / `www.hightide.io`.
+`npm run deploy` builds Eleventy and uploads `./_site` via Wrangler.
+
+After the first successful deploy, attach custom domains in the Worker → **Settings → Domains & Routes**:
+
+- `hightide.io`
+- `www.hightide.io`
+
+Add domains in the dashboard rather than `wrangler.jsonc` until `hightide.io` DNS is fully on Cloudflare (still on Webflow/DO, domain binding during deploy will fail).
 
 Optional environment variable:
 

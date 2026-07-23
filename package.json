@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "rm -rf _site && eleventy",
-    "deploy": "wrangler deploy --config wrangler.jsonc",
+    "deploy": "npm run build && wrangler deploy --config wrangler.jsonc",
     "download-assets": "node scripts/download-assets.js"
   },
   "engines": {
