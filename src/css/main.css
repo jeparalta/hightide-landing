@@ -41,7 +41,6 @@ body {
   background: var(--bg);
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 main {
@@ -1048,6 +1047,7 @@ body.page-home .section.section-faq {
 
   .site-header {
     background: #fff;
+    backdrop-filter: none;
   }
 
   body.nav-open::before {

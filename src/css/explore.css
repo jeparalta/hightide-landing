@@ -822,7 +822,7 @@ body.page-explore .section-alt {
   height: clamp(180px, 24vh, 260px);
   margin: 0 auto;
   flex: 0 0 clamp(180px, 24vh, 260px);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .explore-sell-shot-wrap {
@@ -917,7 +917,7 @@ body.page-explore .section-alt {
   max-width: 680px;
   height: clamp(220px, 34vh, 300px);
   margin: 0 auto;
-  overflow: visible;
+  overflow: hidden;
   isolation: isolate;
 }
 
@@ -926,6 +926,7 @@ body.page-explore .section-alt {
   width: 100%;
   max-width: 680px;
   margin-inline: auto;
+  overflow: hidden;
 }
 
 .explore-sell-scroll-stage:not(.is-static) .explore-sell-scroll-pin .explore-sell-montage-wrap {
@@ -934,9 +935,10 @@ body.page-explore .section-alt {
 
 .explore-sell-demo-btn {
   position: absolute;
-  right: -50px;
-  bottom: 50px;
+  right: clamp(0.5rem, 2vw, 1rem);
+  bottom: clamp(0.5rem, 2vw, 1.25rem);
   z-index: 5;
+  max-width: calc(100% - 1rem);
   border-color: rgba(25, 135, 84, 0.45);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
   white-space: nowrap;
@@ -2669,11 +2671,6 @@ body.page-explore .section-alt {
   .explore-integrations-scroll-inner {
     max-width: 100%;
     overflow-x: clip;
-  }
-
-  .explore-sell-demo-btn {
-    right: 0.75rem;
-    bottom: 0.75rem;
   }
 
   .explore-hero-cta-row {
