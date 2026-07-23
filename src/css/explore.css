@@ -1,5 +1,11 @@
 /* Explore sandbox — parallel site direction */
 
+.explore-sandbox {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 @media (min-width: 769px) and (max-width: 1180px) {
   body.page-explore .header-cta {
     font-size: 0.875rem;
@@ -2119,6 +2125,8 @@ body.page-explore .section-alt {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding-bottom: 0.25rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .explore-proof-carousel-viewport::-webkit-scrollbar {
@@ -2635,16 +2643,48 @@ body.page-explore .section-alt {
 }
 
 @media (max-width: 768px) {
-  .explore-hero-deco-moon {
-    display: none;
+  .explore-hero-title {
+    display: block;
   }
 
-  .explore-hero-deco-sun {
-    width: clamp(88px, 22vw, 152px);
+  .explore-hero-title-line {
+    white-space: normal;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .explore-hero-title-sub {
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .explore-hero-rotate {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .explore-sell-montage,
+  .explore-sell-montage-wrap,
+  .explore-integrations-hub,
+  .explore-integrations-scroll-inner {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .explore-sell-demo-btn {
+    right: 0.75rem;
+    bottom: 0.75rem;
   }
 
   .explore-hero-cta-row {
+    flex-direction: column;
+    width: 100%;
     gap: clamp(0.5rem, 3vw, 1.25rem);
+  }
+
+  .explore-hero-deco-sun,
+  .explore-hero-deco-moon {
+    display: none;
   }
 
   .explore-hero-stage {

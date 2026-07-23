@@ -27,18 +27,9 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
-}
-
-body.page-home main {
-  background: #fff;
-}
-
-body.page-home .section {
-  background: #fff;
-}
-
-body.page-home .section.section-faq {
-  background: var(--bg-faq);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -48,6 +39,15 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
@@ -61,7 +61,19 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .skip-link:focus { left: 0; }
 
-.container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+body.page-home main {
+  background: #fff;
+}
+
+body.page-home .section {
+  background: #fff;
+}
+
+body.page-home .section.section-faq {
+  background: var(--bg-faq);
+}
+
+.container { width: min(100% - 2rem, var(--max)); max-width: 100%; margin-inline: auto; }
 
 /* Buttons */
 .btn {
@@ -85,6 +97,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .site-header {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
+  width: 100%;
+  max-width: 100%;
 }
 .header-inner {
   display: flex;
