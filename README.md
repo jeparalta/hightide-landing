@@ -55,14 +55,47 @@ Your content here in **markdown**.
 
 Run `npm run build` to regenerate.
 
-## Deploy to DigitalOcean
+## Deploy to Cloudflare
 
-1. Push this repo to GitHub
-2. Update `YOUR_GITHUB_USER` in `.do/app.yaml`
-3. Create a new **App Platform Static Site** in DigitalOcean, or use `doctl apps create --spec .do/app.yaml`
-4. Add custom domains: `hightide.io` and `www.hightide.io`
-5. Configure redirect: `hightide.io` → `www.hightide.io` (canonical)
-6. Update DNS to point at DigitalOcean
+Repo: **https://github.com/jeparalta/hightide-landing**
+
+This project uses **Workers static assets** via Wrangler (same setup as Cantinho).
+
+### Cloudflare dashboard settings
+
+When connecting the GitHub repo, use:
+
+| Setting | Value |
+|---------|-------|
+| Production branch | `main` |
+| Build command | `npm run build` |
+| Deploy command | `npm run deploy` |
+
+`wrangler.jsonc` points deploys at `./_site` and the custom domains `hightide.io` / `www.hightide.io`.
+
+Optional environment variable:
+
+| Variable | Value |
+|----------|-------|
+| `NODE_VERSION` | `22` |
+
+### Deploy from your machine
+
+```bash
+npm install
+npm run build
+npm run deploy
+```
+
+`wrangler deploy` uploads everything in `_site/` after Eleventy builds.
+
+### Custom domain and redirects
+
+In the Worker project → **Custom domains**, confirm `hightide.io` and `www.hightide.io` are attached.
+
+If you want the apex to redirect to `www` (canonical), add a **Redirect Rule** in Cloudflare:
+
+- `hightide.io/*` → `https://www.hightide.io/$1` (301)
 
 ## Go-live checklist
 

@@ -6,9 +6,14 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "rm -rf _site && eleventy",
+    "deploy": "wrangler deploy --config wrangler.jsonc",
     "download-assets": "node scripts/download-assets.js"
   },
+  "engines": {
+    "node": ">=22"
+  },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "wrangler": "^4.0.0"
   }
 }
