@@ -1,9 +1,11 @@
 {
   "sell": {
-    "title": "Your Online Store for direct bookings",
+    "title": "Your online store for direct bookings",
+    "titleLine1": "Your online store",
+    "titleLine2": "for direct bookings",
     "lead": "Customise your store to match your brand and sell accommodation, activities and packages.",
     "demoStore": {
-      "label": "Try the Demo Store",
+      "label": "Try the Demo Store →",
       "text": "Experience a real Hightide Online Store. Browse the available options, submit a test booking request and receive the same confirmation email a guest would receive."
     },
     "images": [
@@ -70,62 +72,49 @@
   "manage": {
     "title": "Manage every booking in one place",
     "lead": "From booking to check-out, keep your team, guests, payments and daily operations organised in one place.",
-    "montage": {
-      "calendar": {
-        "src": "/assets/images/tab-calendar-1.webp",
-        "alt": "Hightide calendar"
-      },
-      "workspace": {
-        "src": "/assets/images/tab-bookings-list.jpg",
-        "alt": "Hightide bookings list"
-      },
-      "planner": {
-        "src": "/assets/images/tab-bookings-2.webp",
-        "alt": "Hightide day planner"
-      }
-    },
-    "features": [
+    "products": [
       {
+        "tabLabel": "Calendar",
         "title": "Calendar",
-        "text": "See accommodation, activities and packaged services in one connected calendar.",
-        "icon": "/assets/images/icons/calendar.png"
+        "text": "See accommodation, activities and packages in one connected calendar.",
+        "src": "/assets/images/tab-calendar-1.webp",
+        "alt": "Hightide calendar",
+        "icon": "/assets/images/icons/calendar.png",
+        "capabilities": [
+          "Connected availability",
+          "Linked accommodation and activities",
+          "Add bookings directly",
+          "Block unavailable dates"
+        ]
       },
       {
+        "tabLabel": "Bookings",
         "title": "Booking Workspace",
-        "text": "Keep guest details, items, balances, notes, comments, statuses and communication together.",
-        "icon": "/assets/images/icons/booking-workspace.png"
+        "text": "Keep guest details, items, balances, notes and communication together.",
+        "src": "/assets/images/tab-bookings-list.jpg",
+        "alt": "Hightide bookings list",
+        "icon": "/assets/images/icons/booking-workspace.png",
+        "capabilities": [
+          "Guest details, items and statuses",
+          "Notes and team comments",
+          "Payments and payment requests",
+          "Emails and invoices"
+        ]
       },
       {
-        "title": "Day Planner",
-        "text": "See today's accommodation, activities, arrivals and departures at a glance.",
+        "tabLabel": "Day Planner",
+        "title": "Day Planner and Operations",
+        "text": "See what is happening today and keep the team informed.",
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Hightide day planner",
         "icon": "/assets/images/icons/day-planner.png",
-        "iconClass": "explore-feature-icon-day-planner"
-      },
-      {
-        "title": "Automated emails",
-        "text": "Automate routine confirmations and updates while keeping control of guest communication.",
-        "icon": "/assets/images/icons/automated-emails.png"
-      },
-      {
-        "title": "Payments",
-        "text": "Track balances, accept payments and send payment requests.",
-        "icon": "/assets/images/icons/payments.png"
-      },
-      {
-        "title": "Invoices",
-        "text": "Create invoices in Hightide or use our invoicing integration.",
-        "icon": "/assets/images/icons/invoices.png"
-      },
-      {
-        "title": "Reports",
-        "text": "Understand bookings, operations, revenue and partner performance.",
-        "icon": "/assets/images/icons/reports.png"
-      },
-      {
-        "title": "Team collaboration",
-        "text": "Keep everyone informed with the right level of access.",
-        "icon": "/assets/images/icons/team-access.png",
-        "iconClass": "explore-feature-icon-team-access"
+        "iconClass": "explore-manage-product-icon-day-planner",
+        "capabilities": [
+          "Daily accommodation and activity overview",
+          "Arrivals and departures",
+          "Booking lists and reports",
+          "Team access levels"
+        ]
       }
     ]
   },

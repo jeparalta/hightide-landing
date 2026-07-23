@@ -7,26 +7,54 @@ bodyClass: page-explore
 ---
 
 {% macro sellStoryCard(card) %}
-<article class="explore-sell-story-card explore-callout-carousel-item" tabindex="0">
+<article class="explore-sell-story-card explore-callout-carousel-item">
   <h3>{{ card.title }}</h3>
   <p>{{ card.text }}</p>
 </article>
 {% endmacro %}
 
-{% macro manageFeature(feature) %}
-<article class="explore-feature-card">
-  {% if feature.icon %}
+{% macro manageCapabilityList(capabilities) %}
+<ul class="explore-manage-capabilities">
+  {% for item in capabilities %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro manageProductHeading(product) %}
+<div class="explore-manage-product-heading">
   <img
-    src="{{ feature.icon }}"
+    src="{{ product.icon }}"
     alt=""
-    class="explore-feature-icon{% if feature.iconClass %} {{ feature.iconClass }}{% endif %}"
+    class="explore-manage-product-icon{% if product.iconClass %} {{ product.iconClass }}{% endif %}"
     loading="lazy"
     width="48"
     height="48"
   >
-  {% endif %}
-  <h3>{{ feature.title }}</h3>
-  <p>{{ feature.text }}</p>
+  <h3 class="explore-manage-product-title">{{ product.title }}</h3>
+</div>
+{% endmacro %}
+
+{% macro manageProductArea(product) %}
+<article class="explore-manage-product">
+  <button
+    type="button"
+    class="explore-manage-product-shot-btn"
+    data-montage-open
+    aria-label="View {{ product.alt }} in full size"
+  >
+    <img
+      class="explore-manage-product-shot"
+      src="{{ product.src }}"
+      alt="{{ product.alt }}"
+      loading="lazy"
+      width="1600"
+      height="1000"
+    >
+  </button>
+  {{ manageProductHeading(product) }}
+  <p class="explore-manage-product-description">{{ product.text }}</p>
+  {{ manageCapabilityList(product.capabilities) }}
 </article>
 {% endmacro %}
 
@@ -141,7 +169,7 @@ bodyClass: page-explore
 </article>
 {% endmacro %}
 
-{% macro integrationLineArt(src, width, height, from, to, orbit, index) %}
+{% macro integrationLineArt(src, width, height, from, to, orbit, index, fixed) %}
 <img
   class="explore-integration-line explore-integration-line-art"
   data-integration-line
@@ -153,6 +181,13 @@ bodyClass: page-explore
   data-line-art-to="{{ to }}"
   data-orbit-x="{{ orbit.x }}"
   data-orbit-y="{{ orbit.y }}"
+  {% if fixed %}
+  data-line-art-fixed-left="{{ fixed.left }}"
+  data-line-art-fixed-top="{{ fixed.top }}"
+  data-line-art-fixed-width="{{ fixed.width }}"
+  data-line-art-fixed-height="{{ fixed.height }}"
+  data-line-art-fixed-rotate="{{ fixed.rotate | default(0) }}"
+  {% endif %}
   src="{{ src }}"
   alt=""
   decoding="async"
@@ -189,7 +224,7 @@ bodyClass: page-explore
         <img src="/assets/images/hero-sun.png" alt="" class="explore-hero-deco explore-hero-deco-sun" loading="lazy" decoding="async">
         <div class="explore-hero-actions">
           <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
-          <a class="btn btn-secondary" href="{{ explore.secondaryCtaUrl }}" target="_blank" rel="noopener noreferrer">{{ explore.secondaryCtaLabel }}</a>
+          <a class="btn btn-secondary explore-hero-secondary-cta" href="{{ explore.secondaryCtaUrl }}">{{ explore.secondaryCtaLabel }}</a>
         </div>
         <img src="/assets/images/hero-moon.png" alt="" class="explore-hero-deco explore-hero-deco-moon" loading="lazy" decoding="async">
       </div>
@@ -197,12 +232,12 @@ bodyClass: page-explore
   </div>
 </section>
 
-<section class="section section-alt explore-story explore-story-sell">
+<section class="section section-alt explore-story explore-story-sell" id="online-store">
   <div class="explore-sell-scroll-stage is-static" data-callout-scroll>
     <div class="explore-sell-scroll-pin">
       <div class="container explore-sell-scroll-inner">
         <div class="explore-sell-scroll-intro">
-          <h2 class="section-title">{{ exploreHome.sell.title }}</h2>
+          <h2 class="section-title">{{ exploreHome.sell.titleLine1 }}<br class="explore-br-mobile" aria-hidden="true"> {{ exploreHome.sell.titleLine2 }}</h2>
           <p class="section-lead">{{ exploreHome.sell.lead }}</p>
         </div>
 
@@ -225,13 +260,13 @@ bodyClass: page-explore
             >
           </button>
           {% endfor %}
+        </div>
           <a
-            class="btn btn-secondary explore-sell-demo-btn"
+            class="btn btn-primary explore-sell-demo-btn"
             href="{{ explore.demoStoreUrl }}"
             target="_blank"
             rel="noopener noreferrer"
           >{{ exploreHome.sell.demoStore.label }}</a>
-        </div>
         </div>
 
         <div class="explore-sell-story" data-callout-story>
@@ -269,14 +304,7 @@ bodyClass: page-explore
             >
               <span aria-hidden="true">&larr;</span>
             </button>
-            <div class="explore-callout-carousel-meta">
-              <p class="explore-callout-carousel-status" data-callout-status aria-live="polite"></p>
-              <div class="explore-callout-carousel-segments" data-callout-segments aria-hidden="true">
-                {% for card in exploreHome.sell.storyCards %}
-                <span class="explore-callout-carousel-segment" data-callout-segment></span>
-                {% endfor %}
-              </div>
-            </div>
+            <p class="explore-callout-carousel-status" data-callout-status aria-live="polite"></p>
             <button
               type="button"
               class="explore-callout-carousel-btn"
@@ -314,7 +342,7 @@ bodyClass: page-explore
 </section>
 
 <section class="section explore-story explore-story-manage">
-  <div class="explore-manage-scroll-stage" data-manage-scroll>
+  <div class="explore-manage-scroll-stage is-static" data-manage-scroll>
     <div class="explore-manage-scroll-pin">
       <div class="container explore-manage-scroll-inner">
         <div class="explore-manage-scroll-intro">
@@ -322,68 +350,79 @@ bodyClass: page-explore
           <p class="section-lead">{{ exploreHome.manage.lead }}</p>
         </div>
 
-        <div class="explore-manage-montage" data-manage-montage>
-          <button
-            type="button"
-            class="explore-montage-item"
-            data-montage-open
-            aria-label="View {{ exploreHome.manage.montage.calendar.alt }} in full size"
-          >
-            <img
-              class="explore-montage-shot explore-montage-calendar"
-              src="{{ exploreHome.manage.montage.calendar.src }}"
-              alt="{{ exploreHome.manage.montage.calendar.alt }}"
-              loading="lazy"
-              width="873"
-              height="480"
-            >
-          </button>
-          <button
-            type="button"
-            class="explore-montage-item"
-            data-montage-open
-            aria-label="View {{ exploreHome.manage.montage.workspace.alt }} in full size"
-          >
-            <img
-              class="explore-montage-shot explore-montage-workspace"
-              src="{{ exploreHome.manage.montage.workspace.src }}"
-              alt="{{ exploreHome.manage.montage.workspace.alt }}"
-              loading="lazy"
-              width="1024"
-              height="602"
-            >
-          </button>
-          <button
-            type="button"
-            class="explore-montage-item"
-            data-montage-open
-            aria-label="View {{ exploreHome.manage.montage.planner.alt }} in full size"
-          >
-            <img
-              class="explore-montage-shot explore-montage-planner"
-              src="{{ exploreHome.manage.montage.planner.src }}"
-              alt="{{ exploreHome.manage.montage.planner.alt }}"
-              loading="lazy"
-              width="800"
-              height="480"
-            >
-          </button>
-        </div>
-
-        <div class="explore-manage-feature-stage" data-manage-feature-stage>
-          <div class="explore-manage-feature-row" data-manage-feature-row>
-            {% for feature in exploreHome.manage.features %}
-            {% if loop.index0 < 4 %}
-            {{ manageFeature(feature) }}
-            {% endif %}
+        <div class="explore-manage-desktop-layout">
+          <div class="explore-manage-products" data-manage-products>
+            {% for product in exploreHome.manage.products %}
+            {{ manageProductArea(product) }}
             {% endfor %}
           </div>
-          <div class="explore-manage-feature-row" data-manage-feature-row>
-            {% for feature in exploreHome.manage.features %}
-            {% if loop.index0 >= 4 %}
-            {{ manageFeature(feature) }}
-            {% endif %}
+        </div>
+
+        <div class="explore-manage-mobile-layout" data-manage-showcase>
+          <div
+            class="explore-manage-showcase-tabs"
+            role="tablist"
+            aria-label="Product views"
+            data-manage-showcase-tabs
+          >
+            {% for product in exploreHome.manage.products %}
+            <button
+              type="button"
+              class="explore-manage-showcase-tab"
+              role="tab"
+              id="manage-showcase-tab-{{ loop.index0 }}"
+              aria-controls="manage-showcase-slide-{{ loop.index0 }}"
+              aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+              tabindex="{% if loop.first %}0{% else %}-1{% endif %}"
+              data-manage-showcase-tab
+              data-index="{{ loop.index0 }}"
+            >
+              {{ product.tabLabel }}
+            </button>
             {% endfor %}
+          </div>
+
+          <div
+            class="explore-manage-showcase-carousel"
+            data-manage-showcase-carousel
+            tabindex="0"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Manage product screenshots"
+          >
+            <div class="explore-manage-showcase-track" data-manage-showcase-track>
+              {% for product in exploreHome.manage.products %}
+              <div
+                class="explore-manage-showcase-slide"
+                id="manage-showcase-slide-{{ loop.index0 }}"
+                role="tabpanel"
+                aria-labelledby="manage-showcase-tab-{{ loop.index0 }}"
+                data-manage-showcase-slide
+                aria-hidden="{% if loop.first %}false{% else %}true{% endif %}"
+              >
+                <button
+                  type="button"
+                  class="explore-manage-product-shot-btn"
+                  data-montage-open
+                  aria-label="View {{ product.alt }} in full size"
+                >
+                  <img
+                    class="explore-manage-product-shot"
+                    src="{{ product.src }}"
+                    alt="{{ product.alt }}"
+                    loading="lazy"
+                    width="1600"
+                    height="1000"
+                  >
+                </button>
+                <div class="explore-manage-showcase-detail">
+                  {{ manageProductHeading(product) }}
+                  <p class="explore-manage-product-description">{{ product.text }}</p>
+                  {{ manageCapabilityList(product.capabilities) }}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
@@ -405,7 +444,7 @@ bodyClass: page-explore
             {{ integrationLineArt("/assets/images/integrations/connectors/channel-manager-arrow.png?v=2", 235, 307, "br", "tl", integrationOrbits[0], 0) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/payments-arrow.png?v=2", 284, 200, "bl", "tr", integrationOrbits[1], 1) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/invoicing-arrow-v2.png", 350, 135, "tl", "br", integrationOrbits[2], 2) }}
-            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png", 64, 304, "tl", "bl", integrationOrbits[3], 3) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png", 64, 304, "tl", "bl", integrationOrbits[3], 3, { left: 475, top: 340, width: 18.1579, height: 100, rotate: 0 }) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/partners-arrow.png", 480, 108, "tr", "tl", integrationOrbits[4], 4) }}
           </div>
           <div class="explore-integrations-logo" aria-hidden="true">
