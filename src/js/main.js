@@ -109,6 +109,15 @@
     }
   }
 
+  function syncExploreHeaderOffset() {
+    const siteTop = document.querySelector('.site-top');
+    const offset = siteTop
+      ? Math.round(siteTop.getBoundingClientRect().bottom)
+      : 72;
+    document.documentElement.style.setProperty('--explore-header-offset', `${offset}px`);
+    return offset;
+  }
+
   const calloutStage = document.querySelector('[data-callout-scroll]');
   const calloutTrack = calloutStage && calloutStage.querySelector('[data-callout-track]');
   const calloutCarousel = calloutStage && calloutStage.querySelector('[data-callout-carousel]');
@@ -168,20 +177,9 @@
       return 1 - (1 - value) * (1 - value);
     }
 
-    function getHeaderOffset() {
-      const siteTop = document.querySelector('.site-top');
-      return siteTop ? siteTop.offsetHeight : 72;
-    }
-
-    function syncHeaderOffset() {
-      const headerOffset = getHeaderOffset();
-      document.documentElement.style.setProperty('--explore-header-offset', `${headerOffset}px`);
-      return headerOffset;
-    }
-
     function getScrollStart() {
+      const headerOffset = syncExploreHeaderOffset();
       const anchor = sellSection || calloutStage;
-      const headerOffset = syncHeaderOffset();
       return anchor.getBoundingClientRect().top + window.scrollY - headerOffset;
     }
 
@@ -702,6 +700,14 @@
     }
 
     function syncIntegrationsMode() {
+      if (useMobileIntegrationsLayout()) {
+        unbindIntegrationsScroll();
+        setIntegrationsStaticMode(false);
+        integrationsStage.style.height = '';
+        resetIntegrationTransforms();
+        return;
+      }
+
       if (useStaticIntegrations()) {
         unbindIntegrationsScroll();
         setIntegrationsStaticMode(true);
@@ -717,19 +723,21 @@
       return 1 - (1 - value) * (1 - value);
     }
 
-    function getIntegrationsHeaderOffset() {
-      const siteTop = document.querySelector('.site-top');
-      return siteTop ? siteTop.offsetHeight : 72;
+    function useMobileIntegrationsLayout() {
+      return window.matchMedia('(max-width: 767px)').matches;
     }
 
     function useStaticIntegrations() {
+      if (useMobileIntegrationsLayout()) {
+        return false;
+      }
+
       return integrationsReducedMotion || window.matchMedia('(max-width: 1020px)').matches;
     }
 
     function getIntegrationsScrollStart() {
+      const headerOffset = syncExploreHeaderOffset();
       const anchor = integrationsSection || integrationsStage;
-      const headerOffset = getIntegrationsHeaderOffset();
-      document.documentElement.style.setProperty('--explore-header-offset', `${headerOffset}px`);
       return anchor.getBoundingClientRect().top + window.scrollY - headerOffset;
     }
 
@@ -900,6 +908,21 @@
       return path;
     }
 
+    const INTEGRATION_LOGO_ARROW_GAP = 6;
+    const INTEGRATION_CARD_ARROW_GAP = 14;
+    const INTEGRATION_ORBIT_OUTSET = 1.045;
+
+    function getIntegrationOrbitCoords(orbitX, orbitY, progress) {
+      const targetX = 50 + ((orbitX - 50) * INTEGRATION_ORBIT_OUTSET);
+      const targetY = 50 + ((orbitY - 50) * INTEGRATION_ORBIT_OUTSET);
+      const eased = Math.min(1, Math.max(0, progress));
+
+      return {
+        x: 50 + ((targetX - 50) * eased),
+        y: 50 + ((targetY - 50) * eased),
+      };
+    }
+
     function buildIntegrationConnectorPath(hubRect, startPx, endPx, lineStyle, index) {
       const points = sampleDoodlePoints(startPx, endPx, lineStyle, index);
       return pointsToSketchPath(hubRect, points);
@@ -913,8 +936,15 @@
 
       const centerX = hubRect.left + (hubRect.width / 2);
       const centerY = hubRect.top + (hubRect.height / 2);
-      const targetX = hubRect.left + ((orbitX / 100) * hubRect.width);
-      const targetY = hubRect.top + ((orbitY / 100) * hubRect.height);
+      let targetX = hubRect.left + ((orbitX / 100) * hubRect.width);
+      let targetY = hubRect.top + ((orbitY / 100) * hubRect.height);
+
+      if (cardEl) {
+        const cardRect = cardEl.getBoundingClientRect();
+        targetX = cardRect.left + (cardRect.width / 2);
+        targetY = cardRect.top + (cardRect.height / 2);
+      }
+
       const dx = targetX - centerX;
       const dy = targetY - centerY;
       const fullDist = Math.hypot(dx, dy);
@@ -927,8 +957,8 @@
       const uy = dy / fullDist;
       const logoRect = logo.getBoundingClientRect();
       const logoRadius = Math.max(logoRect.width, logoRect.height) / 2;
-      const innerPx = logoRadius + 14;
-      const edgeGap = 10;
+      const innerPx = logoRadius + INTEGRATION_LOGO_ARROW_GAP;
+      const edgeGap = INTEGRATION_CARD_ARROW_GAP;
 
       let cardEntryPx = fullDist;
       if (cardEl) {
@@ -1044,28 +1074,25 @@
     }
 
     function positionIntegrationLineArt(hubRect, startPx, endPx, imageEl) {
-      if (imageEl.dataset.lineArtFixedLeft !== undefined) {
-        const from = imageEl.dataset.lineArtFrom || 'tl';
-        imageEl.style.left = `${imageEl.dataset.lineArtFixedLeft}px`;
-        imageEl.style.top = `${imageEl.dataset.lineArtFixedTop}px`;
-        imageEl.style.width = `${imageEl.dataset.lineArtFixedWidth}px`;
-        imageEl.style.height = `${imageEl.dataset.lineArtFixedHeight}px`;
-        imageEl.style.transformOrigin = getIntegrationLineArtTransformOrigin(from);
-        imageEl.style.transform = `rotate(${imageEl.dataset.lineArtFixedRotate || 0}deg) `
-          + 'scale(var(--line-art-reveal, 0))';
+      const dx = endPx.x - startPx.x;
+      const dy = endPx.y - startPx.y;
+      const spanLength = Math.hypot(dx, dy);
+
+      if (spanLength < 8) {
+        imageEl.style.width = '0';
+        imageEl.style.height = '0';
         return;
       }
 
-      const dx = endPx.x - startPx.x;
-      const dy = endPx.y - startPx.y;
       const angle = Math.atan2(dy, dx);
       const nativeAngle = getIntegrationLineArtNativeAngle(imageEl);
       const rotateDeg = ((angle - nativeAngle) * 180) / Math.PI;
       const artWidth = parseFloat(imageEl.dataset.lineArtWidth) || 1;
       const artHeight = parseFloat(imageEl.dataset.lineArtHeight) || 1;
       const nativeLength = getIntegrationLineArtNativeLength(imageEl);
-      const arrowLengthPx = parseFloat(imageEl.dataset.lineArtSize) || 129;
-      const width = arrowLengthPx * (artWidth / nativeLength);
+      const arrowLengthPx = parseFloat(imageEl.dataset.lineArtSize) || spanLength;
+      const widthScale = artWidth / artHeight < 0.3 ? 1.22 : 1;
+      const width = arrowLengthPx * (artWidth / nativeLength) * widthScale;
       const height = width * (artHeight / artWidth);
       const from = imageEl.dataset.lineArtFrom || 'tl';
       const originOffset = getIntegrationLineArtOriginOffset(from, width, height);
@@ -1088,8 +1115,9 @@
       integrationSlots.forEach(function (slot) {
         const orbitX = parseFloat(slot.dataset.orbitX);
         const orbitY = parseFloat(slot.dataset.orbitY);
-        slot.style.left = `${orbitX}%`;
-        slot.style.top = `${orbitY}%`;
+        const coords = getIntegrationOrbitCoords(orbitX, orbitY, 1);
+        slot.style.left = `${coords.x}%`;
+        slot.style.top = `${coords.y}%`;
         slot.style.transform = 'translate(-50%, -50%)';
       });
 
@@ -1180,10 +1208,9 @@
           Math.max(0, (scrolled - slotStart) / integrationRevealDistance)
         );
         const eased = easeOutQuadIntegrations(progress);
-        const x = 50 + ((orbitX - 50) * eased);
-        const y = 50 + ((orbitY - 50) * eased);
-        slot.style.left = `${x}%`;
-        slot.style.top = `${y}%`;
+        const coords = getIntegrationOrbitCoords(orbitX, orbitY, eased);
+        slot.style.left = `${coords.x}%`;
+        slot.style.top = `${coords.y}%`;
         slot.style.opacity = String(eased);
         slot.style.transform = `translate(-50%, -50%) scale(${0.9 + (0.1 * eased)})`;
 
@@ -1437,6 +1464,32 @@
       });
     }
 
+    function isProofExcerptTruncated(excerpt) {
+      if (!excerpt || !excerpt.parentNode) {
+        return false;
+      }
+
+      const clone = excerpt.cloneNode(true);
+      clone.style.cssText = [
+        'position:absolute',
+        'visibility:hidden',
+        'pointer-events:none',
+        'left:-9999px',
+        'top:0',
+        'width:' + excerpt.getBoundingClientRect().width + 'px',
+        'display:block',
+        'overflow:visible',
+        '-webkit-line-clamp:unset',
+        'line-clamp:unset',
+        '-webkit-box-orient:unset',
+        'min-height:0',
+      ].join(';');
+      excerpt.parentNode.appendChild(clone);
+      const truncated = clone.scrollHeight > excerpt.clientHeight + 1;
+      clone.remove();
+      return truncated;
+    }
+
     function updateProofReadMoreButtons() {
       proofCards.forEach(function (card) {
         const excerpt = card.querySelector('[data-proof-excerpt]');
@@ -1445,9 +1498,12 @@
           return;
         }
 
-        const truncated = excerpt.scrollHeight > excerpt.clientHeight + 1;
-        button.hidden = !truncated;
+        button.hidden = !isProofExcerptTruncated(excerpt);
       });
+    }
+
+    function scheduleProofReadMoreUpdate() {
+      window.requestAnimationFrame(updateProofReadMoreButtons);
     }
 
     function openProofModal(card) {
@@ -1572,12 +1628,31 @@
     window.addEventListener('resize', function () {
       window.clearTimeout(proofResizeTimer);
       proofResizeTimer = window.setTimeout(function () {
-        updateProofReadMoreButtons();
+        scheduleProofReadMoreUpdate();
         updateProofCarouselState();
       }, 150);
     }, { passive: true });
 
-    updateProofReadMoreButtons();
+    if (window.ResizeObserver) {
+      const proofReadObserver = new ResizeObserver(scheduleProofReadMoreUpdate);
+      proofCards.forEach(function (card) {
+        proofReadObserver.observe(card);
+      });
+    }
+
+    proofCards.forEach(function (card) {
+      card.querySelectorAll('img').forEach(function (img) {
+        if (!img.complete) {
+          img.addEventListener('load', scheduleProofReadMoreUpdate, { once: true });
+        }
+      });
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(scheduleProofReadMoreUpdate);
+    }
+
+    scheduleProofReadMoreUpdate();
     updateProofCarouselState();
   }
 

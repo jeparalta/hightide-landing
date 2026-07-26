@@ -119,8 +119,8 @@
     ]
   },
   "integrations": {
-    "title": "Connect the rest of your booking operation",
-    "lead": "Bring your booking channels, payments, partners, reporting and marketing together in Hightide.",
+    "title": "Connect your booking operation",
+    "lead": "Bring your channels, payments, partners, invoicing and marketing together, with Hightide at the centre.",
     "groups": [
       {
         "title": "Channel Manager",
@@ -191,6 +191,16 @@
         "role": "Owner",
         "business": "Surf Clinic Lagos",
         "industry": "Surf School"
+      },
+      {
+        "logo": "/assets/images/testimonials/surf-and-travel-morocco.png",
+        "logoAlt": "Surf & Travel Morocco",
+        "websiteUrl": "https://surfandtravelmorocco.com/",
+        "quote": "Since moving to Hightide, I spend only about 10% of the time I used to on emails and booking administration. Before, every enquiry meant creating a personalised quote by email and manually entering bookings into Excel spreadsheets, a shared calendar and OneNote. Only around 30–40% of those enquiries actually became bookings, so a huge amount of time was spent on emails that never led anywhere. We worked like that for years because we couldn't find a booking system that was both affordable and flexible enough for our business. Our surf camp packages aren't priced by nightly rates, so most systems simply couldn't handle the way we sell and price our packages. With Hightide, guests can now see the different package lengths, room types and options online and book exactly what they need without waiting for a personalised quote. At reception, our staff have a much clearer overview of bookings, payments, check-ins, check-outs and guest add-ons, making day-to-day operations much smoother and easier to manage. Hightide has allowed us to keep the way our business works while removing almost all of the manual administration that used to come with it. It's saved us an incredible amount of time, made life much easier for our team, and finally gave us a booking system that fits the way our business actually operates.",
+        "name": "Dani",
+        "role": "Founder",
+        "business": "Surf & Travel Morocco",
+        "industry": "Surf Camp"
       },
       {
         "logo": "/assets/images/testimonials/atlantic-surf-lodge.svg",

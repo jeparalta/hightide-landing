@@ -87,6 +87,88 @@ bodyClass: page-explore
 </article>
 {% endmacro %}
 
+{% macro integrationMobileCardLabel(title) %}
+<h3 class="explore-integrations-mobile-label">{{ title }}</h3>
+{% endmacro %}
+
+{% macro integrationMobileBentoChannel(group) %}
+<article class="explore-integrations-mobile-card is-channel">
+  {{ integrationMobileCardLabel(group.title) }}
+  <ul class="explore-integrations-mobile-channel-grid">
+    {% for item in group.items %}
+      {% if item.name in ['Airbnb', 'Booking.com', 'Hostelworld', 'Expedia', 'Vrbo'] %}
+      <li class="explore-integrations-mobile-channel-item">
+        <img src="{{ item.logo }}" alt="" class="explore-integrations-mobile-channel-logo" loading="lazy" width="72" height="20">
+        <span>{{ item.name }}</span>
+      </li>
+      {% elif item.muted %}
+      <li class="explore-integrations-mobile-channel-item is-more">
+        <span>+ more</span>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</article>
+{% endmacro %}
+
+{% macro integrationMobileBentoStack(group, showNames, modifier) %}
+<article class="explore-integrations-mobile-card is-stack{% if modifier %} is-{{ modifier }}{% endif %}">
+  {{ integrationMobileCardLabel(group.title) }}
+  <ul class="explore-integrations-mobile-stack">
+    {% for item in group.items %}
+    <li class="explore-integrations-mobile-stack-item">
+      <img
+        src="{{ item.logo }}"
+        alt="{% if showNames %}{% else %}{{ item.name }}{% endif %}"
+        class="explore-integrations-mobile-stack-logo{% if modifier == 'payments' %} is-payment{% if item.name == 'Stripe' %} is-stripe{% endif %}{% endif %}"
+        loading="lazy"
+        width="72"
+        height="20"
+      >
+      {% if showNames %}
+      <span class="explore-integrations-mobile-stack-name">{{ item.name }}</span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+{% endmacro %}
+
+{% macro integrationMobileBentoPartners(group) %}
+<article class="explore-integrations-mobile-card is-partners">
+  {{ integrationMobileCardLabel(group.title) }}
+  <ul class="explore-integrations-mobile-checklist">
+    {% for item in group.items %}
+    <li class="explore-integrations-mobile-checklist-item">
+      <span class="explore-integrations-mobile-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+      <span>{{ item.name }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+{% endmacro %}
+
+{% macro integrationMobileBentoAnalytics(group) %}
+<article class="explore-integrations-mobile-card is-analytics">
+  {{ integrationMobileCardLabel(group.title) }}
+  <ul class="explore-integrations-mobile-named-inline">
+    {% for item in group.items %}
+    <li class="explore-integrations-mobile-named-inline-item">
+      <img
+        src="{{ item.logo }}"
+        alt=""
+        class="explore-integrations-mobile-named-inline-logo"
+        loading="lazy"
+        width="72"
+        height="20"
+      >
+      <span>{{ item.name }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+{% endmacro %}
+
 {% macro industryCard(card, industry) %}
 {% set cardTitle = card.name or industry.cardName or industry.name %}
 {% set cardHref = card.href or ('/explore/industries/' ~ industry.slug ~ '/') %}
@@ -135,10 +217,10 @@ bodyClass: page-explore
       {% if story.logo %}
       {% if story.websiteUrl %}
       <a href="{{ story.websiteUrl }}" class="explore-proof-logo-link" target="_blank" rel="noopener noreferrer" aria-label="{{ story.logoAlt or story.business }}">
-        <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="56" height="56">
+        <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
       </a>
       {% else %}
-      <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="56" height="56">
+      <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
       {% endif %}
       {% endif %}
       <div class="explore-proof-card-heading">
@@ -201,6 +283,12 @@ bodyClass: page-explore
   { x: 50, y: 86 },
   { x: 14, y: 54 }
 ] %}
+
+{% set integrationMobileChannel = exploreHome.integrations.groups[0] %}
+{% set integrationMobilePayments = exploreHome.integrations.groups[1] %}
+{% set integrationMobileInvoicing = exploreHome.integrations.groups[2] %}
+{% set integrationMobileAnalytics = exploreHome.integrations.groups[3] %}
+{% set integrationMobilePartners = exploreHome.integrations.groups[4] %}
 
 <section class="explore-hero">
   <div class="explore-hero-stage">
@@ -441,11 +529,11 @@ bodyClass: page-explore
 
         <div class="explore-integrations-hub" data-integrations-hub>
           <div class="explore-integrations-line-art-layer" aria-hidden="true">
-            {{ integrationLineArt("/assets/images/integrations/connectors/channel-manager-arrow.png?v=2", 235, 307, "br", "tl", integrationOrbits[0], 0) }}
-            {{ integrationLineArt("/assets/images/integrations/connectors/payments-arrow.png?v=2", 284, 200, "bl", "tr", integrationOrbits[1], 1) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/channel-manager-arrow.png?v=3", 235, 307, "br", "tl", integrationOrbits[0], 0) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/payments-arrow.png?v=3", 284, 200, "bl", "tr", integrationOrbits[1], 1) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/invoicing-arrow-v2.png", 350, 135, "tl", "br", integrationOrbits[2], 2) }}
-            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png", 64, 304, "tl", "bl", integrationOrbits[3], 3, { left: 475, top: 340, width: 18.1579, height: 100, rotate: 0 }) }}
-            {{ integrationLineArt("/assets/images/integrations/connectors/partners-arrow.png", 480, 108, "tr", "tl", integrationOrbits[4], 4) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png?v=3", 64, 304, "tl", "bl", integrationOrbits[3], 3) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/partners-arrow.png?v=3", 480, 108, "tr", "tl", integrationOrbits[4], 4) }}
           </div>
           <div class="explore-integrations-logo" aria-hidden="true">
             <img src="/assets/images/logo.svg" alt="" width="72" height="72" loading="lazy" decoding="async">
@@ -461,6 +549,23 @@ bodyClass: page-explore
           </div>
           {% endfor %}
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-integrations-mobile">
+    <div class="container explore-integrations-mobile-inner">
+      <div class="explore-integrations-mobile-intro">
+        <h2 class="section-title">{{ exploreHome.integrations.title }}</h2>
+        <p class="section-lead">{{ exploreHome.integrations.lead }}</p>
+      </div>
+
+      <div class="explore-integrations-mobile-bento">
+        {{ integrationMobileBentoChannel(integrationMobileChannel) }}
+        {{ integrationMobileBentoStack(integrationMobilePayments, false, 'payments') }}
+        {{ integrationMobileBentoStack(integrationMobileInvoicing, true, 'invoicing') }}
+        {{ integrationMobileBentoPartners(integrationMobilePartners) }}
+        {{ integrationMobileBentoAnalytics(integrationMobileAnalytics) }}
       </div>
     </div>
   </div>
@@ -534,7 +639,7 @@ bodyClass: page-explore
       <span aria-hidden="true">&times;</span>
     </button>
     <header class="explore-proof-modal-header">
-      <img class="explore-proof-modal-logo" data-proof-modal-logo src="" alt="" width="56" height="56" hidden>
+      <img class="explore-proof-modal-logo" data-proof-modal-logo src="" alt="" width="80" height="80" hidden>
       <div class="explore-proof-modal-heading">
         <h3 class="explore-proof-modal-business" id="proof-modal-title" data-proof-modal-business></h3>
       </div>
