@@ -795,31 +795,80 @@ body.page-home .section.section-faq {
 .cta-band p { color: #aaa; max-width: 480px; margin-inline: auto; }
 
 .explore-cta-band {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
   text-align: center;
-  padding: 3rem 2rem;
-  background: var(--primary-1);
-  color: #fff;
+  padding: 3.375rem clamp(1.25rem, 3vw, 2rem);
+  background: #edf7f1;
+  color: var(--text);
+  border: 1px solid #edf7f1;
   border-radius: var(--radius-lg);
 }
 
-.explore-cta-band h2 {
-  color: #fff;
-  margin-bottom: 0.75rem;
+.explore-cta-band-inner {
+  width: 100%;
+  max-width: 40.625rem;
+  margin-inline: auto;
 }
 
-.explore-cta-band p {
-  color: #ccc;
-  max-width: 520px;
-  margin: 0 auto 1.5rem;
+.explore-cta-band h2 {
+  color: var(--primary-1);
+  margin: 0 auto 0.5rem;
+  max-width: none;
+}
+
+.explore-cta-lead {
+  color: var(--text-muted);
+  max-width: none;
+  margin: 0 auto 1rem;
+  font-size: clamp(0.9375rem, 1.5vw, 1rem);
+  line-height: 1.5;
+}
+
+.explore-cta-actions {
+  margin-bottom: 0;
+}
+
+.explore-cta-actions .btn-primary {
+  min-width: min(100%, 14.5rem);
+  padding: 0.68rem 1.35rem;
 }
 
 .explore-cta-alt {
-  margin-top: 1rem;
-  font-size: 0.9rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--neutral-600);
 }
 
-.explore-cta-alt a {
-  color: #aaa;
+.explore-cta-alt-label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.explore-cta-alt-links a {
+  color: var(--neutral-600);
+  text-decoration: underline;
+  text-decoration-color: rgb(25 135 84 / 28%);
+  text-underline-offset: 0.15em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.explore-cta-alt-links a:hover,
+.explore-cta-alt-links a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.explore-cta-alt-sep {
+  color: var(--neutral-500);
+}
+
+@media (max-width: 768px) {
+  .explore-cta-band {
+    padding: 2.125rem 1.25rem;
+  }
 }
 
 /* Page header */

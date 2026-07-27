@@ -12,10 +12,66 @@
   <link rel="preload" href="/assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/caveat-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/fonts.css">
-  <link rel="stylesheet" href="/css/main.css?v=21">
+  <link rel="stylesheet" href="/css/main.css?v=26">
   {% if bodyClass == 'page-explore' %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/css/explore.css?v=186">
+  <link rel="stylesheet" href="/css/explore.css?v=199">
+  <script>
+    (function () {
+      var preferStatic = window.matchMedia('(max-width: 1020px)').matches
+        || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (preferStatic) {
+        document.documentElement.classList.add('explore-prefer-static');
+      }
+    }());
+  </script>
+  <style>
+    .explore-sell-montage {
+      position: relative;
+      max-width: 680px;
+      height: clamp(220px, 34vh, 300px);
+      margin-inline: auto;
+      overflow: visible;
+    }
+
+    .explore-sell-shot-wrap {
+      position: absolute;
+      width: min(72%, 400px);
+      aspect-ratio: 16 / 10;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .explore-sell-shot-wrap-1 { left: 0; top: 14%; z-index: 1; }
+    .explore-sell-shot-wrap-2 { right: 0; top: 0; z-index: 2; }
+
+    .explore-sell-shot {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 1020px) {
+      html.explore-prefer-static .explore-sell-montage {
+        height: auto;
+      }
+
+      html.explore-prefer-static .explore-sell-shot-wrap-2 {
+        display: none;
+      }
+
+      html.explore-prefer-static .explore-sell-shot-wrap-1 {
+        position: relative;
+        left: auto;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
   {% endif %}
   {% if preloadImage %}
   <link rel="preload" as="image" href="{{ preloadImage }}">

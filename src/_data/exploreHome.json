@@ -107,8 +107,7 @@
         "text": "See what is happening today and keep the team informed.",
         "src": "/assets/images/tab-bookings-2.webp",
         "alt": "Hightide day planner",
-        "icon": "/assets/images/icons/day-planner.png",
-        "iconClass": "explore-manage-product-icon-day-planner",
+        "icon": "/assets/images/icons/notes.png",
         "capabilities": [
           "Daily accommodation and activity overview",
           "Arrivals and departures",

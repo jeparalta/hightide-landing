@@ -312,7 +312,6 @@ bodyClass: page-explore
         <img src="/assets/images/hero-sun.png" alt="" class="explore-hero-deco explore-hero-deco-sun" loading="lazy" decoding="async">
         <div class="explore-hero-actions">
           <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
-          <a class="btn btn-secondary explore-hero-secondary-cta" href="{{ explore.secondaryCtaUrl }}">{{ explore.secondaryCtaLabel }}</a>
         </div>
         <img src="/assets/images/hero-moon.png" alt="" class="explore-hero-deco explore-hero-deco-moon" loading="lazy" decoding="async">
       </div>
@@ -321,7 +320,7 @@ bodyClass: page-explore
 </section>
 
 <section class="section section-alt explore-story explore-story-sell" id="online-store">
-  <div class="explore-sell-scroll-stage is-static" data-callout-scroll>
+  <div class="explore-sell-scroll-stage" data-callout-scroll>
     <div class="explore-sell-scroll-pin">
       <div class="container explore-sell-scroll-inner">
         <div class="explore-sell-scroll-intro">
@@ -348,13 +347,13 @@ bodyClass: page-explore
             >
           </button>
           {% endfor %}
-        </div>
           <a
             class="btn btn-primary explore-sell-demo-btn"
             href="{{ explore.demoStoreUrl }}"
             target="_blank"
             rel="noopener noreferrer"
           >{{ exploreHome.sell.demoStore.label }}</a>
+        </div>
         </div>
 
         <div class="explore-sell-story" data-callout-story>
