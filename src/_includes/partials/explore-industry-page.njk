@@ -1,0 +1,201 @@
+{% macro industryBulletList(items) %}
+<ul class="explore-industry-bullet-list">
+  {% for item in items %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% set page = exploreIndustryPages[industry.slug] %}
+
+<section class="section explore-industry-page-hero">
+  <div class="container explore-industry-hero">
+    <div class="explore-industry-hero-copy">
+      <p class="explore-industry-hero-label">{{ page.hero.label }}</p>
+      <h1>{{ page.hero.headline }}</h1>
+      <p class="section-lead explore-industry-hero-lead">{{ page.hero.lead }}</p>
+      <div class="explore-industry-hero-actions">
+        <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
+      </div>
+    </div>
+    <img src="{{ industry.image }}" alt="{{ industry.imageAlt }}" loading="eager" width="960" height="640">
+  </div>
+</section>
+
+<section class="section section-alt explore-industry-model">
+  <div class="container">
+    <div class="explore-industry-section-intro">
+      <h2 class="section-title explore-industry-section-title">{{ page.model.title }}</h2>
+    </div>
+    {{ industryBulletList(page.model.points) }}
+  </div>
+</section>
+
+<section class="section explore-industry-workflow">
+  <div class="container">
+    <div class="explore-industry-section-intro">
+      <h2 class="section-title explore-industry-section-title">{{ page.workflow.title }}</h2>
+      {% if page.workflow.summary %}
+      <p class="explore-industry-body-copy">{{ page.workflow.summary }}</p>
+      {% endif %}
+    </div>
+    {% if page.workflow.image %}
+    <figure class="explore-industry-workflow-shot-wrap">
+      <img
+        class="explore-industry-workflow-shot"
+        src="{{ page.workflow.image.src }}"
+        alt="{{ page.workflow.image.alt }}"
+        loading="lazy"
+        width="1600"
+        height="1000"
+      >
+    </figure>
+    {% endif %}
+    {% if page.workflow.callouts %}
+    <div class="explore-industry-workflow-callouts">
+      {% for item in page.workflow.callouts %}
+      <article class="explore-industry-workflow-callout">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section section-alt explore-industry-capabilities">
+  <div class="container">
+    {% if page.capabilities.title %}
+    <div class="explore-industry-section-intro">
+      <h2 class="section-title explore-industry-section-title">{{ page.capabilities.title }}</h2>
+    </div>
+    {% endif %}
+    <div class="explore-industry-capability-groups">
+      {% for group in page.capabilities.groups %}
+      <article class="explore-industry-capability-group">
+        <h3 class="explore-industry-capability-group-title">{{ group.title }}</h3>
+        {{ industryBulletList(group.items) }}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section explore-industry-onboarding">
+  <div class="container">
+    <div class="explore-industry-section-intro">
+      <h2 class="section-title explore-industry-section-title">{{ page.onboarding.title }}</h2>
+      <p class="explore-industry-body-copy">{{ page.onboarding.lead }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt explore-industry-testimonial">
+  <div class="container">
+    <h2 class="section-title">{{ page.testimonial.title }}</h2>
+    {% set story = page.testimonial.story %}
+    <article
+      class="explore-proof-card explore-industry-proof-card"
+      data-proof-card
+      data-proof-business="{{ story.business }}"
+      data-proof-name="{{ story.name }}"
+      data-proof-role="{{ story.role }}"
+      {% if story.logo %}data-proof-logo="{{ story.logo }}"{% endif %}
+      {% if story.logoAlt %}data-proof-logo-alt="{{ story.logoAlt }}"{% endif %}
+      {% if story.websiteUrl %}data-proof-website="{{ story.websiteUrl }}"{% endif %}
+    >
+      <div class="explore-proof-card-body">
+        <header class="explore-proof-card-header">
+          {% if story.logo %}
+          {% if story.websiteUrl %}
+          <a href="{{ story.websiteUrl }}" class="explore-proof-logo-link" target="_blank" rel="noopener noreferrer" aria-label="{{ story.logoAlt or story.business }}">
+            <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
+          </a>
+          {% else %}
+          <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
+          {% endif %}
+          {% endif %}
+          <div class="explore-proof-card-heading">
+            {% if story.websiteUrl %}
+            <h3 class="explore-proof-title">
+              <a href="{{ story.websiteUrl }}" target="_blank" rel="noopener noreferrer">{{ story.business }}</a>
+            </h3>
+            {% else %}
+            <h3 class="explore-proof-title">{{ story.business }}</h3>
+            {% endif %}
+            {% if story.industry %}
+            <span class="explore-proof-industry">{{ story.industry }}</span>
+            {% endif %}
+          </div>
+        </header>
+        <blockquote class="explore-proof-quote explore-industry-proof-quote">
+          <div class="explore-industry-proof-quote-text">
+            {% set quoteParagraphs = story.quoteParagraphs or [story.quote] %}
+            {% set previewCount = story.previewParagraphs or 2 %}
+            {% for paragraph in quoteParagraphs %}
+            <p{% if loop.index > previewCount %} data-industry-quote-rest hidden{% endif %}{% if loop.index == previewCount %} data-industry-quote-preview-end{% endif %}>{{ paragraph }}</p>
+            {% endfor %}
+          </div>
+        </blockquote>
+        {% if (quoteParagraphs | length) > previewCount %}
+        <div class="explore-proof-read-more-slot">
+          <button
+            type="button"
+            class="explore-proof-read-more"
+            data-industry-quote-toggle
+            aria-expanded="false"
+            aria-label="Read full review from {{ story.name }}"
+          >Read full review</button>
+        </div>
+        {% endif %}
+      </div>
+      <footer class="explore-proof-attribution">
+        <cite>{{ story.name }}</cite>
+        <span>{{ story.role }}</span>
+      </footer>
+    </article>
+  </div>
+</section>
+
+<section class="section section-faq explore-faq explore-industry-faq">
+  <div class="container">
+    <h2 class="section-title">{{ page.faq.title }}</h2>
+    <div class="faq-list">
+      {% for item in page.faq.items %}
+      <details class="faq-item">
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.answer }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% set ctaHeading = page.cta.headline %}
+{% set ctaLead = page.cta.lead %}
+{% include "partials/explore-cta.njk" %}
+
+<dialog class="explore-proof-modal" data-proof-modal aria-labelledby="proof-modal-title">
+  <div class="explore-proof-modal-panel">
+    <button type="button" class="explore-proof-modal-close" data-proof-modal-close aria-label="Close full review">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <header class="explore-proof-modal-header">
+      <img class="explore-proof-modal-logo" data-proof-modal-logo src="" alt="" width="80" height="80" hidden>
+      <div class="explore-proof-modal-heading">
+        <h3 class="explore-proof-modal-business" id="proof-modal-title" data-proof-modal-business></h3>
+      </div>
+    </header>
+    <blockquote class="explore-proof-modal-quote">
+      <p data-proof-modal-quote></p>
+    </blockquote>
+    <footer class="explore-proof-modal-footer">
+      <div class="explore-proof-modal-attribution">
+        <cite data-proof-modal-name></cite>
+        <span data-proof-modal-role></span>
+      </div>
+      <a class="explore-proof-modal-website" data-proof-modal-website href="#" target="_blank" rel="noopener noreferrer" hidden>Visit website</a>
+    </footer>
+  </div>
+</dialog>

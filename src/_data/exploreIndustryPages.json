@@ -1,0 +1,137 @@
+{
+  "surf-camps": {
+    "hero": {
+      "label": "Surf Camps",
+      "headline": "Booking and operations software for surf camps",
+      "lead": "Sell beds, lessons and packages together, then manage the camp from one place."
+    },
+    "model": {
+      "title": "Built around how surf camps actually work",
+      "points": [
+        "Rooms and individual dorm beds",
+        "Surf weeks with fixed or flexible dates",
+        "Lessons scheduled across selected days",
+        "Rentals, transfers and extras",
+        "Direct, partner and agent bookings",
+        "Shared availability across every way you sell"
+      ]
+    },
+    "workflow": {
+      "title": "One booking connects the whole stay",
+      "summary": "A guest can book accommodation, lessons and extras together. Hightide keeps availability updated and gives your team one booking from which to manage the complete stay.",
+      "image": {
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Surf camp booking workspace with accommodation, lessons and payments"
+      },
+      "callouts": [
+        {
+          "title": "Everything booked together",
+          "text": "Beds, lessons, rentals, transfers and extras."
+        },
+        {
+          "title": "Availability stays connected",
+          "text": "Accommodation and activity capacity update automatically."
+        },
+        {
+          "title": "One place for the team",
+          "text": "Manage payments, guest details, notes and the complete stay."
+        }
+      ]
+    },
+    "capabilities": {
+      "title": "Everything your surf camp needs in one system",
+      "groups": [
+        {
+          "title": "Packages and availability",
+          "items": [
+            "Sell rooms and dorm beds separately or in packages",
+            "Offer fixed-date or flexible packages",
+            "Add lessons for the full stay or selected days",
+            "Keep availability connected across rooms, beds and packages"
+          ]
+        },
+        {
+          "title": "Partners and distribution",
+          "items": [
+            "Partner referral links",
+            "Booking codes for surf agents",
+            "Commission and settlement reporting",
+            "Channel manager connection for accommodation"
+          ]
+        },
+        {
+          "title": "Camp operations",
+          "items": [
+            "Daily arrivals, departures and lessons",
+            "Guest balances, notes and internal flags",
+            "Shared booking information for seasonal teams",
+            "Booking, payment and customer reports"
+          ]
+        }
+      ]
+    },
+    "onboarding": {
+      "title": "Built around your surf camp",
+      "lead": "We begin by understanding how you sell accommodation, structure lessons, build packages and work with partners. Then we prepare a starter Hightide setup around your operation."
+    },
+    "testimonial": {
+      "title": "What surf camp operators say",
+      "excerpt": "Since moving to Hightide, I spend only about 10% of the time I used to on emails and booking administration.",
+      "story": {
+        "logo": "/assets/images/testimonials/surf-and-travel-morocco.png",
+        "logoAlt": "Surf & Travel Morocco",
+        "websiteUrl": "https://surfandtravelmorocco.com/",
+        "quote": "Since moving to Hightide, I spend only about 10% of the time I used to on emails and booking administration. Before, every enquiry meant creating a personalised quote by email and manually entering bookings into Excel spreadsheets, a shared calendar and OneNote. Only around 30–40% of those enquiries actually became bookings, so a huge amount of time was spent on emails that never led anywhere. We worked like that for years because we couldn't find a booking system that was both affordable and flexible enough for our business. Our surf camp packages aren't priced by nightly rates, so most systems simply couldn't handle the way we sell and price our packages. With Hightide, guests can now see the different package lengths, room types and options online and book exactly what they need without waiting for a personalised quote. At reception, our staff have a much clearer overview of bookings, payments, check-ins, check-outs and guest add-ons, making day-to-day operations much smoother and easier to manage. Hightide has allowed us to keep the way our business works while removing almost all of the manual administration that used to come with it. It's saved us an incredible amount of time, made life much easier for our team, and finally gave us a booking system that fits the way our business actually operates.",
+        "quoteParagraphs": [
+          "Since moving to Hightide, I spend only about 10% of the time I used to on emails and booking administration.",
+          "Before, every enquiry meant creating a personalised quote by email and manually entering bookings into Excel spreadsheets, a shared calendar and OneNote. Only around 30–40% of those enquiries actually became bookings, so a huge amount of time was spent on emails that never led anywhere.",
+          "We worked like that for years because we couldn't find a booking system that was both affordable and flexible enough for our business. Our surf camp packages aren't priced by nightly rates, so most systems simply couldn't handle the way we sell and price our packages.",
+          "With Hightide, guests can now see the different package lengths, room types and options online and book exactly what they need without waiting for a personalised quote. At reception, our staff have a much clearer overview of bookings, payments, check-ins, check-outs and guest add-ons, making day-to-day operations much smoother and easier to manage.",
+          "Hightide has allowed us to keep the way our business works while removing almost all of the manual administration that used to come with it. It's saved us an incredible amount of time, made life much easier for our team, and finally gave us a booking system that fits the way our business actually operates."
+        ],
+        "previewParagraphs": 2,
+        "name": "Dani",
+        "role": "Founder",
+        "business": "Surf & Travel Morocco",
+        "industry": "Surf Camp"
+      }
+    },
+    "faq": {
+      "title": "Surf camp FAQs",
+      "items": [
+        {
+          "question": "Can I sell individual dorm beds?",
+          "answer": "Yes. You can sell individual dorm beds, shared rooms and private rooms as separate listings, each with its own availability and pricing."
+        },
+        {
+          "question": "Can the same room be sold alone and in a package?",
+          "answer": "Yes. The same bed or room can appear as a standalone stay and as part of a surf package. When it is booked in one place, availability updates everywhere else it is offered."
+        },
+        {
+          "question": "Can lessons be scheduled on selected days?",
+          "answer": "Yes. Lessons can be included for a full stay or added only on the days a guest needs them, as part of a package or through your Online Store."
+        },
+        {
+          "question": "Can guests book accommodation, lessons and extras together?",
+          "answer": "Yes. Guests can combine accommodation, lessons, rentals, transfers and extras in one booking flow, whether they choose a package or build their own stay."
+        },
+        {
+          "question": "Can I create both fixed-date and flexible packages?",
+          "answer": "Yes. You can publish fixed-date surf weeks alongside open-date packages or flexible stays, all from the same inventory."
+        },
+        {
+          "question": "How are agent bookings and commissions handled?",
+          "answer": "Partners can use trackable referral links or booking codes. Hightide attributes their bookings, supports paid-to-partner arrangements and provides commission and settlement reporting."
+        },
+        {
+          "question": "Can accommodation connect to Airbnb and Booking.com?",
+          "answer": "Yes. Hightide supports channel manager integrations so accommodation availability stays aligned with platforms such as Airbnb, Booking.com, Hostelworld, Expedia and Vrbo."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your surf camp",
+      "lead": "Tell us how you currently sell beds, lessons and packages. We'll show you how Hightide could bring the different parts together."
+    }
+  }
+}

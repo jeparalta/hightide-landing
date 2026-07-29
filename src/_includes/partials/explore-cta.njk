@@ -3,17 +3,29 @@
     <div class="explore-cta-band">
       <div class="explore-cta-band-inner">
         <h2 class="explore-cta-heading">
+          {% if ctaHeading %}
+          <span class="explore-cta-heading-desktop">{{ ctaHeading }}</span>
+          <span class="explore-cta-heading-mobile">{{ ctaHeading }}</span>
+          {% else %}
           <span class="explore-cta-heading-desktop">See how Hightide could work<br>for your business</span>
           <span class="explore-cta-heading-mobile">See how Hightide could<br>work for your business</span>
+          {% endif %}
         </h2>
-        <p class="explore-cta-lead">Tell us how you sell and manage bookings today. We'll see whether Hightide fits and what your setup could look like.</p>
+        <p class="explore-cta-lead">{{ ctaLead or "Tell us how you sell and manage bookings today. We'll see whether Hightide fits and what your setup could look like." }}</p>
         <div class="explore-cta-actions">
           <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">Book a Discovery Call</a>
         </div>
         <p class="explore-cta-alt">
           <span class="explore-cta-alt-label">Prefer to explore on your own?</span>
           <span class="explore-cta-alt-links">
+            {% if ctaSecondaryLinks %}
+            {% for link in ctaSecondaryLinks %}
+            {% if not loop.first %}<span class="explore-cta-alt-sep" aria-hidden="true"> · </span>{% endif %}
+            <a href="{{ link.url }}"{% if link.external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.label }}</a>
+            {% endfor %}
+            {% else %}
             <a href="/video-tutorials/">Watch Video Tutorials</a><span class="explore-cta-alt-sep" aria-hidden="true"> · </span><a href="{{ site.signupUrl }}">Start a Free Trial</a>
+            {% endif %}
           </span>
         </p>
       </div>

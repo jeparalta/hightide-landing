@@ -1500,7 +1500,10 @@
           return;
         }
 
-        button.hidden = !isProofExcerptTruncated(excerpt);
+        button.hidden = !(
+          card.classList.contains('explore-industry-proof-card')
+          || isProofExcerptTruncated(excerpt)
+        );
       });
     }
 
@@ -1657,5 +1660,55 @@
     scheduleProofReadMoreUpdate();
     updateProofCarouselState();
   }
+
+  document.querySelectorAll('[data-industry-manage-tabs]').forEach(function (tabList) {
+    const tabs = tabList.querySelectorAll('[data-industry-manage-tab]');
+    const panels = tabList.parentElement.querySelectorAll('[data-industry-manage-panel]');
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (item, itemIndex) {
+          const selected = itemIndex === index;
+          item.setAttribute('aria-selected', selected ? 'true' : 'false');
+          item.tabIndex = selected ? 0 : -1;
+        });
+
+        panels.forEach(function (panel, panelIndex) {
+          const active = panelIndex === index;
+          panel.classList.toggle('is-active', active);
+          panel.hidden = !active;
+        });
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-industry-quote-toggle]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const card = button.closest('[data-proof-card]');
+      if (!card) {
+        return;
+      }
+
+      const quoteBlock = card.querySelector('.explore-industry-proof-quote');
+      const hiddenParagraphs = card.querySelectorAll('[data-industry-quote-rest]');
+      if (!hiddenParagraphs.length) {
+        return;
+      }
+
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const nextExpanded = !isExpanded;
+
+      hiddenParagraphs.forEach(function (paragraph) {
+        paragraph.hidden = !nextExpanded;
+      });
+
+      if (quoteBlock) {
+        quoteBlock.classList.toggle('is-expanded', nextExpanded);
+      }
+
+      button.setAttribute('aria-expanded', nextExpanded ? 'true' : 'false');
+      button.textContent = nextExpanded ? 'Show less' : 'Read full review';
+    });
+  });
 
 })();

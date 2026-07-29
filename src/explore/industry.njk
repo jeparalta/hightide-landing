@@ -9,6 +9,9 @@ eleventyExcludeFromCollections: true
 bodyClass: page-explore
 ---
 
+{% if exploreIndustryPages[industry.slug] %}
+{% include "partials/explore-industry-page.njk" %}
+{% else %}
 <section class="section">
   <div class="container explore-industry-hero">
     <div>
@@ -44,11 +47,5 @@ bodyClass: page-explore
   </div>
 </section>
 
-<section class="section">
-  <div class="container prose">
-    <h2>Explore more</h2>
-    <p>See <a href="/video-tutorials/">Video Tutorials</a> to watch the platform in action. You can also <a href="/">return to the homepage</a> or <a href="{{ explore.primaryCtaUrl }}">book a discovery call</a>.</p>
-  </div>
-</section>
-
 {% include "partials/explore-cta.njk" %}
+{% endif %}
