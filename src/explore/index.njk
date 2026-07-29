@@ -251,7 +251,7 @@ bodyClass: page-explore
 </article>
 {% endmacro %}
 
-{% macro integrationLineArt(src, width, height, from, to, orbit, index, fixed) %}
+{% macro integrationLineArt(src, width, height, from, to, orbit, index, fixed, offsetX, offsetY) %}
 <img
   class="explore-integration-line explore-integration-line-art"
   data-integration-line
@@ -263,6 +263,8 @@ bodyClass: page-explore
   data-line-art-to="{{ to }}"
   data-orbit-x="{{ orbit.x }}"
   data-orbit-y="{{ orbit.y }}"
+  {% if offsetX %}data-line-art-offset-x="{{ offsetX }}"{% endif %}
+  {% if offsetY %}data-line-art-offset-y="{{ offsetY }}"{% endif %}
   {% if fixed %}
   data-line-art-fixed-left="{{ fixed.left }}"
   data-line-art-fixed-top="{{ fixed.top }}"
@@ -531,7 +533,7 @@ bodyClass: page-explore
             {{ integrationLineArt("/assets/images/integrations/connectors/channel-manager-arrow.png?v=3", 235, 307, "br", "tl", integrationOrbits[0], 0) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/payments-arrow.png?v=3", 284, 200, "bl", "tr", integrationOrbits[1], 1) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/invoicing-arrow-v2.png", 350, 135, "tl", "br", integrationOrbits[2], 2) }}
-            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png?v=3", 64, 304, "tl", "bl", integrationOrbits[3], 3) }}
+            {{ integrationLineArt("/assets/images/integrations/connectors/analytics-arrow-v5.png?v=3", 64, 304, "tl", "bl", integrationOrbits[3], 3, null, -10) }}
             {{ integrationLineArt("/assets/images/integrations/connectors/partners-arrow.png?v=3", 480, 108, "tr", "tl", integrationOrbits[4], 4) }}
           </div>
           <div class="explore-integrations-logo" aria-hidden="true">

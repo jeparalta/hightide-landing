@@ -1096,9 +1096,11 @@
       const height = width * (artHeight / artWidth);
       const from = imageEl.dataset.lineArtFrom || 'tl';
       const originOffset = getIntegrationLineArtOriginOffset(from, width, height);
+      const offsetX = parseFloat(imageEl.dataset.lineArtOffsetX) || 0;
+      const offsetY = parseFloat(imageEl.dataset.lineArtOffsetY) || 0;
 
-      imageEl.style.left = `${startPx.x - hubRect.left - originOffset.x}px`;
-      imageEl.style.top = `${startPx.y - hubRect.top - originOffset.y}px`;
+      imageEl.style.left = `${startPx.x - hubRect.left - originOffset.x + offsetX}px`;
+      imageEl.style.top = `${startPx.y - hubRect.top - originOffset.y + offsetY}px`;
       imageEl.style.width = `${width}px`;
       imageEl.style.height = `${height}px`;
       imageEl.style.transformOrigin = getIntegrationLineArtTransformOrigin(from);

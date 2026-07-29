@@ -31,12 +31,12 @@
       },
       {
         "title": "Build flexible packages",
-        "text": "Offer ready-made packages or let guests build their own.",
+        "text": "Create ready-made packages with the dates and conditions you need, or let guests build their own.",
         "faIcon": "fa-solid fa-puzzle-piece"
       },
       {
-        "title": "Keep availability connected",
-        "text": "Manage availability whether something is booked separately or within a package.",
+        "title": "Keep availability in sync",
+        "text": "Room and activity availability stays updated whether sold separately or within a package.",
         "faIcon": "fa-solid fa-calendar-check"
       },
       {
@@ -76,43 +76,43 @@
       {
         "tabLabel": "Calendar",
         "title": "Calendar",
-        "text": "See accommodation, activities and packages in one connected calendar.",
+        "text": "Your operational hub for accommodation, activities and packages.",
         "src": "/assets/images/tab-calendar-1.webp",
         "alt": "Hightide calendar",
         "icon": "/assets/images/icons/calendar.png",
         "capabilities": [
-          "Connected availability",
-          "Linked accommodation and activities",
-          "Add bookings directly",
-          "Block unavailable dates"
+          "See your whole operation at a glance",
+          "Track payments, check-ins and internal flags",
+          "Share the calendar with your team",
+          "Create and update bookings or block dates"
         ]
       },
       {
         "tabLabel": "Bookings",
         "title": "Booking Workspace",
-        "text": "Keep guest details, items, balances, notes and communication together.",
-        "src": "/assets/images/tab-bookings-list.jpg",
-        "alt": "Hightide bookings list",
+        "text": "Everything your team needs to manage each booking from one shared workspace.",
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Hightide booking workspace",
         "icon": "/assets/images/icons/booking-workspace.png",
         "capabilities": [
-          "Guest details, items and statuses",
-          "Notes and team comments",
-          "Payments and payment requests",
-          "Emails and invoices"
+          "Guest details, booked items and status",
+          "Notes, emails, files and staff comments",
+          "Payments, invoices and price adjustments",
+          "Update items, add extras or cancel bookings"
         ]
       },
       {
-        "tabLabel": "Day Planner",
-        "title": "Day Planner and Operations",
-        "text": "See what is happening today and keep the team informed.",
-        "src": "/assets/images/tab-bookings-2.webp",
-        "alt": "Hightide day planner",
+        "tabLabel": "Planning",
+        "title": "Planning and Reports",
+        "text": "See what is happening today, what is coming next and how your business is performing.",
+        "src": "/assets/images/tab-bookings-list.jpg",
+        "alt": "Hightide planning and reports",
         "icon": "/assets/images/icons/notes.png",
         "capabilities": [
-          "Daily accommodation and activity overview",
-          "Arrivals and departures",
-          "Booking lists and reports",
-          "Team access levels"
+          "Check-ins, in-house guests and check-outs",
+          "Today's tours, lessons and activities",
+          "Filterable booking lists and latest bookings",
+          "Booking, transaction and customer reports"
         ]
       }
     ]
@@ -231,8 +231,8 @@
     ]
   },
   "industries": {
-    "title": "Built for accommodation, activities and packages",
-    "lead": "Hightide fits many types of operation. Pick the segment closest to yours. Each page explains how sell and manage work for a business like yours, without narrowing what the platform can do.",
+    "title": "Designed to Fit Your Business",
+    "lead": "For accommodation and activity businesses that do things a little differently.",
     "homeCards": [
       { "slug": "surf-camps" },
       { "slug": "yoga-retreats" },
