@@ -331,6 +331,7 @@ bodyClass: page-explore
         </div>
 
         <div class="explore-sell-montage-wrap">
+        <div class="explore-sell-media" data-sell-media>
         <div class="explore-sell-montage">
           {% for image in exploreHome.sell.images %}
           <button
@@ -349,13 +350,31 @@ bodyClass: page-explore
             >
           </button>
           {% endfor %}
-          <a
-            class="btn btn-primary explore-sell-demo-btn"
-            href="{{ explore.demoStoreUrl }}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >{{ exploreHome.sell.demoStore.label }}</a>
         </div>
+        <div class="explore-sell-video-clip">
+          <video
+            class="explore-sell-video"
+            data-sell-video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="A short demonstration of the Hightide Online Store booking process"
+          >
+            <source
+              src="/assets/videos/hightide-online-store-booking-flow.mp4"
+              type="video/mp4"
+            >
+          </video>
+        </div>
+        </div>
+        <a
+          class="btn btn-primary explore-sell-demo-btn"
+          href="{{ explore.demoStoreUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ exploreHome.sell.demoStore.label }}</a>
         </div>
 
         <div class="explore-sell-story" data-callout-story>

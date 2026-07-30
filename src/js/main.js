@@ -604,6 +604,107 @@
     }
   }
 
+  const sellMedia = document.querySelector('[data-sell-media]');
+  const sellVideo = document.querySelector('[data-sell-video]');
+
+  if (sellMedia && sellVideo) {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    if (prefersReducedMotion) {
+      sellVideo.removeAttribute('autoplay');
+      sellVideo.querySelectorAll('source').forEach(function (source) {
+        source.remove();
+      });
+      sellVideo.removeAttribute('src');
+      try {
+        sellVideo.load();
+      } catch (error) {
+        // Ignore load errors when clearing media for reduced motion.
+      }
+    } else {
+      let videoRevealed = false;
+      let videoFailed = false;
+      let playRequested = false;
+
+      function failSellVideo() {
+        if (videoFailed) {
+          return;
+        }
+        videoFailed = true;
+        sellMedia.classList.remove('is-video-ready');
+        sellMedia.classList.add('is-video-fallback');
+        try {
+          sellVideo.pause();
+        } catch (error) {
+          // Ignore pause errors on unsupported media.
+        }
+      }
+
+      function revealSellVideo() {
+        if (videoFailed || videoRevealed) {
+          return;
+        }
+        videoRevealed = true;
+        sellMedia.classList.add('is-video-ready');
+      }
+
+      function tryPlaySellVideo() {
+        if (videoFailed || playRequested) {
+          return;
+        }
+
+        playRequested = true;
+        sellVideo.muted = true;
+        sellVideo.defaultMuted = true;
+        sellVideo.playsInline = true;
+
+        const playAttempt = sellVideo.play();
+        if (playAttempt && typeof playAttempt.then === 'function') {
+          playAttempt.then(revealSellVideo).catch(function () {
+            playRequested = false;
+            failSellVideo();
+          });
+        } else if (!sellVideo.paused) {
+          revealSellVideo();
+        } else {
+          playRequested = false;
+        }
+      }
+
+      sellVideo.addEventListener('error', failSellVideo);
+      sellVideo.addEventListener('canplay', tryPlaySellVideo);
+
+      function armSellVideo() {
+        if (videoFailed) {
+          return;
+        }
+        if (sellVideo.readyState >= 2) {
+          tryPlaySellVideo();
+        }
+      }
+
+      if ('IntersectionObserver' in window) {
+        const sellVideoObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting || videoFailed) {
+                return;
+              }
+              sellVideoObserver.disconnect();
+              armSellVideo();
+            });
+          },
+          { rootMargin: '200px 0px', threshold: 0.1 },
+        );
+        sellVideoObserver.observe(sellMedia);
+      } else {
+        armSellVideo();
+      }
+    }
+  }
+
   const montageLightbox = document.querySelector('[data-montage-lightbox]');
   const montageOpeners = document.querySelectorAll('[data-montage-open]');
 
