@@ -39,8 +39,18 @@ bodyClass: page-explore
         {% if industry.directoryGroup == group.id %}
         <li>
           <a class="explore-industry-directory-link" href="/explore/industries/{{ industry.slug }}/">
-            <span class="explore-industry-directory-name">{{ industry.name }}</span>
-            <span class="explore-industry-directory-blurb">{{ industry.directoryBlurb }}</span>
+            <img
+              class="explore-industry-directory-thumb"
+              src="{{ industry.image }}"
+              alt="{{ industry.imageAlt }}"
+              loading="lazy"
+              width="120"
+              height="90"
+            >
+            <span class="explore-industry-directory-copy">
+              <span class="explore-industry-directory-name">{{ industry.name }}</span>
+              <span class="explore-industry-directory-blurb">{{ industry.directoryBlurb }}</span>
+            </span>
           </a>
         </li>
         {% endif %}

@@ -409,6 +409,8 @@ body.page-explore .explore-sandbox {
   cursor: pointer;
   opacity: 0;
   transform: translateY(110%);
+  /* Invisible pre-reveal cards sit over the badge row; ignore clicks until shown. */
+  pointer-events: none;
   transition:
     transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -425,6 +427,7 @@ body.page-explore .explore-sandbox {
 .explore-industry-card.is-visible {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .explore-industry-card:hover {
@@ -1270,16 +1273,19 @@ body.page-explore .explore-sandbox {
 
 .explore-industry-directory-hero {
   padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .explore-industry-directory-title {
-  text-align: left;
-  max-width: 18ch;
+  text-align: center;
+  max-width: none;
+  margin-inline: auto;
 }
 
 .explore-industry-directory-hero .section-lead {
-  text-align: left;
+  text-align: center;
   margin-top: 0.85rem;
+  margin-inline: auto;
   max-width: 40rem;
 }
 
@@ -1303,8 +1309,10 @@ body.page-explore .explore-sandbox {
 
 .explore-industry-directory-link {
   display: grid;
-  gap: 0.2rem;
-  padding: 0.95rem 1.05rem;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.7rem 0.85rem 0.7rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: #fff;
@@ -1323,6 +1331,21 @@ body.page-explore .explore-sandbox {
   outline-offset: 3px;
 }
 
+.explore-industry-directory-thumb {
+  display: block;
+  width: 5.5rem;
+  height: 4.15rem;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--bg);
+}
+
+.explore-industry-directory-copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
 .explore-industry-directory-name {
   font-weight: 600;
   color: var(--primary-1);
@@ -1332,6 +1355,19 @@ body.page-explore .explore-sandbox {
   font-size: 0.92rem;
   line-height: 1.45;
   color: var(--neutral-600);
+}
+
+@media (min-width: 720px) {
+  .explore-industry-directory-link {
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1.05rem;
+    padding: 0.75rem 1.05rem 0.75rem 0.75rem;
+  }
+
+  .explore-industry-directory-thumb {
+    width: 7rem;
+    height: 5.25rem;
+  }
 }
 
 .explore-industry-directory-back {
@@ -3876,6 +3912,7 @@ body.page-explore .section-alt {
   .explore-industry-card {
     opacity: 1;
     transform: none;
+    pointer-events: auto;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
