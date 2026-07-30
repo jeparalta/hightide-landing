@@ -2,164 +2,220 @@
   {
     "slug": "surf-camps",
     "name": "Surf Camps",
-    "title": "Surf Camps | Hightide Explore",
+    "title": "Surf Camp Booking Software | Hightide",
     "description": "Booking and operations software for surf camps. Sell beds, lessons and packages together, then manage the camp from one place.",
     "image": "/assets/images/use-surf-camp.jpg",
     "imageAlt": "Surf camp group lesson",
-    "icon": "/assets/images/icons/surf-camps.png",
+    "tier": "full",
     "featured": true,
-    "showOnExploreHome": true,
+    "directoryGroup": "camps-and-retreats",
     "cardTeaser": "Sell beds, lessons and packages together, then manage the camp from one place.",
-    "heroLead": "Sell beds, lessons and packages together, then manage the camp from one place.",
-    "challenges": [
-      "Rooms, lessons and packages sold through different systems",
-      "Partner and agent bookings tracked in spreadsheets",
-      "Daily schedules spread across calendars, WhatsApp and email"
-    ],
-    "solutions": [
-      "Multi-listing sales: accommodation, weekly packages and fixed-date camps from one store",
-      "Partner referral URLs, commission tracking and settlement reporting",
-      "Day planner and booking lists so managers see the full picture each morning"
-    ]
+    "directoryBlurb": "Sell beds, lessons and packages together, then manage the camp from one place."
   },
   {
-    "slug": "yoga-retreats",
-    "name": "Yoga Retreats",
-    "cardName": "Retreats",
-    "title": "Yoga Retreats | Hightide Explore",
-    "description": "Flexible and fixed-date retreat booking with guest management, payments and operations in one place.",
+    "slug": "retreats",
+    "name": "Retreats",
+    "title": "Retreat Booking Software | Hightide",
+    "description": "Booking and operations software for retreats. Offer fixed-date programmes or flexible stays, and manage rooms, activities, deposits and guest details in one place.",
     "image": "/assets/images/use-retreat.jpg",
-    "imageAlt": "Yoga retreat",
-    "icon": "/assets/images/icons/retreats.png",
+    "imageAlt": "Retreat gathering outdoors",
+    "tier": "full",
     "featured": true,
-    "showOnExploreHome": true,
+    "directoryGroup": "camps-and-retreats",
     "cardTeaser": "Offer fixed-date programmes or flexible stays. Manage rooms, activities, deposits and guest details in one place.",
-    "heroLead": "Offer flexible dates or set programs, take deposits online, and run the retreat from a single operational workspace.",
-    "challenges": [
-      "Fixed-date and flexible retreats need different selling models",
-      "Guest dietary and room preferences lost between booking and arrival",
-      "Balance payments and add-ons handled manually"
-    ],
-    "solutions": [
-      "Fixed-date retreats and open-date stays as separate listings on the same inventory",
-      "Guest notes, flags and internal comments on every booking",
-      "Deposits, payment requests and balance tracking with Stripe"
-    ]
-  },
-  {
-    "slug": "accommodation",
-    "name": "Accommodation Businesses",
-    "cardName": "Accommodation",
-    "title": "Multi-Service Accommodation | Hightide Explore",
-    "description": "Accommodation businesses combining rooms, services and packages — beyond a simple PMS.",
-    "image": "/assets/images/use-accommodation.jpg",
-    "imageAlt": "Accommodation exterior",
-    "icon": "/assets/images/icons/accommodation.png",
-    "featured": false,
-    "showOnExploreHome": true,
-    "cardTeaser": "Sell rooms, beds, extras and activities. Manage the complete guest stay from one platform.",
-    "heroLead": "When you sell more than nights — tours, rentals, retreats and packages — you need more than a booking engine.",
-    "challenges": [
-      "PMS handles rooms but not tours, rentals or packages",
-      "Operations live in email, spreadsheets and separate channel tools",
-      "Owners want control without hiring an ops manager"
-    ],
-    "solutions": [
-      "Accommodation, activities, rentals and packages in one platform",
-      "Every booking is an operational workspace — not just a reservation row",
-      "Guided setup based on how your business sells, books and runs day to day"
-    ]
-  },
-  {
-    "slug": "activity-providers",
-    "name": "Activity Providers",
-    "title": "Activity Providers | Hightide Explore",
-    "description": "Sell lessons, tours and rentals online with linked availability when guides or equipment are shared.",
-    "image": "/assets/images/use-tours.jpg",
-    "imageAlt": "Guided outdoor activity",
-    "icon": "/assets/images/icons/dive-centres.png",
-    "featured": false,
-    "showOnExploreHome": true,
-    "cardTeaser": "Take bookings for tours, lessons and rentals with linked availability for shared resources.",
-    "heroLead": "Sell activities online, coordinate shared guides and equipment, and keep every booking in one operational workspace.",
-    "challenges": [
-      "Multiple activity types compete for the same instructors or gear",
-      "Website enquiries and walk-ins tracked separately from online sales",
-      "Payment collection and schedule changes handled over email"
-    ],
-    "solutions": [
-      "Linked availability across activities that share guides, boats or equipment",
-      "Online store for instant booking or request-only workflows",
-      "Day planner and booking workspace for the whole team"
-    ]
+    "directoryBlurb": "Run fixed-date programmes and flexible stays with rooms, activities and guest details in one booking system."
   },
   {
     "slug": "adventure-lodges",
     "name": "Adventure Lodges",
-    "title": "Adventure Lodges | Hightide Explore",
-    "description": "Adventure lodges: sell stays, guided activities and extras from one connected operation.",
+    "title": "Adventure Lodge Booking Software | Hightide",
+    "description": "Booking and operations software for adventure lodges. Sell lodging, guided activities and packages together, with every booking managed in one place.",
     "image": "/assets/images/use-adventure.jpg",
-    "imageAlt": "Adventure lodge",
-    "icon": "/assets/images/icons/adventure-lodges.png",
+    "imageAlt": "Adventure lodge in a mountain setting",
+    "tier": "full",
     "featured": false,
-    "showOnExploreHome": true,
-    "cardTeaser": "Sell lodging and guided activities together. Give your team one place to manage every booking.",
-    "heroLead": "Guests book lodging and adventures together; your team runs the week from one operational hub.",
-    "challenges": [
-      "Lodging plus daily activities with different capacity rules",
-      "Channel manager beds while activities stay direct",
-      "On-site changes need to reach the whole team instantly"
-    ],
-    "solutions": [
-      "Channel manager for Airbnb and Booking.com plus direct activity sales",
-      "Booking workspace with notes, flags and staff comments",
-      "Accommodation and activity overviews for each day"
+    "directoryGroup": "accommodation-and-destinations",
+    "cardTeaser": "Sell lodging, guided activities and packages together, with every booking managed in one place.",
+    "directoryBlurb": "Connect lodge stays with guided activities and packages in one operational booking workspace."
+  },
+  {
+    "slug": "guesthouses-and-bbs",
+    "name": "Guesthouses & B&Bs",
+    "cardName": "Guesthouses & B&Bs",
+    "title": "Booking Software for Guesthouses and B&Bs | Hightide",
+    "description": "Grow direct bookings for rooms, beds and extras while keeping availability connected to other channels.",
+    "image": "/assets/images/use-accommodation.jpg",
+    "imageAlt": "Guesthouse accommodation exterior",
+    "tier": "full",
+    "featured": false,
+    "directoryGroup": "accommodation-and-destinations",
+    "cardTeaser": "Grow direct bookings for rooms, beds and extras while keeping availability connected to other channels.",
+    "directoryBlurb": "Sell rooms, beds and extras directly while keeping channel availability connected.",
+    "redirectFrom": [
+      "accommodation"
     ]
   },
   {
-    "slug": "dive-centres",
-    "name": "Dive Centres",
-    "title": "Dive Centres & Resorts | Hightide Explore",
-    "description": "Dive centres and resorts: courses, trips, rentals and accommodation in one platform.",
-    "image": "/assets/images/use-boat.jpg",
-    "imageAlt": "Boat on the water",
-    "icon": "/assets/images/icons/dive-centres.png",
+    "slug": "tours-and-activities",
+    "name": "Tours & Activities",
+    "title": "Tour and Activity Booking Software | Hightide",
+    "description": "Take direct bookings for tours, lessons and rentals without paying commission on every booking.",
+    "image": "/assets/images/use-tours.jpg",
+    "imageAlt": "Guided outdoor activity",
+    "tier": "full",
     "featured": false,
-    "showOnExploreHome": false,
-    "cardTeaser": "Coordinate courses, boat trips, rental gear and lodge beds without double bookings on shared resources.",
-    "heroLead": "Coordinate courses, boat trips, equipment rental and lodge beds without double bookings on shared resources.",
-    "challenges": [
-      "Instructors and boats shared across multiple trip types",
-      "Rental gear and course slots with different availability rules",
-      "Resort beds sold alongside daily dive products"
-    ],
-    "solutions": [
-      "Linked availability across activities that share guides or boats",
-      "Rentals, courses and accommodation in one account",
-      "Daily schedules and team visibility for busy seasons"
+    "directoryGroup": "tours-and-adventure",
+    "cardTeaser": "Take direct bookings for tours, lessons and rentals without paying commission on every booking.",
+    "directoryBlurb": "Sell tours, lessons and rentals online with linked capacity and direct payments.",
+    "redirectFrom": [
+      "activity-providers"
     ]
+  },
+  {
+    "slug": "kitesurf-camps",
+    "name": "Kitesurf Camps",
+    "title": "Kitesurf Camp Booking Software | Hightide",
+    "description": "Booking and operations software for kitesurf camps. Sell accommodation, lessons, equipment and transfers in one connected stay.",
+    "image": "/assets/images/industries/kitesurf-camps.jpg",
+    "imageAlt": "Kitesurf camp on open water",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "camps-and-retreats",
+    "directoryBlurb": "Combine accommodation, lessons, equipment and transfers for multi-day kitesurf camps."
+  },
+  {
+    "slug": "snowboard-camps",
+    "name": "Snowboard Camps",
+    "title": "Snowboard Camp Booking Software | Hightide",
+    "description": "Booking and operations software for snowboard camps. Manage fixed camp weeks, coaching, rooms and payment balances in one place.",
+    "image": "/assets/images/industries/snowboard-camps.jpg",
+    "imageAlt": "Snowboard camp in the mountains",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "camps-and-retreats",
+    "directoryBlurb": "Run fixed snowboard weeks with accommodation, coaching, extras and deposits together."
+  },
+  {
+    "slug": "yoga-retreats",
+    "name": "Yoga Retreats",
+    "title": "Yoga Retreat Booking Software | Hightide",
+    "description": "Booking and operations software for yoga retreats. Manage fixed dates, flexible stays, rooms, sessions and guest notes in one place.",
+    "image": "/assets/images/industries/yoga-retreats.jpg",
+    "imageAlt": "Yoga retreat session outdoors",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "camps-and-retreats",
+    "directoryBlurb": "Sell fixed and flexible yoga retreats with rooms, sessions, meals and guest information together."
   },
   {
     "slug": "wellness-retreats",
     "name": "Wellness Retreats",
-    "title": "Wellness Retreats | Hightide Explore",
-    "description": "Wellness retreat operators: centralise bookings, guest care and daily operations.",
-    "image": "/assets/images/use-retreat.jpg",
-    "imageAlt": "Wellness retreat",
-    "icon": "/assets/images/icons/retreats.png",
+    "title": "Wellness Retreat Booking Software | Hightide",
+    "description": "Booking and operations software for wellness retreats. Keep accommodation, treatments, programmes and guest requirements in one booking record.",
+    "image": "/assets/images/industries/wellness-retreats.jpg",
+    "imageAlt": "Wellness retreat setting",
+    "tier": "lightweight",
     "featured": false,
-    "showOnExploreHome": false,
-    "cardTeaser": "Bundle programmes, accommodation and treatments — with guest care visible from booking to check-out.",
-    "heroLead": "From enquiry to check-out, keep programmes, accommodation and guest communication in one structured system.",
-    "challenges": [
-      "Programmes, extras and accommodation bundled in custom ways",
-      "Staff need visibility on arrivals, dietary needs and room moves",
-      "Invoicing and reporting split across tools"
-    ],
-    "solutions": [
-      "Packages that bundle rooms, treatments and activities",
-      "Check-in / check-out and status tracking per booking",
-      "Invoicing, external integrations and operational reporting"
+    "directoryGroup": "camps-and-retreats",
+    "directoryBlurb": "Bundle accommodation, treatments and programmes while keeping guest care visible from booking to departure."
+  },
+  {
+    "slug": "sports-camps",
+    "name": "Sports Camps",
+    "title": "Sports Camp Booking Software | Hightide",
+    "description": "Booking and operations software for sports camps. Manage fixed camp dates, accommodation, coaching and participant details in one place.",
+    "image": "/assets/images/industries/sports-camps.jpg",
+    "imageAlt": "Sports camp group activity",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "camps-and-retreats",
+    "directoryBlurb": "Coordinate accommodation, coaching and multi-day programmes for fixed sports camp dates."
+  },
+  {
+    "slug": "outdoor-activity-centres",
+    "name": "Outdoor Activity Centres",
+    "title": "Outdoor Activity Centre Booking Software | Hightide",
+    "description": "Booking and operations software for outdoor activity centres. Sell multiple tours and activities with shared guides, equipment and daily visibility.",
+    "image": "/assets/images/industries/outdoor-activity-centres.jpg",
+    "imageAlt": "Outdoor activity centre outing",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "tours-and-adventure",
+    "directoryBlurb": "Take direct bookings across multiple activities while keeping shared guides and equipment in sync."
+  },
+  {
+    "slug": "glamping-sites",
+    "name": "Glamping Sites",
+    "title": "Glamping Site Booking Software | Hightide",
+    "description": "Booking and operations software for glamping sites. Grow direct stays, extras and activities with a branded Online Store and connected channel availability.",
+    "image": "/assets/images/industries/glamping-sites.jpg",
+    "imageAlt": "Glamping site accommodation",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "accommodation-and-destinations",
+    "directoryBlurb": "Sell direct glamping stays, extras and activities while keeping channel availability connected."
+  },
+  {
+    "slug": "mountain-guiding",
+    "name": "Mountain Guiding",
+    "title": "Mountain Guiding Booking Software | Hightide",
+    "description": "Booking and operations software for mountain guiding. Manage multi-day trips, fixed departures, guide capacity and participant payments in one place.",
+    "image": "/assets/images/industries/mountain-guiding.jpg",
+    "imageAlt": "Mountain guiding trip",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "tours-and-adventure",
+    "directoryBlurb": "Organise multi-day guided trips with fixed departures, guide capacity and participant details."
+  },
+  {
+    "slug": "bike-and-mtb-holidays",
+    "name": "Bike and MTB Holidays",
+    "title": "Bike and MTB Holiday Booking Software | Hightide",
+    "description": "Booking and operations software for bike and MTB holidays. Sell accommodation, guided rides, bike rental and transfers as connected packages.",
+    "image": "/assets/images/industries/bike-mtb-holidays.jpg",
+    "imageAlt": "Bike and MTB holiday",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "tours-and-adventure",
+    "directoryBlurb": "Package accommodation, guided rides, bike rental and transfers for fixed or flexible holidays."
+  },
+  {
+    "slug": "sailing-and-surf-charters",
+    "name": "Sailing and Surf Charters",
+    "title": "Sailing and Surf Charter Booking Software | Hightide",
+    "description": "Booking and operations software for sailing and surf charters. Manage day and multi-day departures, berth capacity, extras and partner bookings.",
+    "image": "/assets/images/industries/sailing-surf-charters.jpg",
+    "imageAlt": "Sailing and surf charter on the water",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "tours-and-adventure",
+    "directoryBlurb": "Sell day and multi-day charters with fixed departures, extras and partner bookings."
+  },
+  {
+    "slug": "dive-resorts",
+    "name": "Dive Resorts",
+    "title": "Dive Resort Booking Software | Hightide",
+    "description": "Booking and operations software for dive resorts. Connect accommodation and dive packages without treating Hightide as hourly dive-centre scheduling software.",
+    "image": "/assets/images/industries/dive-resorts.jpg",
+    "imageAlt": "Dive resort and boat setting",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "accommodation-and-destinations",
+    "directoryBlurb": "Connect accommodation with multi-day dive packages, rentals and partner bookings.",
+    "redirectFrom": [
+      "dive-centres"
     ]
+  },
+  {
+    "slug": "summer-camps",
+    "name": "Summer Camps",
+    "title": "Summer Camp Booking Software | Hightide",
+    "description": "Booking and operations software for summer camps. Manage fixed camp dates, accommodation, activities, participant details and payments in one place.",
+    "image": "/assets/images/industries/summer-camps.jpg",
+    "imageAlt": "Summer camp outdoor activities",
+    "tier": "lightweight",
+    "featured": false,
+    "directoryGroup": "camps-and-retreats",
+    "directoryBlurb": "Run fixed summer camp dates with accommodation, activities, participant details and team visibility."
   }
 ]

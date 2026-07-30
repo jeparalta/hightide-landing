@@ -606,6 +606,7 @@
 
   const sellMedia = document.querySelector('[data-sell-media]');
   const sellVideo = document.querySelector('[data-sell-video]');
+  const sellVideoStart = document.querySelector('[data-sell-video-start]');
 
   if (sellMedia && sellVideo) {
     const prefersReducedMotion = window.matchMedia(
@@ -627,6 +628,8 @@
       let videoRevealed = false;
       let videoFailed = false;
       let playRequested = false;
+      let bottomInView = false;
+      let canPlay = false;
 
       function failSellVideo() {
         if (videoFailed) {
@@ -648,10 +651,19 @@
         }
         videoRevealed = true;
         sellMedia.classList.add('is-video-ready');
+
+        // Paint the first frame while paused so the montage is not left showing.
+        try {
+          if (sellVideo.paused && sellVideo.currentTime === 0) {
+            sellVideo.currentTime = 0.001;
+          }
+        } catch (error) {
+          // Ignore seek errors on browsers that block early seeks.
+        }
       }
 
       function tryPlaySellVideo() {
-        if (videoFailed || playRequested) {
+        if (videoFailed || playRequested || !bottomInView || !canPlay) {
           return;
         }
 
@@ -662,30 +674,34 @@
 
         const playAttempt = sellVideo.play();
         if (playAttempt && typeof playAttempt.then === 'function') {
-          playAttempt.then(revealSellVideo).catch(function () {
+          playAttempt.catch(function () {
             playRequested = false;
             failSellVideo();
           });
-        } else if (!sellVideo.paused) {
-          revealSellVideo();
-        } else {
+        } else if (sellVideo.paused) {
           playRequested = false;
         }
       }
 
-      sellVideo.addEventListener('error', failSellVideo);
-      sellVideo.addEventListener('canplay', tryPlaySellVideo);
-
-      function armSellVideo() {
-        if (videoFailed) {
-          return;
-        }
-        if (sellVideo.readyState >= 2) {
-          tryPlaySellVideo();
-        }
+      function markCanPlay() {
+        canPlay = true;
+        revealSellVideo();
+        tryPlaySellVideo();
       }
 
-      if ('IntersectionObserver' in window) {
+      function markBottomInView() {
+        bottomInView = true;
+        tryPlaySellVideo();
+      }
+
+      sellVideo.addEventListener('error', failSellVideo);
+      sellVideo.addEventListener('canplay', markCanPlay);
+
+      if (sellVideo.readyState >= 2) {
+        markCanPlay();
+      }
+
+      if ('IntersectionObserver' in window && sellVideoStart) {
         const sellVideoObserver = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
@@ -693,14 +709,14 @@
                 return;
               }
               sellVideoObserver.disconnect();
-              armSellVideo();
+              markBottomInView();
             });
           },
-          { rootMargin: '200px 0px', threshold: 0.1 },
+          { root: null, rootMargin: '0px', threshold: 0 },
         );
-        sellVideoObserver.observe(sellMedia);
+        sellVideoObserver.observe(sellVideoStart);
       } else {
-        armSellVideo();
+        markBottomInView();
       }
     }
   }

@@ -87,10 +87,14 @@
     <div class="explore-industry-section-intro">
       <h2 class="section-title explore-industry-section-title">{{ page.onboarding.title }}</h2>
       <p class="explore-industry-body-copy">{{ page.onboarding.lead }}</p>
+      <p class="explore-industry-directory-back">
+        <a href="/explore/industries/">View all industries</a>
+      </p>
     </div>
   </div>
 </section>
 
+{% if page.testimonial and page.testimonial.story %}
 <section class="section section-alt explore-industry-testimonial">
   <div class="container">
     <h2 class="section-title">{{ page.testimonial.title }}</h2>
@@ -157,8 +161,10 @@
     </article>
   </div>
 </section>
+{% endif %}
 
-<section class="section section-faq explore-faq explore-industry-faq">
+{% if page.faq and page.faq.items and page.faq.items.length %}
+<section class="section section-faq explore-faq explore-industry-faq{% if not page.testimonial %} section-alt{% endif %}">
   <div class="container">
     <h2 class="section-title">{{ page.faq.title }}</h2>
     <div class="faq-list">
@@ -171,11 +177,13 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% set ctaHeading = page.cta.headline %}
 {% set ctaLead = page.cta.lead %}
 {% include "partials/explore-cta.njk" %}
 
+{% if page.testimonial and page.testimonial.story %}
 <dialog class="explore-proof-modal" data-proof-modal aria-labelledby="proof-modal-title">
   <div class="explore-proof-modal-panel">
     <button type="button" class="explore-proof-modal-close" data-proof-modal-close aria-label="Close full review">
@@ -199,3 +207,4 @@
     </footer>
   </div>
 </dialog>
+{% endif %}

@@ -17,24 +17,24 @@
       ]
     },
     "workflow": {
-      "title": "One booking connects the whole stay",
-      "summary": "A guest can book accommodation, lessons and extras together. Hightide keeps availability updated and gives your team one booking from which to manage the complete stay.",
+      "title": "Every booking tells the whole story",
+      "summary": "Guest details, booked items, payments, team communication and every change are kept together in one complete booking record.",
       "image": {
         "src": "/assets/images/tab-bookings-2.webp",
         "alt": "Surf camp booking workspace with accommodation, lessons and payments"
       },
       "callouts": [
         {
-          "title": "Everything booked together",
-          "text": "Beds, lessons, rentals, transfers and extras."
+          "title": "Everything they booked",
+          "text": "Accommodation, lessons, rentals, transfers, extras and dates in one booking."
         },
         {
-          "title": "Availability stays connected",
-          "text": "Accommodation and activity capacity update automatically."
+          "title": "The complete financial picture",
+          "text": "See prices, discounts, balances, payments and when each payment was made."
         },
         {
-          "title": "One place for the team",
-          "text": "Manage payments, guest details, notes and the complete stay."
+          "title": "The full booking history",
+          "text": "Keep guest details, staff comments, emails, files and every change together."
         }
       ]
     },
@@ -132,6 +132,1121 @@
     "cta": {
       "headline": "See how Hightide could work for your surf camp",
       "lead": "Tell us how you currently sell beds, lessons and packages. We'll show you how Hightide could bring the different parts together."
+    }
+  },
+  "retreats": {
+    "hero": {
+      "label": "Retreats",
+      "headline": "Booking and operations software for retreats",
+      "lead": "Offer fixed-date programmes or flexible stays. Manage rooms, activities, deposits and guest details in one place."
+    },
+    "model": {
+      "title": "Built around how retreats actually work",
+      "points": [
+        "Fixed-date retreat programmes",
+        "Flexible and open-date stays",
+        "Rooms, dorms and shared accommodation",
+        "Sessions, workshops and scheduled activities",
+        "Meals, transfers and optional extras",
+        "Deposits, balances and guest notes"
+      ]
+    },
+    "workflow": {
+      "title": "Every booking tells the whole story",
+      "summary": "Guest details, booked items, payments, team communication and every change are kept together in one complete booking record.",
+      "image": {
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Retreat booking workspace with accommodation, activities and payments"
+      },
+      "callouts": [
+        {
+          "title": "Everything they booked",
+          "text": "Accommodation, lessons, rentals, transfers, extras and dates in one booking."
+        },
+        {
+          "title": "The complete financial picture",
+          "text": "See prices, discounts, balances, payments and when each payment was made."
+        },
+        {
+          "title": "The full booking history",
+          "text": "Keep guest details, staff comments, emails, files and every change together."
+        }
+      ]
+    },
+    "capabilities": {
+      "title": "Everything your retreat needs in one system",
+      "groups": [
+        {
+          "title": "Programmes and stays",
+          "items": [
+            "Publish fixed-date retreats alongside flexible stays",
+            "Sell rooms and beds as standalone stays or within programmes",
+            "Include sessions for the full stay or selected days",
+            "Keep availability connected across every way you sell"
+          ]
+        },
+        {
+          "title": "Guest care and payments",
+          "items": [
+            "Capture dietary needs, room preferences and internal notes",
+            "Take deposits online and track remaining balances",
+            "Send payment requests when balances are due",
+            "Keep guest communication attached to the booking"
+          ]
+        },
+        {
+          "title": "Retreat operations",
+          "items": [
+            "See arrivals, departures and daily schedules in one place",
+            "Share booking details with seasonal teams",
+            "Flag special requirements before check-in",
+            "Review bookings, payments and guest reports"
+          ]
+        }
+      ]
+    },
+    "onboarding": {
+      "title": "Built around your retreat",
+      "lead": "We begin by understanding how you structure programmes, sell rooms and collect deposits. Then we prepare a starter Hightide setup around your operation."
+    },
+    "faq": {
+      "title": "Retreat FAQs",
+      "items": [
+        {
+          "question": "Can I sell both fixed-date and flexible retreats?",
+          "answer": "Yes. You can publish fixed-date programmes and open-date stays from the same inventory, each with its own pricing and booking rules."
+        },
+        {
+          "question": "Can rooms be sold alone and inside a retreat package?",
+          "answer": "Yes. The same room or bed can appear as a standalone stay and as part of a retreat. When it is booked in one place, availability updates everywhere else it is offered."
+        },
+        {
+          "question": "Can I collect deposits and remaining balances?",
+          "answer": "Yes. Guests can pay a deposit at booking, and you can request or collect the remaining balance later while keeping the full payment history on the booking."
+        },
+        {
+          "question": "Can guest notes stay with the booking?",
+          "answer": "Yes. Dietary needs, room preferences, staff comments and files stay on the booking so your team has one place to look before arrival."
+        },
+        {
+          "question": "Can guests book accommodation and activities together?",
+          "answer": "Yes. Guests can combine rooms, sessions, meals, transfers and extras in one booking flow, whether they choose a programme or build their own stay."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your retreat",
+      "lead": "Tell us how you currently sell programmes, rooms and deposits. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "adventure-lodges": {
+    "hero": {
+      "label": "Adventure Lodges",
+      "headline": "Booking and operations software for adventure lodges",
+      "lead": "Sell lodging, guided activities and packages together, with every booking managed in one place."
+    },
+    "model": {
+      "title": "Built around how adventure lodges actually work",
+      "points": [
+        "Lodge rooms and shared beds",
+        "Guided activities with their own capacity",
+        "Packages that combine stays and adventures",
+        "Direct bookings alongside channel manager rooms",
+        "Partner and agent referrals",
+        "Daily arrivals and activity schedules"
+      ]
+    },
+    "workflow": {
+      "title": "Every booking tells the whole story",
+      "summary": "Guest details, booked items, payments, team communication and every change are kept together in one complete booking record.",
+      "image": {
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Adventure lodge booking workspace with lodging, activities and payments"
+      },
+      "callouts": [
+        {
+          "title": "Everything they booked",
+          "text": "Accommodation, lessons, rentals, transfers, extras and dates in one booking."
+        },
+        {
+          "title": "The complete financial picture",
+          "text": "See prices, discounts, balances, payments and when each payment was made."
+        },
+        {
+          "title": "The full booking history",
+          "text": "Keep guest details, staff comments, emails, files and every change together."
+        }
+      ]
+    },
+    "capabilities": {
+      "title": "Everything your adventure lodge needs in one system",
+      "groups": [
+        {
+          "title": "Stays and adventures",
+          "items": [
+            "Sell lodging and guided activities from one Online Store",
+            "Offer packages that combine beds and activities",
+            "Keep room and activity availability connected",
+            "Support fixed-date and flexible trip styles"
+          ]
+        },
+        {
+          "title": "Channels and partners",
+          "items": [
+            "Connect accommodation to channel managers where needed",
+            "Sell activities and packages directly",
+            "Track partner referrals and booking codes",
+            "Keep commission and settlement reporting organised"
+          ]
+        },
+        {
+          "title": "Lodge operations",
+          "items": [
+            "Manage arrivals, payments and notes on each booking",
+            "Give the team one place for guest and trip details",
+            "See lodging and activity overviews for each day",
+            "Keep partner and direct bookings in the same workspace"
+          ]
+        }
+      ]
+    },
+    "onboarding": {
+      "title": "Built around your adventure lodge",
+      "lead": "We begin by understanding how you sell lodging, run guided activities and work with partners. Then we prepare a starter Hightide setup around your operation."
+    },
+    "faq": {
+      "title": "Adventure lodge FAQs",
+      "items": [
+        {
+          "question": "Can guests book lodging and activities together?",
+          "answer": "Yes. Guests can book rooms or beds with guided activities and extras in one flow, or buy them separately while availability stays connected."
+        },
+        {
+          "question": "Can accommodation stay on channel managers?",
+          "answer": "Yes. Hightide supports channel manager connections for accommodation while activities and packages can still be sold directly."
+        },
+        {
+          "question": "Can activities share capacity with other products?",
+          "answer": "Yes. Activities that share guides, boats or equipment can use linked availability so one booking updates the capacity that matters."
+        },
+        {
+          "question": "How are partner bookings handled?",
+          "answer": "Partners can use referral links or booking codes. Their bookings stay attributed, and you can track commissions and settlements from the same system."
+        },
+        {
+          "question": "Can the team see daily lodging and activity plans?",
+          "answer": "Yes. Arrivals, departures, activities and booking notes sit together so the lodge team can run the day from one place."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your adventure lodge",
+      "lead": "Tell us how you currently sell lodging, activities and packages. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "guesthouses-and-bbs": {
+    "hero": {
+      "label": "Guesthouses & B&Bs",
+      "headline": "Booking and operations software for guesthouses and B&Bs",
+      "lead": "Grow direct bookings for rooms, beds and extras while keeping availability connected to other channels."
+    },
+    "model": {
+      "title": "Built around how guesthouses and B&Bs actually work",
+      "points": [
+        "Private rooms and shared beds",
+        "Extras such as breakfast, transfers and rentals",
+        "Direct bookings through your own Online Store",
+        "Channel manager connections for accommodation",
+        "Deposits, balances and guest details",
+        "Owner-operated day-to-day management"
+      ]
+    },
+    "workflow": {
+      "title": "Every booking tells the whole story",
+      "summary": "Guest details, booked items, payments, team communication and every change are kept together in one complete booking record.",
+      "image": {
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Guesthouse booking workspace with rooms, extras and payments"
+      },
+      "callouts": [
+        {
+          "title": "Everything they booked",
+          "text": "Accommodation, lessons, rentals, transfers, extras and dates in one booking."
+        },
+        {
+          "title": "The complete financial picture",
+          "text": "See prices, discounts, balances, payments and when each payment was made."
+        },
+        {
+          "title": "The full booking history",
+          "text": "Keep guest details, staff comments, emails, files and every change together."
+        }
+      ]
+    },
+    "capabilities": {
+      "title": "Everything your guesthouse needs in one system",
+      "groups": [
+        {
+          "title": "Direct sales",
+          "items": [
+            "Sell rooms, beds and extras from a branded Online Store",
+            "Offer instant booking or request-to-book flows",
+            "Add packages when stays include extras or activities",
+            "Reduce reliance on commission-heavy channels over time"
+          ]
+        },
+        {
+          "title": "Availability and channels",
+          "items": [
+            "Keep direct and channel inventory connected",
+            "Avoid double bookings across the ways you sell rooms",
+            "Update availability when a stay is booked anywhere",
+            "Support businesses that sell more than nights alone"
+          ]
+        },
+        {
+          "title": "Guest operations",
+          "items": [
+            "Track payments, balances and guest information on each booking",
+            "Keep notes and files with the stay",
+            "Give staff one place to manage arrivals and departures",
+            "Review booking and payment reports without another spreadsheet"
+          ]
+        }
+      ]
+    },
+    "onboarding": {
+      "title": "Built around your guesthouse",
+      "lead": "We begin by understanding how you sell rooms, use channels and handle extras. Then we prepare a starter Hightide setup around your operation."
+    },
+    "testimonial": {
+      "title": "What accommodation operators say",
+      "story": {
+        "logo": "/assets/images/testimonials/the-village-alentejo.png",
+        "logoAlt": "The Village, Alentejo",
+        "websiteUrl": "https://www.instagram.com/thevillage.alentejo",
+        "quote": "Hightide has made it much easier to organise reservations, track payments and share availability. We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence. Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability.",
+        "quoteParagraphs": [
+          "Hightide has made it much easier to organise reservations, track payments and share availability.",
+          "We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence.",
+          "Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability."
+        ],
+        "previewParagraphs": 2,
+        "name": "Pete Webb",
+        "role": "Founder",
+        "business": "The Village, Alentejo",
+        "industry": "Accommodation"
+      }
+    },
+    "faq": {
+      "title": "Guesthouse and B&B FAQs",
+      "items": [
+        {
+          "question": "Can I sell rooms and extras together?",
+          "answer": "Yes. Guests can book rooms or beds with breakfast, transfers, rentals and other extras in one booking."
+        },
+        {
+          "question": "Can I keep using Booking.com or Airbnb?",
+          "answer": "Yes. Hightide supports channel manager connections so accommodation availability can stay aligned with major channels while you grow direct bookings."
+        },
+        {
+          "question": "Can I take deposits online?",
+          "answer": "Yes. Guests can pay online at booking, and you can track remaining balances on the same booking record."
+        },
+        {
+          "question": "Is Hightide only for large hotels?",
+          "answer": "No. It is built for smaller accommodation and multi-service businesses that need more than a simple reservation list, without hotel-enterprise complexity."
+        },
+        {
+          "question": "Can availability stay in sync across how I sell?",
+          "answer": "Yes. When a room or bed is booked through your store or another connected channel, availability updates across the places it is offered."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your guesthouse",
+      "lead": "Tell us how you currently take bookings and manage rooms. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "tours-and-activities": {
+    "hero": {
+      "label": "Tours & Activities",
+      "headline": "Booking and operations software for tours and activities",
+      "lead": "Take direct bookings for tours, lessons and rentals without paying commission on every booking."
+    },
+    "model": {
+      "title": "Built around how activity businesses actually work",
+      "points": [
+        "Tours, lessons and rentals in one store",
+        "Shared guides, boats or equipment across products",
+        "Direct online payments",
+        "Request and instant booking modes",
+        "Group and partner bookings",
+        "Daily schedules for the operational team"
+      ]
+    },
+    "workflow": {
+      "title": "Every booking tells the whole story",
+      "summary": "Guest details, booked items, payments, team communication and every change are kept together in one complete booking record.",
+      "image": {
+        "src": "/assets/images/tab-bookings-2.webp",
+        "alt": "Activity booking workspace with tours, rentals and payments"
+      },
+      "callouts": [
+        {
+          "title": "Everything they booked",
+          "text": "Accommodation, lessons, rentals, transfers, extras and dates in one booking."
+        },
+        {
+          "title": "The complete financial picture",
+          "text": "See prices, discounts, balances, payments and when each payment was made."
+        },
+        {
+          "title": "The full booking history",
+          "text": "Keep guest details, staff comments, emails, files and every change together."
+        }
+      ]
+    },
+    "capabilities": {
+      "title": "Everything your activity business needs in one system",
+      "groups": [
+        {
+          "title": "Direct bookings",
+          "items": [
+            "Sell tours, lessons and rentals from your Online Store",
+            "Choose request or instant booking for each product",
+            "Collect payments online without marketplace commission",
+            "Offer packages when guests combine multiple products"
+          ]
+        },
+        {
+          "title": "Shared capacity",
+          "items": [
+            "Link availability across activities that share guides or equipment",
+            "Avoid double bookings on shared resources",
+            "Keep day-based capacity clear for the team",
+            "Coordinate group and partner bookings in one place"
+          ]
+        },
+        {
+          "title": "Daily operations",
+          "items": [
+            "Use the calendar and booking workspace for every booking",
+            "See the Day Planner for operational visibility",
+            "Keep guest details, notes and payments on the booking",
+            "Review booking and payment reports as you grow"
+          ]
+        }
+      ]
+    },
+    "onboarding": {
+      "title": "Built around your activity business",
+      "lead": "We begin by understanding what you sell, which resources are shared and how bookings arrive today. Then we prepare a starter Hightide setup around your operation."
+    },
+    "faq": {
+      "title": "Tours and activities FAQs",
+      "items": [
+        {
+          "question": "Can multiple activities share the same guide or equipment?",
+          "answer": "Yes. Products that share guides, boats or equipment can use linked availability so capacity stays accurate across the schedule."
+        },
+        {
+          "question": "Can I avoid marketplace commissions?",
+          "answer": "Hightide is built for direct bookings through your own Online Store, so you are not paying a marketplace commission on every booking you take there."
+        },
+        {
+          "question": "Does Hightide support hourly scheduling?",
+          "answer": "Hightide is built around day and night-based availability, not hourly appointment scheduling. It suits tours, lessons and rentals organised by date and capacity rather than hour-by-hour diaries."
+        },
+        {
+          "question": "Can I take request-only bookings?",
+          "answer": "Yes. Products can use request or instant booking modes depending on how you prefer to confirm availability."
+        },
+        {
+          "question": "Can partners send bookings to me?",
+          "answer": "Yes. Referral links and booking codes help attribute partner bookings while keeping them in the same operational workspace."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your activity business",
+      "lead": "Tell us how you currently take bookings and run your schedule. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "kitesurf-camps": {
+    "hero": {
+      "label": "Kitesurf Camps",
+      "headline": "Booking and operations software for kitesurf camps",
+      "lead": "Sell accommodation, lessons, equipment and transfers together for multi-day camps with fixed or flexible dates."
+    },
+    "challenges": {
+      "title": "What kitesurf camp operators need from booking software",
+      "items": [
+        {
+          "title": "Camps mix beds, lessons and gear",
+          "text": "Guests expect accommodation, coaching, equipment and transfers in one stay, not four separate bookings."
+        },
+        {
+          "title": "Instructor capacity has to stay accurate",
+          "text": "Lesson slots depend on shared instructors, so overselling one product can disrupt the whole camp day."
+        },
+        {
+          "title": "Direct and partner bookings need one place",
+          "text": "Agent referrals, direct store bookings and walk-up extras often end up in different chats and spreadsheets."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports kitesurf camps",
+      "items": [
+        "Customisable Online Store for camps, stays and extras",
+        "Accommodation, lessons and packages in one booking flow",
+        "Fixed-date and flexible-date packages",
+        "Linked availability for shared lesson capacity",
+        "Partner referral links and booking codes",
+        "Calendar, booking workspace and Day Planner for the team"
+      ]
+    },
+    "faq": {
+      "title": "Kitesurf camp FAQs",
+      "items": [
+        {
+          "question": "Can guests book accommodation and lessons together?",
+          "answer": "Yes. Guests can combine beds or rooms with lessons, equipment, transfers and extras in one booking."
+        },
+        {
+          "question": "Can I offer fixed camp weeks and flexible stays?",
+          "answer": "Yes. You can publish fixed-date camps alongside more flexible packages from the same operation."
+        },
+        {
+          "question": "Can lesson capacity stay connected across products?",
+          "answer": "Yes. Activities that share instructors can use linked availability so capacity updates when a booking is made."
+        },
+        {
+          "question": "How are partner bookings tracked?",
+          "answer": "Partners can use referral links or booking codes so their bookings stay attributed in your reporting."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your kitesurf camp",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "snowboard-camps": {
+    "hero": {
+      "label": "Snowboard Camps",
+      "headline": "Booking and operations software for snowboard camps",
+      "lead": "Manage fixed camp weeks with accommodation, coaching, extras and payment balances in one place."
+    },
+    "challenges": {
+      "title": "What snowboard camp operators need from booking software",
+      "items": [
+        {
+          "title": "Camp weeks are fixed, but extras vary",
+          "text": "Rooms, coaching, transfers and equipment extras need to sit on the same guest stay without manual re-entry."
+        },
+        {
+          "title": "Room and lesson capacity both matter",
+          "text": "A full lodge week still fails if coaching slots or room types are oversold separately."
+        },
+        {
+          "title": "Deposits and balances stretch across the season",
+          "text": "Teams need to see what has been paid, what remains and which guest details changed after the first booking."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports snowboard camps",
+      "items": [
+        "Fixed-date camp packages with clear departures",
+        "Accommodation, coaching and extras in one store",
+        "Direct online payments for deposits and balances",
+        "Guest details and notes kept on the booking",
+        "Calendar and Day Planner for camp operations",
+        "Reports for bookings and payments"
+      ]
+    },
+    "faq": {
+      "title": "Snowboard camp FAQs",
+      "items": [
+        {
+          "question": "Can I sell fixed snowboard camp weeks?",
+          "answer": "Yes. Fixed-date packages are a core fit for camp weeks with set arrivals and departures."
+        },
+        {
+          "question": "Can coaching and rooms be booked together?",
+          "answer": "Yes. Guests can book accommodation with coaching and optional extras in one package or booking flow."
+        },
+        {
+          "question": "Can I collect a deposit and the remaining balance later?",
+          "answer": "Yes. Payments stay on the booking so your team can see deposits, balances and payment timing clearly."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your snowboard camp",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "yoga-retreats": {
+    "hero": {
+      "label": "Yoga Retreats",
+      "headline": "Booking and operations software for yoga retreats",
+      "lead": "Offer fixed retreat dates or flexible stays, and keep rooms, sessions, meals and guest notes together."
+    },
+    "challenges": {
+      "title": "What yoga retreat operators need from booking software",
+      "items": [
+        {
+          "title": "Programmes and open stays both need to sell",
+          "text": "Some guests want a fixed retreat week; others want a flexible stay with selected sessions."
+        },
+        {
+          "title": "Guest notes matter before arrival",
+          "text": "Dietary needs, room preferences and special requirements are easy to lose between email and check-in."
+        },
+        {
+          "title": "Deposits and schedules sit in different tools",
+          "text": "Payments, room lists and daily sessions often live in separate spreadsheets and inboxes."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports yoga retreats",
+      "items": [
+        "Fixed-date and flexible-date retreat packages",
+        "Rooms, yoga sessions, meals and transfers in one store",
+        "Direct online payments and balance tracking",
+        "Guest notes kept with each booking",
+        "Calendar and Day Planner for retreat schedules",
+        "Automated emails for booking communication"
+      ]
+    },
+    "faq": {
+      "title": "Yoga retreat FAQs",
+      "items": [
+        {
+          "question": "Can I run fixed retreats and flexible stays together?",
+          "answer": "Yes. You can publish both from the same inventory and keep availability connected."
+        },
+        {
+          "question": "Can dietary notes stay on the booking?",
+          "answer": "Yes. Guest notes and staff comments remain attached to the booking for the whole team."
+        },
+        {
+          "question": "Can sessions be included only on selected days?",
+          "answer": "Yes. Activities can be included for a full stay or added only on the days a guest needs them."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your yoga retreat",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "wellness-retreats": {
+    "hero": {
+      "label": "Wellness Retreats",
+      "headline": "Booking and operations software for wellness retreats",
+      "lead": "Keep accommodation, treatments, programmes and guest requirements visible from booking to departure."
+    },
+    "challenges": {
+      "title": "What wellness retreat operators need from booking software",
+      "items": [
+        {
+          "title": "Stays bundle rooms, treatments and meals",
+          "text": "Guests book programmes that combine accommodation, sessions and optional extras in custom ways."
+        },
+        {
+          "title": "Special requirements must stay visible",
+          "text": "Arrival notes, treatment preferences and room moves need one shared place for the team."
+        },
+        {
+          "title": "Daily planning depends on complete bookings",
+          "text": "Without a living booking record, payments, schedules and guest care fragment across tools."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports wellness retreats",
+      "items": [
+        "Packages for accommodation, treatments and activities",
+        "Fixed programmes and flexible stays",
+        "Guest information and special requirements on the booking",
+        "Deposits, balances and payment history",
+        "Day Planner for operational planning",
+        "Automated emails and booking workspace notes"
+      ]
+    },
+    "faq": {
+      "title": "Wellness retreat FAQs",
+      "items": [
+        {
+          "question": "Can programmes include treatments and accommodation?",
+          "answer": "Yes. Packages can bundle rooms, sessions, treatments and extras while keeping one booking record."
+        },
+        {
+          "question": "Can the team see guest requirements before arrival?",
+          "answer": "Yes. Notes, comments and files stay on the booking so operational staff have the same information."
+        },
+        {
+          "question": "Can I track deposits and remaining balances?",
+          "answer": "Yes. Payment history sits with the booking, including when each payment was made."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your wellness retreat",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "sports-camps": {
+    "hero": {
+      "label": "Sports Camps",
+      "headline": "Booking and operations software for sports camps",
+      "lead": "Coordinate accommodation, coaching and multi-day programmes for fixed camp dates with clear participant details."
+    },
+    "challenges": {
+      "title": "What sports camp operators need from booking software",
+      "items": [
+        {
+          "title": "Camps are package-led",
+          "text": "Participants usually book accommodation and coaching as one programme, not as unrelated products."
+        },
+        {
+          "title": "Group and individual bookings both appear",
+          "text": "Operators need participant details, group context and payment status without rebuilding lists by hand."
+        },
+        {
+          "title": "Daily schedules need one source of truth",
+          "text": "Seasonal teams need arrivals, sessions and extras in one place before each camp day starts."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports sports camps",
+      "items": [
+        "Fixed-date camp packages",
+        "Accommodation, coaching and optional extras in one store",
+        "Participant details kept on each booking",
+        "Direct online payments and balance tracking",
+        "Day Planner and calendar for camp schedules",
+        "Shared booking information for operational teams"
+      ]
+    },
+    "faq": {
+      "title": "Sports camp FAQs",
+      "items": [
+        {
+          "question": "Can I sell multi-day sports camp packages?",
+          "answer": "Yes. Fixed-date packages are well suited to camp weeks with set programmes."
+        },
+        {
+          "question": "Can equipment extras be added to a camp booking?",
+          "answer": "Yes. Optional extras can be included with the package or added to the booking as needed."
+        },
+        {
+          "question": "Can staff see the daily camp plan?",
+          "answer": "Yes. The calendar, Day Planner and booking workspace help teams see what is happening each day."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your sports camp",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "outdoor-activity-centres": {
+    "hero": {
+      "label": "Outdoor Activity Centres",
+      "headline": "Booking and operations software for outdoor activity centres",
+      "lead": "Take direct bookings across multiple tours and activities while keeping shared guides, equipment and daily operations aligned."
+    },
+    "challenges": {
+      "title": "What outdoor activity centres need from booking software",
+      "items": [
+        {
+          "title": "Many products share the same resources",
+          "text": "Guides, boats or equipment often sit behind several activities at once."
+        },
+        {
+          "title": "Direct bookings need to stay organised",
+          "text": "Website bookings, partner groups and on-site changes are hard to manage from inbox threads alone."
+        },
+        {
+          "title": "The day plan has to be visible",
+          "text": "Operational teams need a clear view of what is booked, who is coming and what still needs confirming."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports outdoor activity centres",
+      "items": [
+        "Online Store for multiple tours and activities",
+        "Linked availability for shared guides or equipment",
+        "Request and instant booking modes",
+        "Direct online payments",
+        "Partner referral links and booking codes",
+        "Calendar, booking workspace and Day Planner"
+      ]
+    },
+    "faq": {
+      "title": "Outdoor activity centre FAQs",
+      "items": [
+        {
+          "question": "Can shared guides stay accurate across activities?",
+          "answer": "Yes. Linked availability helps keep shared capacity updated when related activities are booked."
+        },
+        {
+          "question": "Does Hightide schedule by the hour?",
+          "answer": "No. Hightide uses day and night-based availability, which suits date-led tours and activities rather than hourly appointment books."
+        },
+        {
+          "question": "Can group and partner bookings sit with direct sales?",
+          "answer": "Yes. Direct and partner bookings can live in the same workspace with clear attribution where needed."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your outdoor activity centre",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "glamping-sites": {
+    "hero": {
+      "label": "Glamping Sites",
+      "headline": "Booking and operations software for glamping sites",
+      "lead": "Grow direct stays, activities and extras through a branded Online Store while keeping channel availability connected."
+    },
+    "challenges": {
+      "title": "What glamping operators need from booking software",
+      "items": [
+        {
+          "title": "Direct bookings need a branded store",
+          "text": "Guests expect a clear way to book stays and extras without relying only on marketplaces."
+        },
+        {
+          "title": "Extras and activities sit beside the stay",
+          "text": "Meals, experiences and add-ons should attach to the booking instead of living in separate messages."
+        },
+        {
+          "title": "Channels still matter",
+          "text": "Many sites need connected accommodation availability while they grow direct revenue."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports glamping sites",
+      "items": [
+        "Customisable branded Online Store",
+        "Direct accommodation bookings with extras and activities",
+        "Channel manager connection for accommodation",
+        "Guest details and payments on each booking",
+        "Request or instant booking flows",
+        "Reports for bookings and payments"
+      ]
+    },
+    "faq": {
+      "title": "Glamping site FAQs",
+      "items": [
+        {
+          "question": "Can I sell activities with glamping stays?",
+          "answer": "Yes. Extras and activities can be sold with accommodation in one booking flow."
+        },
+        {
+          "question": "Can channel availability stay connected?",
+          "answer": "Yes. Hightide supports channel manager connections for accommodation while you sell directly as well."
+        },
+        {
+          "question": "Can guests pay online?",
+          "answer": "Yes. Direct online payments can be collected at booking, with balances tracked on the same record."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your glamping site",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "mountain-guiding": {
+    "hero": {
+      "label": "Mountain Guiding",
+      "headline": "Booking and operations software for mountain guiding",
+      "lead": "Organise multi-day guided trips with fixed departures, guide capacity, extras and participant payments in one place."
+    },
+    "challenges": {
+      "title": "What mountain guiding operators need from booking software",
+      "items": [
+        {
+          "title": "Trips are multi-day and departure-led",
+          "text": "Fixed departures need clear participant lists, payments and extras without rebuilding paperwork for each trip."
+        },
+        {
+          "title": "Guide capacity is the limiting resource",
+          "text": "Overselling a departure creates operational risk when guides are shared across trips."
+        },
+        {
+          "title": "Accommodation and transfers often come too",
+          "text": "Guests may need lodging, transfers and equipment extras attached to the same trip booking."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports mountain guiding",
+      "items": [
+        "Fixed-departure trip packages",
+        "Guide capacity with linked availability where products share resources",
+        "Accommodation, transfers and equipment extras in one booking",
+        "Participant information and payment tracking",
+        "Partner referral links when agents send guests",
+        "Calendar and booking workspace for trip operations"
+      ]
+    },
+    "faq": {
+      "title": "Mountain guiding FAQs",
+      "items": [
+        {
+          "question": "Can I sell fixed departure trips?",
+          "answer": "Yes. Fixed-date packages suit multi-day guided trips with set start dates."
+        },
+        {
+          "question": "Can guide capacity stay connected?",
+          "answer": "Yes. Products that share guides can use linked availability so capacity remains accurate."
+        },
+        {
+          "question": "Can extras stay on the trip booking?",
+          "answer": "Yes. Transfers, equipment and related extras can sit with the same booking record as the trip."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your mountain guiding business",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "bike-and-mtb-holidays": {
+    "hero": {
+      "label": "Bike and MTB Holidays",
+      "headline": "Booking and operations software for bike and MTB holidays",
+      "lead": "Package accommodation, guided rides, bike rental and transfers for fixed or flexible holiday dates."
+    },
+    "challenges": {
+      "title": "What bike and MTB holiday operators need from booking software",
+      "items": [
+        {
+          "title": "Holidays combine lodging and riding",
+          "text": "Guests want accommodation, guided rides and bike rental as one coherent booking."
+        },
+        {
+          "title": "Dates can be fixed or flexible",
+          "text": "Some weeks run as set departures; others need more open date options."
+        },
+        {
+          "title": "Equipment and transfers add complexity",
+          "text": "Bike hire, transfers and extras need to stay attached to the guest booking."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports bike and MTB holidays",
+      "items": [
+        "Accommodation, guided rides and bike rental in one store",
+        "Fixed-date and flexible-date packages",
+        "Equipment and transfer extras on the booking",
+        "Direct online payments",
+        "Guest and booking coordination in one workspace",
+        "Day Planner for operational visibility"
+      ]
+    },
+    "faq": {
+      "title": "Bike and MTB holiday FAQs",
+      "items": [
+        {
+          "question": "Can bike rental be sold with accommodation?",
+          "answer": "Yes. Rentals and guided rides can be packaged with lodging or added as extras."
+        },
+        {
+          "question": "Can I offer both fixed and flexible holidays?",
+          "answer": "Yes. Fixed-date packages and more flexible stays can be published from the same operation."
+        },
+        {
+          "question": "Can transfers sit on the same booking?",
+          "answer": "Yes. Transfers and other extras remain part of the booking record with payments and guest details."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your bike holiday business",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "sailing-and-surf-charters": {
+    "hero": {
+      "label": "Sailing and Surf Charters",
+      "headline": "Booking and operations software for sailing and surf charters",
+      "lead": "Manage day and multi-day charters with fixed departures, capacity, extras and partner bookings."
+    },
+    "challenges": {
+      "title": "What charter operators need from booking software",
+      "items": [
+        {
+          "title": "Departures are date-led",
+          "text": "Day trips and multi-day charters need clear capacity and passenger details for each departure."
+        },
+        {
+          "title": "Berths or places are limited",
+          "text": "Overselling a charter creates immediate operational problems when space is fixed."
+        },
+        {
+          "title": "Partners and extras sit beside direct sales",
+          "text": "Agent bookings, transfers and add-ons need the same booking record as direct guests."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports sailing and surf charters",
+      "items": [
+        "Fixed-departure charter packages",
+        "Day-based and multi-day products in one Online Store",
+        "Capacity kept with linked availability where resources are shared",
+        "Extras and transfers on the booking",
+        "Partner referral links and booking codes",
+        "Direct online payments and booking workspace notes"
+      ]
+    },
+    "faq": {
+      "title": "Charter FAQs",
+      "items": [
+        {
+          "question": "Can I sell day trips and multi-day charters?",
+          "answer": "Yes. Both can be published as date-led products with their own capacity and pricing."
+        },
+        {
+          "question": "Does Hightide support hourly boat diaries?",
+          "answer": "No. Hightide is built for day and night-based availability, which suits departure-led charters rather than hourly scheduling."
+        },
+        {
+          "question": "Can partners send charter bookings?",
+          "answer": "Yes. Referral links and booking codes help attribute partner bookings in the same system."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your charter business",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "dive-resorts": {
+    "hero": {
+      "label": "Dive Resorts",
+      "headline": "Booking and operations software for dive resorts",
+      "lead": "Connect accommodation with multi-day dive packages, rentals and partner bookings in one resort-friendly booking system."
+    },
+    "challenges": {
+      "title": "What dive resort operators need from booking software",
+      "items": [
+        {
+          "title": "Resorts sell beds and dive packages together",
+          "text": "Guests often book lodge stays with multi-day diving programmes, not separate disconnected products."
+        },
+        {
+          "title": "Rentals and extras attach to the stay",
+          "text": "Equipment and add-ons need to stay on the same booking as accommodation and dive days."
+        },
+        {
+          "title": "Partner and agent bookings remain common",
+          "text": "Direct resort bookings and partner referrals need one operational record."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports dive resorts",
+      "items": [
+        "Accommodation and dive packages in one Online Store",
+        "Multi-day diving programmes as packages",
+        "Equipment rental and extras on the booking",
+        "Partner and agent booking attribution",
+        "Guest, payment and booking information in one place",
+        "Channel manager connection for accommodation where needed"
+      ]
+    },
+    "faq": {
+      "title": "Dive resort FAQs",
+      "items": [
+        {
+          "question": "Is Hightide dive-centre scheduling software?",
+          "answer": "No. It is designed for dive resorts and multi-day packages with day-based availability, not hourly dive-centre appointment scheduling."
+        },
+        {
+          "question": "Can accommodation and dive packages be sold together?",
+          "answer": "Yes. Guests can book lodging with multi-day dive programmes and extras in one flow."
+        },
+        {
+          "question": "Can agent bookings be tracked?",
+          "answer": "Yes. Partner referral links and booking codes help attribute bookings and keep them in the same workspace."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your dive resort",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
+    }
+  },
+  "summer-camps": {
+    "hero": {
+      "label": "Summer Camps",
+      "headline": "Booking and operations software for summer camps",
+      "lead": "Run fixed camp dates with accommodation, scheduled activities, participant details and shared team information."
+    },
+    "challenges": {
+      "title": "What summer camp operators need from booking software",
+      "items": [
+        {
+          "title": "Camp dates are fixed",
+          "text": "Parents and participants book set weeks, so departures, rooms and activities need to stay aligned."
+        },
+        {
+          "title": "Participant details must stay complete",
+          "text": "Contact information, notes and payment status are too important to scatter across inboxes."
+        },
+        {
+          "title": "Seasonal teams need one source of information",
+          "text": "Operational staff need arrivals, activities and balances without rebuilding lists each morning."
+        }
+      ]
+    },
+    "support": {
+      "title": "How Hightide supports summer camps",
+      "items": [
+        "Fixed camp date packages",
+        "Accommodation and scheduled activities in one store",
+        "Participant details kept on each booking",
+        "Payments and balances tracked clearly",
+        "Shared booking information for the operational team",
+        "Day Planner and calendar for camp days"
+      ]
+    },
+    "faq": {
+      "title": "Summer camp FAQs",
+      "items": [
+        {
+          "question": "Can I sell fixed summer camp weeks?",
+          "answer": "Yes. Fixed-date packages are a strong fit for set camp departures."
+        },
+        {
+          "question": "Can activities stay with the accommodation booking?",
+          "answer": "Yes. Scheduled activities and extras can sit on the same booking as the stay."
+        },
+        {
+          "question": "Can the team share one view of each camp week?",
+          "answer": "Yes. The booking workspace, calendar and Day Planner help staff work from the same information."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "See how Hightide could work for your summer camp",
+      "lead": "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like."
     }
   }
 }

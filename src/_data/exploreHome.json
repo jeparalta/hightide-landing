@@ -231,23 +231,38 @@
     ]
   },
   "industries": {
-    "title": "Designed to Fit Your Business",
-    "lead": "For accommodation and activity businesses that do things a little differently.",
+    "title": "Designed to fit your business",
+    "lead": "Built for accommodation and activity businesses that do things a little differently.",
     "homeCards": [
       { "slug": "surf-camps" },
-      { "slug": "yoga-retreats" },
-      { "slug": "accommodation" },
-      { "slug": "activity-providers" },
+      { "slug": "retreats" },
       { "slug": "adventure-lodges" },
+      { "slug": "guesthouses-and-bbs" },
+      { "slug": "tours-and-activities" },
       {
-        "slug": "and-more",
-        "name": "And more",
-        "cardTeaser": "For businesses selling accommodation, activities or packages with connected availability.",
-        "href": "/explore/book-a-call/",
+        "slug": "more-businesses",
+        "name": "More Businesses",
+        "cardTeaser": "Explore more businesses that use Hightide to sell accommodation, activities and packages.",
+        "href": "/explore/industries/",
         "image": "/assets/images/use-more.jpg",
         "imageAlt": "Mixed accommodation and outdoor activities",
-        "ariaLabel": "Book a discovery call for your business"
+        "ariaLabel": "View all industries Hightide supports"
       }
+    ],
+    "badgesHeading": "Other businesses Hightide can support",
+    "badges": [
+      { "slug": "kitesurf-camps" },
+      { "slug": "snowboard-camps" },
+      { "slug": "yoga-retreats" },
+      { "slug": "wellness-retreats" },
+      { "slug": "sports-camps" },
+      { "slug": "outdoor-activity-centres" },
+      { "slug": "glamping-sites" },
+      { "slug": "mountain-guiding" },
+      { "slug": "bike-and-mtb-holidays" },
+      { "slug": "sailing-and-surf-charters" },
+      { "slug": "dive-resorts" },
+      { "slug": "summer-camps" }
     ]
   }
 }

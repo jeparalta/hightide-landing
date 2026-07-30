@@ -355,19 +355,23 @@ bodyClass: page-explore
           <video
             class="explore-sell-video"
             data-sell-video
-            autoplay
             muted
             loop
             playsinline
-            preload="metadata"
+            preload="auto"
             aria-label="A short demonstration of the Hightide Online Store booking process"
           >
             <source
-              src="/assets/videos/hightide-online-store-booking-flow.mp4"
+              src="/assets/videos/online-store-tour.mp4"
               type="video/mp4"
             >
           </video>
         </div>
+        <span
+          class="explore-sell-video-start"
+          data-sell-video-start
+          aria-hidden="true"
+        ></span>
         </div>
         <a
           class="btn btn-primary explore-sell-demo-btn"
@@ -608,6 +612,25 @@ bodyClass: page-explore
       {% endif %}
       {% endfor %}
     </div>
+    {% if exploreHome.industries.badges and exploreHome.industries.badges.length %}
+    <div class="explore-industry-badges">
+      <h3 class="explore-industry-badges-heading">{{ exploreHome.industries.badgesHeading }}</h3>
+      <ul class="explore-industry-badge-list">
+        {% for badge in exploreHome.industries.badges %}
+        {% for industry in exploreIndustries %}
+        {% if industry.slug == badge.slug %}
+        <li>
+          <a
+            class="explore-industry-badge"
+            href="/explore/industries/{{ industry.slug }}/"
+          >{{ industry.name }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </div>
 </section>
 

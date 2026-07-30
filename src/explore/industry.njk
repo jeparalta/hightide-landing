@@ -9,43 +9,17 @@ eleventyExcludeFromCollections: true
 bodyClass: page-explore
 ---
 
-{% if exploreIndustryPages[industry.slug] %}
+{% set page = exploreIndustryPages[industry.slug] %}
+{% if page and industry.tier == "lightweight" %}
+{% include "partials/explore-industry-page-lite.njk" %}
+{% elif page %}
 {% include "partials/explore-industry-page.njk" %}
 {% else %}
 <section class="section">
-  <div class="container explore-industry-hero">
-    <div>
-      <p style="font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:0.5rem;">Industry</p>
-      <h1>{{ industry.name }}</h1>
-      <p class="section-lead" style="text-align:left;margin:1rem 0 0">{{ industry.heroLead }}</p>
-      <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" style="margin-top:1.5rem">{{ explore.primaryCtaLabel }}</a>
-    </div>
-    <img src="{{ industry.image }}" alt="{{ industry.imageAlt }}" loading="lazy">
-  </div>
-</section>
-
-<section class="section section-alt">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;align-items:start">
-      <div>
-        <h2 class="section-title" style="text-align:left;font-size:1.5rem">Common challenges</h2>
-        <ul class="explore-list-check">
-          {% for item in industry.challenges %}
-          <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div>
-        <h2 class="section-title" style="text-align:left;font-size:1.5rem">How Hightide helps</h2>
-        <ul class="explore-list-check">
-          {% for item in industry.solutions %}
-          <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+    <h1>{{ industry.name }}</h1>
+    <p class="section-lead" style="text-align:left">This industry page is not available yet.</p>
+    <p><a href="/explore/industries/">View all industries</a></p>
   </div>
 </section>
-
-{% include "partials/explore-cta.njk" %}
 {% endif %}

@@ -1,0 +1,56 @@
+---
+layout: layouts/explore.njk
+title: Industries | Booking Software for Accommodation, Activities and Packages | Hightide
+description: Explore how Hightide supports camps, retreats, lodges, guesthouses, tours and more specialised accommodation and activity businesses.
+permalink: /explore/industries/
+bodyClass: page-explore
+---
+
+{% set directoryGroups = [
+  {
+    id: "camps-and-retreats",
+    title: "Camps and retreats"
+  },
+  {
+    id: "accommodation-and-destinations",
+    title: "Accommodation and destinations"
+  },
+  {
+    id: "tours-and-adventure",
+    title: "Tours and adventure travel"
+  }
+] %}
+
+<section class="section explore-industry-directory-hero">
+  <div class="container">
+    <p class="explore-industry-hero-label">Industries</p>
+    <h1 class="section-title explore-industry-directory-title">Designed to fit your business</h1>
+    <p class="section-lead">Browse every industry Hightide supports, from primary markets to more specialised niches.</p>
+  </div>
+</section>
+
+<section class="section section-alt explore-industry-directory">
+  <div class="container">
+    {% for group in directoryGroups %}
+    <div class="explore-industry-directory-group">
+      <h2 class="explore-industry-directory-group-title">{{ group.title }}</h2>
+      <ul class="explore-industry-directory-list">
+        {% for industry in exploreIndustries %}
+        {% if industry.directoryGroup == group.id %}
+        <li>
+          <a class="explore-industry-directory-link" href="/explore/industries/{{ industry.slug }}/">
+            <span class="explore-industry-directory-name">{{ industry.name }}</span>
+            <span class="explore-industry-directory-blurb">{{ industry.directoryBlurb }}</span>
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% set ctaHeading = "See how Hightide could work for your business" %}
+{% set ctaLead = "Tell us how you currently take bookings and run your operation. We will explore whether Hightide is the right fit and what your setup could look like." %}
+{% include "partials/explore-cta.njk" %}
