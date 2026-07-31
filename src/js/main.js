@@ -83,9 +83,49 @@
   const heroRotate = document.querySelector('[data-hero-rotate]');
   if (heroRotate) {
     const words = heroRotate.querySelectorAll('.explore-hero-rotate-word');
+    const sizer = heroRotate.querySelector('.explore-hero-rotate-sizer');
     const displayMs = 1400;
     const fadeMs = 180;
     let index = 0;
+
+    function syncHeroRotateWidth() {
+      if (!sizer || !words.length) {
+        return;
+      }
+
+      const probe = sizer.cloneNode(true);
+      probe.className = 'explore-hero-rotate-sizer';
+      probe.style.position = 'absolute';
+      probe.style.visibility = 'hidden';
+      probe.style.pointerEvents = 'none';
+      probe.setAttribute('aria-hidden', 'true');
+      heroRotate.appendChild(probe);
+
+      let widest = sizer.textContent || '';
+      let widestWidth = 0;
+
+      words.forEach(function (word) {
+        probe.textContent = word.textContent || '';
+        const width = probe.getBoundingClientRect().width;
+        if (width > widestWidth) {
+          widestWidth = width;
+          widest = word.textContent || '';
+        }
+      });
+
+      probe.remove();
+
+      if (widest) {
+        sizer.textContent = widest;
+      }
+    }
+
+    syncHeroRotateWidth();
+    if (document.fonts && typeof document.fonts.ready !== 'undefined') {
+      document.fonts.ready.then(syncHeroRotateWidth).catch(function () {
+        // Ignore font readiness errors; the initial sync still applies.
+      });
+    }
 
     if (words.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       function cycle() {

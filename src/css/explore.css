@@ -53,7 +53,8 @@ body.page-explore .explore-sandbox {
 
 .explore-hero {
   padding: 0;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .explore-hero-stage {
@@ -173,6 +174,7 @@ body.page-explore .explore-sandbox {
   gap: 0.28em;
   white-space: nowrap;
   max-width: 100%;
+  overflow: visible;
 }
 
 .explore-hero-title-main {
@@ -187,10 +189,12 @@ body.page-explore .explore-sandbox {
 
 .explore-hero-rotate {
   position: relative;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
   text-align: left;
   overflow: visible;
-  padding: 0 0.08em 0 0;
+  /* Caveat swashes extend past the glyph box on the right. */
+  padding: 0 0.22em 0 0.02em;
   transform: translateY(-0.01em);
 }
 
@@ -202,11 +206,12 @@ body.page-explore .explore-sandbox {
   font-weight: 400;
   line-height: 1.05;
   white-space: nowrap;
+  padding-right: 0.12em;
 }
 
 .explore-hero-rotate-word {
   position: absolute;
-  left: 0;
+  left: 0.02em;
   top: 0;
   font-family: "Caveat", sans-serif;
   font-size: clamp(3.41rem, 9.63vw, 5.67rem);
@@ -1782,6 +1787,13 @@ body.page-explore .section-alt {
   object-position: top center;
   background: transparent;
   pointer-events: none;
+}
+
+@media (max-width: 1020px) {
+  .explore-sell-video {
+    /* Mobile: crop an extra ~1% from the bottom (3% total). */
+    height: calc(100% / 0.97);
+  }
 }
 
 .explore-sell-media.is-video-ready .explore-sell-video-clip {
@@ -4094,7 +4106,7 @@ body.page-explore .section-alt {
   .explore-hero-rotate {
     overflow: visible;
     max-width: none;
-    padding-right: 0.2em;
+    padding-right: 0.28em;
   }
 
   .explore-br-mobile {
