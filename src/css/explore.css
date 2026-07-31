@@ -69,6 +69,10 @@ body.page-explore .explore-sandbox {
 .explore-hero-content {
   position: relative;
   z-index: 2;
+  /* Flex centering — text-align/margin:auto were not moving the shrink-wrapped h1. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   max-width: min(42rem, 100%);
 }
@@ -78,6 +82,8 @@ body.page-explore .explore-sandbox {
   align-items: center;
   justify-content: center;
   gap: clamp(0.5rem, 2.5vw, 1.75rem);
+  align-self: stretch;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -149,23 +155,22 @@ body.page-explore .explore-sandbox {
   line-height: 1.06;
   letter-spacing: -0.025em;
   font-weight: 600;
-  /*
-    inline-block + parent text-align:center is the reliable centering path.
-    Block + margin:auto was failing to shift the shrink-wrapped title.
-  */
-  display: inline-block;
+  display: block;
+  width: max-content;
   max-width: 100%;
+  align-self: center;
   margin: 0 0 1.25rem;
   color: var(--primary-1);
-  text-align: left;
+  text-align: center;
   overflow: visible;
 }
 
 .explore-hero-title-stack {
   display: flex;
   flex-direction: column;
-  /* Lines share a left edge; the inline-block title centers as a unit. */
-  align-items: flex-start;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
   gap: 0.12em;
   overflow: visible;
 }
@@ -175,7 +180,7 @@ body.page-explore .explore-sandbox {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: baseline;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.28em;
   white-space: nowrap;
   max-width: 100%;
@@ -188,13 +193,13 @@ body.page-explore .explore-sandbox {
 
 .explore-hero-title-sub {
   display: block;
+  text-align: center;
+  /* Always one line — never reflow when the rotating word changes. */
   white-space: nowrap;
-  text-align: left;
 }
 
 .explore-hero-rotate {
-  /* In-flow sizer tracks the active word so the title can shrink-wrap + center.
-     Absolute words overlay; sizing to the widest word made the block full-bleed. */
+  /* Sizer stays on the widest word so the title width does not jump. */
   position: relative;
   display: inline-block;
   flex: 0 0 auto;
@@ -273,13 +278,14 @@ body.page-explore .explore-sandbox {
 }
 
 @media (max-width: 640px) {
+  /* Keep both title lines on a single row without horizontal jump/wrap. */
   .explore-hero-title {
-    font-size: clamp(1.9rem, 5vw, 2.5rem);
+    font-size: clamp(1.55rem, 4.2vw, 2rem);
   }
 
   .explore-hero-rotate-word,
   .explore-hero-rotate-sizer {
-    font-size: clamp(2.91rem, 11.75vw, 4.33rem);
+    font-size: clamp(2.4rem, 10.2vw, 3.6rem);
   }
 }
 
@@ -288,9 +294,13 @@ body.page-explore .explore-sandbox {
     gap: 0.2em;
   }
 
+  .explore-hero-title {
+    font-size: clamp(1.45rem, 4vw, 1.85rem);
+  }
+
   .explore-hero-rotate-word,
   .explore-hero-rotate-sizer {
-    font-size: clamp(2.6rem, 12.4vw, 3.9rem);
+    font-size: clamp(2.2rem, 10.5vw, 3.3rem);
   }
 }
 
@@ -3963,12 +3973,6 @@ body.page-explore .section-alt {
 }
 
 @media (max-width: 1020px) {
-  .explore-hero-title-sub {
-    white-space: normal;
-    max-width: 100%;
-    text-wrap: balance;
-  }
-
   .explore-hero-deco {
     width: clamp(52px, 12vw, 120px);
   }
@@ -4101,11 +4105,6 @@ body.page-explore .section-alt {
     width: 93cqw;
   }
 
-  .explore-hero-title-sub {
-    white-space: normal;
-    text-wrap: balance;
-  }
-
   .explore-br-mobile {
     display: inline;
   }
@@ -4152,8 +4151,9 @@ body.page-explore .section-alt {
   }
 
   .explore-hero-title {
-    display: inline-block;
+    width: max-content;
     max-width: 100%;
+    align-self: center;
     margin-bottom: 0.75rem;
   }
 

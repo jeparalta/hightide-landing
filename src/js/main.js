@@ -93,14 +93,7 @@
         return;
       }
 
-      // Size to the visible word(s) only. Using the widest word permanently
-      // made the title full-bleed, so margin:auto could not center it.
-      const visible = Array.prototype.filter.call(words, function (word) {
-        return word.classList.contains('is-active')
-          || word.classList.contains('is-exiting');
-      });
-      const targets = visible.length ? visible : [words[0]];
-
+      // Lock to the widest word so the title block does not shift as words cycle.
       let fitText = '';
       let fitWidth = 0;
       const probe = sizer.cloneNode(true);
@@ -111,7 +104,7 @@
       probe.setAttribute('aria-hidden', 'true');
       heroRotate.appendChild(probe);
 
-      targets.forEach(function (word) {
+      words.forEach(function (word) {
         const text = word.textContent || '';
         probe.textContent = text;
         const width = Math.ceil(probe.getBoundingClientRect().width);
@@ -157,7 +150,6 @@
           const current = words[index];
           current.classList.remove('is-active');
           current.classList.add('is-exiting');
-          scheduleHeroRotateWidthSync();
 
           window.setTimeout(function () {
             current.classList.remove('is-exiting');
@@ -165,7 +157,6 @@
             const next = words[index];
             void next.offsetWidth;
             next.classList.add('is-active');
-            scheduleHeroRotateWidthSync();
             cycle();
           }, fadeMs);
         }, displayMs);
