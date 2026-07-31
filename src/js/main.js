@@ -629,7 +629,15 @@
       let videoFailed = false;
       let playRequested = false;
       let bottomInView = false;
-      let canPlay = false;
+
+      // iOS needs these set before play(); Low Power Mode / cellular often
+      // ignore preload, so we must not wait for canplay before calling play().
+      sellVideo.muted = true;
+      sellVideo.defaultMuted = true;
+      sellVideo.playsInline = true;
+      sellVideo.setAttribute('muted', '');
+      sellVideo.setAttribute('playsinline', '');
+      sellVideo.setAttribute('webkit-playsinline', '');
 
       function failSellVideo() {
         if (videoFailed) {
@@ -651,19 +659,10 @@
         }
         videoRevealed = true;
         sellMedia.classList.add('is-video-ready');
-
-        // Paint the first frame while paused so the montage is not left showing.
-        try {
-          if (sellVideo.paused && sellVideo.currentTime === 0) {
-            sellVideo.currentTime = 0.001;
-          }
-        } catch (error) {
-          // Ignore seek errors on browsers that block early seeks.
-        }
       }
 
       function tryPlaySellVideo() {
-        if (videoFailed || playRequested || !bottomInView || !canPlay) {
+        if (videoFailed || playRequested || !bottomInView) {
           return;
         }
 
@@ -674,19 +673,19 @@
 
         const playAttempt = sellVideo.play();
         if (playAttempt && typeof playAttempt.then === 'function') {
-          playAttempt.catch(function () {
+          playAttempt.then(revealSellVideo).catch(function () {
+            // Autoplay can be blocked (e.g. iOS Low Power Mode). Keep the
+            // first frame if we have one; do not hard-fail to screenshots.
             playRequested = false;
-            failSellVideo();
+            if (sellVideo.readyState >= 2) {
+              revealSellVideo();
+            }
           });
-        } else if (sellVideo.paused) {
+        } else if (!sellVideo.paused) {
+          revealSellVideo();
+        } else {
           playRequested = false;
         }
-      }
-
-      function markCanPlay() {
-        canPlay = true;
-        revealSellVideo();
-        tryPlaySellVideo();
       }
 
       function markBottomInView() {
@@ -695,10 +694,15 @@
       }
 
       sellVideo.addEventListener('error', failSellVideo);
-      sellVideo.addEventListener('canplay', markCanPlay);
+      sellVideo.addEventListener('loadeddata', revealSellVideo);
+      sellVideo.addEventListener('canplay', function () {
+        revealSellVideo();
+        tryPlaySellVideo();
+      });
+      sellVideo.addEventListener('playing', revealSellVideo);
 
       if (sellVideo.readyState >= 2) {
-        markCanPlay();
+        revealSellVideo();
       }
 
       if ('IntersectionObserver' in window && sellVideoStart) {
@@ -718,6 +722,13 @@
       } else {
         markBottomInView();
       }
+
+      // Retry when returning from background / Low Power Mode changes.
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden && bottomInView && !videoFailed && sellVideo.paused) {
+          tryPlaySellVideo();
+        }
+      });
     }
   }
 
