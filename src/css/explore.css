@@ -149,20 +149,24 @@ body.page-explore .explore-sandbox {
   line-height: 1.06;
   letter-spacing: -0.025em;
   font-weight: 600;
-  margin: 0 auto 1.25rem;
-  max-width: none;
+  /*
+    inline-block + parent text-align:center is the reliable centering path.
+    Block + margin:auto was failing to shift the shrink-wrapped title.
+  */
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0 1.25rem;
   color: var(--primary-1);
-  display: flex;
-  justify-content: center;
+  text-align: left;
   overflow: visible;
 }
 
 .explore-hero-title-stack {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Lines share a left edge; the inline-block title centers as a unit. */
+  align-items: flex-start;
   gap: 0.12em;
-  max-width: 100%;
   overflow: visible;
 }
 
@@ -171,7 +175,7 @@ body.page-explore .explore-sandbox {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.28em;
   white-space: nowrap;
   max-width: 100%;
@@ -185,44 +189,39 @@ body.page-explore .explore-sandbox {
 .explore-hero-title-sub {
   display: block;
   white-space: nowrap;
-  text-align: center;
+  text-align: left;
 }
 
 .explore-hero-rotate {
-  /* Stack words in one grid cell so the slot is as wide as the widest word. */
-  display: inline-grid;
-  grid-template-columns: max-content;
-  justify-items: start;
-  align-items: baseline;
+  /* In-flow sizer tracks the active word so the title can shrink-wrap + center.
+     Absolute words overlay; sizing to the widest word made the block full-bleed. */
+  position: relative;
+  display: inline-block;
   flex: 0 0 auto;
-  width: max-content;
-  max-width: none;
-  min-width: min-content;
+  vertical-align: baseline;
   text-align: left;
   overflow: visible;
   /* Caveat ink routinely sits outside the advance width. */
-  padding: 0 0.42em 0 0.08em;
+  padding: 0 0.28em 0 0.04em;
   transform: translateY(-0.01em);
 }
 
 .explore-hero-rotate-sizer {
-  /* Words themselves size the grid; keep sizer for JS measurement only. */
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  visibility: hidden;
+  display: block;
   font-family: "Caveat", sans-serif;
   font-size: clamp(3.41rem, 9.63vw, 5.67rem);
   font-weight: 400;
   line-height: 1.05;
+  white-space: nowrap;
   pointer-events: none;
+  padding-right: 0.18em;
 }
 
 .explore-hero-rotate-word {
-  grid-area: 1 / 1;
-  position: relative;
+  position: absolute;
+  left: 0.04em;
+  top: 0;
   font-family: "Caveat", sans-serif;
   font-size: clamp(3.41rem, 9.63vw, 5.67rem);
   font-weight: 400;
@@ -239,7 +238,7 @@ body.page-explore .explore-sandbox {
   pointer-events: none;
   white-space: nowrap;
   /* Extra advance so iOS doesn't clip Caveat's right-side ink. */
-  padding-right: 0.28em;
+  padding-right: 0.18em;
 }
 
 .explore-hero-rotate-word.is-active {
@@ -4153,7 +4152,8 @@ body.page-explore .section-alt {
   }
 
   .explore-hero-title {
-    display: block;
+    display: inline-block;
+    max-width: 100%;
     margin-bottom: 0.75rem;
   }
 

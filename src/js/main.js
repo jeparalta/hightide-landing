@@ -89,38 +89,47 @@
     let index = 0;
 
     function syncHeroRotateWidth() {
-      if (!words.length) {
+      if (!sizer || !words.length) {
         return;
       }
 
-      // Measure the live word nodes (grid items) so Caveat metrics match paint.
-      let widestWidth = 0;
-      words.forEach(function (word) {
-        const width = Math.ceil(word.scrollWidth || word.getBoundingClientRect().width);
-        if (width > widestWidth) {
-          widestWidth = width;
+      // Size to the visible word(s) only. Using the widest word permanently
+      // made the title full-bleed, so margin:auto could not center it.
+      const visible = Array.prototype.filter.call(words, function (word) {
+        return word.classList.contains('is-active')
+          || word.classList.contains('is-exiting');
+      });
+      const targets = visible.length ? visible : [words[0]];
+
+      let fitText = '';
+      let fitWidth = 0;
+      const probe = sizer.cloneNode(true);
+      probe.style.position = 'absolute';
+      probe.style.visibility = 'hidden';
+      probe.style.pointerEvents = 'none';
+      probe.style.left = '-9999px';
+      probe.setAttribute('aria-hidden', 'true');
+      heroRotate.appendChild(probe);
+
+      targets.forEach(function (word) {
+        const text = word.textContent || '';
+        probe.textContent = text;
+        const width = Math.ceil(probe.getBoundingClientRect().width);
+        if (width >= fitWidth) {
+          fitWidth = width;
+          fitText = text;
         }
       });
 
-      if (widestWidth > 0) {
-        // Caveat's right-side ink often exceeds the layout advance on iOS.
-        const swashPad = Math.ceil(Math.max(16, widestWidth * 0.18));
-        heroRotate.style.minWidth = `${widestWidth + swashPad}px`;
+      probe.remove();
+
+      if (fitText) {
+        sizer.textContent = fitText;
       }
 
-      if (sizer) {
-        let widestText = '';
-        let maxW = 0;
-        words.forEach(function (word) {
-          const w = word.scrollWidth || 0;
-          if (w >= maxW) {
-            maxW = w;
-            widestText = word.textContent || '';
-          }
-        });
-        if (widestText) {
-          sizer.textContent = widestText;
-        }
+      if (fitWidth > 0) {
+        const swashPad = Math.ceil(Math.max(10, fitWidth * 0.1));
+        heroRotate.style.minWidth = `${fitWidth + swashPad}px`;
       }
     }
 
@@ -148,6 +157,7 @@
           const current = words[index];
           current.classList.remove('is-active');
           current.classList.add('is-exiting');
+          scheduleHeroRotateWidthSync();
 
           window.setTimeout(function () {
             current.classList.remove('is-exiting');
@@ -155,6 +165,7 @@
             const next = words[index];
             void next.offsetWidth;
             next.classList.add('is-active');
+            scheduleHeroRotateWidthSync();
             cycle();
           }, fadeMs);
         }, displayMs);
