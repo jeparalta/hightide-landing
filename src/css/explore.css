@@ -1742,6 +1742,7 @@ body.page-explore .section-alt {
 
 .explore-sell-media {
   position: relative;
+  z-index: 1;
   width: 100%;
 }
 
@@ -1827,8 +1828,8 @@ body.page-explore .section-alt {
 }
 
 .explore-sell-demo-btn {
-  position: static;
-  z-index: auto;
+  position: relative;
+  z-index: 8;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1852,7 +1853,7 @@ body.page-explore .section-alt {
   position: absolute;
   right: -0.15rem;
   bottom: -1.45rem;
-  z-index: 6;
+  z-index: 8;
   margin-top: 0;
   max-width: min(15.5rem, 72%);
   transform: translateX(50%);

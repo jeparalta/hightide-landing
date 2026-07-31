@@ -629,15 +629,17 @@
       let videoFailed = false;
       let playRequested = false;
       let bottomInView = false;
+      let firstFrameRequested = false;
 
-      // iOS needs these set before play(); Low Power Mode / cellular often
-      // ignore preload, so we must not wait for canplay before calling play().
+      // iOS needs these set before play(); cellular often delays preload, so
+      // first-frame reveal and loop playback are handled separately below.
       sellVideo.muted = true;
       sellVideo.defaultMuted = true;
       sellVideo.playsInline = true;
       sellVideo.setAttribute('muted', '');
       sellVideo.setAttribute('playsinline', '');
       sellVideo.setAttribute('webkit-playsinline', '');
+      sellVideo.preload = 'auto';
 
       function failSellVideo() {
         if (videoFailed) {
@@ -693,8 +695,108 @@
         tryPlaySellVideo();
       }
 
+      // Paint a paused first frame as soon as the media is on screen, without
+      // waiting for the bottom-edge play trigger (important on iOS).
+      function prepareSellVideoFirstFrame() {
+        if (videoFailed || videoRevealed || firstFrameRequested) {
+          return;
+        }
+
+        firstFrameRequested = true;
+
+        function finishPausedFrame() {
+          revealSellVideo();
+          if (bottomInView) {
+            tryPlaySellVideo();
+          }
+        }
+
+        function warmWithPlayPause() {
+          if (bottomInView) {
+            tryPlaySellVideo();
+            return;
+          }
+
+          const warmPlay = sellVideo.play();
+          if (warmPlay && typeof warmPlay.then === 'function') {
+            warmPlay.then(function () {
+              if (!bottomInView) {
+                sellVideo.pause();
+                try {
+                  sellVideo.currentTime = 0;
+                } catch (error) {
+                  // Ignore seek errors after warm play.
+                }
+              }
+              finishPausedFrame();
+            }).catch(function () {
+              firstFrameRequested = false;
+              if (sellVideo.readyState >= 2) {
+                finishPausedFrame();
+              }
+            });
+          } else if (sellVideo.readyState >= 2) {
+            finishPausedFrame();
+          } else {
+            firstFrameRequested = false;
+          }
+        }
+
+        function paintFromMetadata() {
+          if (videoRevealed || bottomInView) {
+            if (bottomInView) {
+              tryPlaySellVideo();
+            }
+            return;
+          }
+
+          try {
+            sellVideo.currentTime = 0.001;
+          } catch (error) {
+            warmWithPlayPause();
+          }
+        }
+
+        sellVideo.addEventListener('seeked', function onSeeked() {
+          sellVideo.removeEventListener('seeked', onSeeked);
+          if (!bottomInView) {
+            try {
+              sellVideo.pause();
+            } catch (error) {
+              // Ignore pause errors while painting the first frame.
+            }
+          }
+          finishPausedFrame();
+        });
+
+        if (sellVideo.readyState >= 2) {
+          finishPausedFrame();
+          return;
+        }
+
+        if (sellVideo.readyState >= 1) {
+          paintFromMetadata();
+        } else {
+          sellVideo.addEventListener('loadedmetadata', paintFromMetadata, { once: true });
+        }
+
+        sellVideo.addEventListener('loadeddata', finishPausedFrame, { once: true });
+
+        try {
+          sellVideo.load();
+        } catch (error) {
+          // Ignore load errors; play/warm path may still succeed later.
+        }
+
+        // iOS often needs a muted play() before a frame is decoded.
+        window.setTimeout(function () {
+          if (!videoRevealed && !videoFailed && !bottomInView) {
+            warmWithPlayPause();
+          }
+        }, 250);
+      }
+
       sellVideo.addEventListener('error', failSellVideo);
-      sellVideo.addEventListener('loadeddata', revealSellVideo);
       sellVideo.addEventListener('canplay', function () {
         revealSellVideo();
         tryPlaySellVideo();
@@ -705,21 +807,40 @@
         revealSellVideo();
       }
 
-      if ('IntersectionObserver' in window && sellVideoStart) {
-        const sellVideoObserver = new IntersectionObserver(
+      if ('IntersectionObserver' in window) {
+        const sellMediaObserver = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
               if (!entry.isIntersecting || videoFailed) {
                 return;
               }
-              sellVideoObserver.disconnect();
-              markBottomInView();
+              sellMediaObserver.disconnect();
+              prepareSellVideoFirstFrame();
             });
           },
           { root: null, rootMargin: '0px', threshold: 0 },
         );
-        sellVideoObserver.observe(sellVideoStart);
+        sellMediaObserver.observe(sellMedia);
+
+        if (sellVideoStart) {
+          const sellVideoObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting || videoFailed) {
+                  return;
+                }
+                sellVideoObserver.disconnect();
+                markBottomInView();
+              });
+            },
+            { root: null, rootMargin: '0px', threshold: 0 },
+          );
+          sellVideoObserver.observe(sellVideoStart);
+        } else {
+          markBottomInView();
+        }
       } else {
+        prepareSellVideoFirstFrame();
         markBottomInView();
       }
 
