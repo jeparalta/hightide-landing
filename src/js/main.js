@@ -89,43 +89,58 @@
     let index = 0;
 
     function syncHeroRotateWidth() {
-      if (!sizer || !words.length) {
+      if (!words.length) {
         return;
       }
 
-      const probe = sizer.cloneNode(true);
-      probe.className = 'explore-hero-rotate-sizer';
-      probe.style.position = 'absolute';
-      probe.style.visibility = 'hidden';
-      probe.style.pointerEvents = 'none';
-      probe.setAttribute('aria-hidden', 'true');
-      heroRotate.appendChild(probe);
-
-      let widest = sizer.textContent || '';
+      // Measure the live word nodes (grid items) so Caveat metrics match paint.
       let widestWidth = 0;
-
       words.forEach(function (word) {
-        probe.textContent = word.textContent || '';
-        const width = probe.getBoundingClientRect().width;
+        const width = Math.ceil(word.scrollWidth || word.getBoundingClientRect().width);
         if (width > widestWidth) {
           widestWidth = width;
-          widest = word.textContent || '';
         }
       });
 
-      probe.remove();
+      if (widestWidth > 0) {
+        // Caveat's right-side ink often exceeds the layout advance on iOS.
+        const swashPad = Math.ceil(Math.max(16, widestWidth * 0.18));
+        heroRotate.style.minWidth = `${widestWidth + swashPad}px`;
+      }
 
-      if (widest) {
-        sizer.textContent = widest;
+      if (sizer) {
+        let widestText = '';
+        let maxW = 0;
+        words.forEach(function (word) {
+          const w = word.scrollWidth || 0;
+          if (w >= maxW) {
+            maxW = w;
+            widestText = word.textContent || '';
+          }
+        });
+        if (widestText) {
+          sizer.textContent = widestText;
+        }
       }
     }
 
-    syncHeroRotateWidth();
-    if (document.fonts && typeof document.fonts.ready !== 'undefined') {
-      document.fonts.ready.then(syncHeroRotateWidth).catch(function () {
-        // Ignore font readiness errors; the initial sync still applies.
+    function scheduleHeroRotateWidthSync() {
+      window.requestAnimationFrame(function () {
+        syncHeroRotateWidth();
+        window.requestAnimationFrame(syncHeroRotateWidth);
       });
     }
+
+    scheduleHeroRotateWidthSync();
+    if (document.fonts) {
+      if (typeof document.fonts.load === 'function') {
+        document.fonts.load('400 4rem "Caveat"').then(scheduleHeroRotateWidthSync).catch(function () {});
+      }
+      if (typeof document.fonts.ready !== 'undefined') {
+        document.fonts.ready.then(scheduleHeroRotateWidthSync).catch(function () {});
+      }
+    }
+    window.addEventListener('resize', scheduleHeroRotateWidthSync, { passive: true });
 
     if (words.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       function cycle() {

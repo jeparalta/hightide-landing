@@ -53,8 +53,7 @@ body.page-explore .explore-sandbox {
 
 .explore-hero {
   padding: 0;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: visible;
 }
 
 .explore-hero-stage {
@@ -155,6 +154,7 @@ body.page-explore .explore-sandbox {
   color: var(--primary-1);
   display: flex;
   justify-content: center;
+  overflow: visible;
 }
 
 .explore-hero-title-stack {
@@ -163,6 +163,7 @@ body.page-explore .explore-sandbox {
   align-items: center;
   gap: 0.12em;
   max-width: 100%;
+  overflow: visible;
 }
 
 .explore-hero-title-line {
@@ -188,31 +189,40 @@ body.page-explore .explore-sandbox {
 }
 
 .explore-hero-rotate {
-  position: relative;
-  flex: 0 1 auto;
-  min-width: 0;
+  /* Stack words in one grid cell so the slot is as wide as the widest word. */
+  display: inline-grid;
+  grid-template-columns: max-content;
+  justify-items: start;
+  align-items: baseline;
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: none;
+  min-width: min-content;
   text-align: left;
   overflow: visible;
-  /* Caveat swashes extend past the glyph box on the right. */
-  padding: 0 0.22em 0 0.02em;
+  /* Caveat ink routinely sits outside the advance width. */
+  padding: 0 0.42em 0 0.08em;
   transform: translateY(-0.01em);
 }
 
 .explore-hero-rotate-sizer {
-  visibility: hidden;
-  display: block;
+  /* Words themselves size the grid; keep sizer for JS measurement only. */
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   font-family: "Caveat", sans-serif;
   font-size: clamp(3.41rem, 9.63vw, 5.67rem);
   font-weight: 400;
   line-height: 1.05;
-  white-space: nowrap;
-  padding-right: 0.12em;
+  pointer-events: none;
 }
 
 .explore-hero-rotate-word {
-  position: absolute;
-  left: 0.02em;
-  top: 0;
+  grid-area: 1 / 1;
+  position: relative;
   font-family: "Caveat", sans-serif;
   font-size: clamp(3.41rem, 9.63vw, 5.67rem);
   font-weight: 400;
@@ -228,7 +238,8 @@ body.page-explore .explore-sandbox {
     visibility 0s linear 180ms;
   pointer-events: none;
   white-space: nowrap;
-  will-change: opacity, transform;
+  /* Extra advance so iOS doesn't clip Caveat's right-side ink. */
+  padding-right: 0.28em;
 }
 
 .explore-hero-rotate-word.is-active {
@@ -255,7 +266,6 @@ body.page-explore .explore-sandbox {
   .explore-hero-rotate-word {
     transition: none;
     transform: none;
-    will-change: auto;
   }
 
   .explore-hero-rotate-word:not(.is-active) {
@@ -4092,21 +4102,9 @@ body.page-explore .section-alt {
     width: 93cqw;
   }
 
-  .explore-hero-title-line {
-    white-space: normal;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .explore-hero-title-sub {
     white-space: normal;
     text-wrap: balance;
-  }
-
-  .explore-hero-rotate {
-    overflow: visible;
-    max-width: none;
-    padding-right: 0.28em;
   }
 
   .explore-br-mobile {
