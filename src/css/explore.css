@@ -516,8 +516,7 @@ body.page-explore .explore-sandbox {
 }
 
 .explore-industry-card-featured {
-  border-color: rgba(25, 135, 84, 0.28);
-  background: linear-gradient(180deg, #ffffff 0%, #f7fbf9 100%);
+  background: #fff;
 }
 
 .explore-industry-card-featured .explore-industry-card-image {
