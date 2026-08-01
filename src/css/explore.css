@@ -3878,7 +3878,7 @@ body.page-explore .section-alt {
 
   .explore-sell-demo-btn {
     max-width: min(14rem, 90%);
-    margin-top: 0;
+    margin-top: 1.15rem;
     margin-bottom: 0.5rem;
     padding: 0.48rem 0.75rem;
     font-size: 0.78rem;
