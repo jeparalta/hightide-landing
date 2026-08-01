@@ -61,33 +61,19 @@ Repo: **https://github.com/jeparalta/hightide-landing**
 
 This project uses **Workers static assets** via Wrangler (same setup as Cantinho).
 
-### Auto-deploy on push (GitHub Actions)
+### Auto-deploy on push (Cloudflare Git)
 
-Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds Eleventy and runs `wrangler deploy`.
-
-**One-time setup:** add a repository secret in GitHub → **Settings → Secrets and variables → Actions**:
-
-| Secret | Value |
-|--------|-------|
-| `CLOUDFLARE_API_TOKEN` | API token with **Workers Scripts → Edit** for your account |
-
-Create the token in Cloudflare → **My Profile → API Tokens → Create Token** (use the “Edit Cloudflare Workers” template).
-
-Preview URL after deploy: **https://hightide-landing.jose-453.workers.dev/**
-
-### Cloudflare dashboard (optional)
-
-You can also connect the repo in **Workers & Pages → hightide-landing → Settings → Build**. If you use GitHub Actions above, you do not need dashboard builds — pick one method to avoid double deploys.
-
-If using dashboard builds only:
+Pushes to `main` deploy via the Worker’s **Build** settings in the Cloudflare dashboard (same approach as Cantinho). Keep the GitHub repo connected there.
 
 | Setting | Value |
 |---------|-------|
 | Production branch | `main` |
-| Build command | *(leave empty)* |
+| Build command | `npm run build` *(or leave empty)* |
 | Deploy command | `npm run deploy` |
 
 `npm run deploy` builds Eleventy and uploads `./_site` via Wrangler.
+
+Preview URL after deploy: **https://hightide-landing.jose-453.workers.dev/**
 
 After the first successful deploy, attach custom domains in the Worker → **Settings → Domains & Routes**:
 
