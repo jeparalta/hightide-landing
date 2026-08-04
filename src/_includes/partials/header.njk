@@ -17,13 +17,13 @@
               <li><a href="/video-tutorials/" class="nav-link"{% if page.url == '/video-tutorials/' %} aria-current="page"{% endif %}>Video Tutorials</a></li>
             </ul>
           </li>
-          <li class="nav-item-wrapper nav-cta-mobile"><a class="btn btn-primary" href="{% if bodyClass == 'page-explore' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}">{% if bodyClass == 'page-explore' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a></li>
+          <li class="nav-item-wrapper nav-cta-mobile"><a class="btn btn-primary" href="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}">{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
-      <a class="btn btn-primary header-cta" href="{% if bodyClass == 'page-explore' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}">{% if bodyClass == 'page-explore' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a>
+      <a class="btn btn-primary header-cta" href="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}">{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a>
     </div>
   </header>
 </div>

@@ -23,4 +23,9 @@ eleventyExcludeFromCollections: true
     <loc>{{ site.url }}/explore/industries/{{ industry.slug }}/</loc>
   </url>
 {%- endfor %}
+{%- for category in videoTutorials.categories %}
+  <url>
+    <loc>{{ site.url }}/video-tutorials/{{ category.slug }}/</loc>
+  </url>
+{%- endfor %}
 </urlset>

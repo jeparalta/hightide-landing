@@ -1,0 +1,176 @@
+{
+  "hero": {
+    "title": "Simple pricing. The complete platform.",
+    "lead": "Every plan includes the complete Hightide platform, with no commission on direct bookings.",
+    "annualNote": "Save €10 per month with annual billing."
+  },
+  "trialNote": "30-day free trial. No credit card required.",
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "description": "For smaller accommodation and activity businesses.",
+      "monthly": "€59",
+      "yearly": "€49",
+      "capacity": "Up to 15 bookable units",
+      "team": "Includes team access",
+      "features": [
+        "Complete Hightide platform",
+        "Customisable Online Store",
+        "Accommodation, activities and packages",
+        "Booking and operations workspace",
+        "Online payments and payment requests",
+        "Automated guest emails",
+        "Reports and team access"
+      ]
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "badge": "More capacity",
+      "featured": true,
+      "description": "For growing operations with more inventory and team members.",
+      "monthly": "€99",
+      "yearly": "€89",
+      "capacity": "Up to 40 bookable units",
+      "team": "Includes additional team access",
+      "features": [
+        "Everything in Basic",
+        "25 additional bookable units",
+        "Additional team accounts",
+        "More capacity for accommodation, activities and packages"
+      ]
+    }
+  ],
+  "units": {
+    "title": "What is a bookable unit?",
+    "copy": "A bookable unit is something with its own availability, such as a room, dorm bed or rental. For group lessons and tours, a unit is usually a place for one person, not the full activity. A private lesson or tour can also be a unit when it is booked as a whole. Packages can combine multiple units without creating duplicate inventory."
+  },
+  "platform": {
+    "title": "Every plan includes the complete Hightide platform",
+    "lead": "Sell directly, manage every booking and keep your operation organised from one place.",
+    "groups": [
+      {
+        "title": "Sell online",
+        "features": [
+          "Customisable Online Store",
+          "Accommodation, activities and packages",
+          "Ready-made and build-your-own packages",
+          "Fixed-date and flexible-date offers",
+          "Instant booking or booking requests",
+          "Stripe and PayPal payments",
+          "Extras, discounts and gift vouchers",
+          "No commission on direct bookings"
+        ]
+      },
+      {
+        "title": "Manage every booking",
+        "features": [
+          "Connected booking calendar",
+          "Dedicated workspace for every booking",
+          "Guest details, booked items and statuses",
+          "Balances and additional payment requests",
+          "Notes, emails, files and staff comments",
+          "Invoices and price adjustments",
+          "Booking history and change log"
+        ]
+      },
+      {
+        "title": "Run your operation",
+        "features": [
+          "Day Planner",
+          "Arrivals, departures and daily activities",
+          "Filterable booking lists",
+          "Booking, transaction and customer reports",
+          "Team access levels",
+          "Automated guest emails",
+          "Internal notes and flags"
+        ]
+      },
+      {
+        "title": "Connect and distribute",
+        "features": [
+          "Partner and affiliate referral links",
+          "Partner booking codes",
+          "Commission and settlement reporting",
+          "Google Analytics 4",
+          "Meta Pixel",
+          "Channel manager add-on",
+          "Invoicing integration"
+        ]
+      }
+    ]
+  },
+  "onboarding": {
+    "title": "Guided setup included",
+    "copy": "Every business works differently. We begin by understanding how you sell accommodation, activities and packages, then help structure Hightide around your operation.",
+    "steps": [
+      {
+        "title": "Discovery",
+        "text": "We learn how your bookings and operation work today."
+      },
+      {
+        "title": "Starter setup",
+        "text": "We prepare the initial structure around your accommodation, activities and packages."
+      },
+      {
+        "title": "Review and launch",
+        "text": "We refine the setup together and help you get ready to take bookings."
+      }
+    ]
+  },
+  "addons": {
+    "title": "Optional add-ons",
+    "items": [
+      {
+        "title": "Channel Manager",
+        "description": "Connect your accommodation inventory to channels such as Airbnb, Booking.com, Hostelworld, Expedia, Vrbo and TripAdvisor through Hightide’s channel manager integration.",
+        "monthly": "€40",
+        "yearly": "€35",
+        "periodLabel": "/ month"
+      },
+      {
+        "title": "10 additional bookable units",
+        "description": "Add more rooms, beds, activities, tours or other bookable inventory as your operation grows.",
+        "monthly": "€10",
+        "yearly": "€8",
+        "periodLabel": "/ month"
+      }
+    ]
+  },
+  "complex": {
+    "title": "Need more capacity or a more complex setup?",
+    "copy": "If you manage more inventory, multiple operations or an unusual booking structure, let’s discuss what you need."
+  },
+  "faq": [
+    {
+      "question": "Does Hightide charge commission on bookings?",
+      "answer": "No. Hightide does not charge commission on bookings made through your Online Store. Standard fees from your chosen payment provider still apply."
+    },
+    {
+      "question": "Is guided setup included?",
+      "answer": "Yes. We begin by learning how your business works and help prepare the initial Hightide structure around your accommodation, activities and packages."
+    },
+    {
+      "question": "Can I start with a free trial?",
+      "answer": "Yes. You can explore Hightide free for 30 days without entering a credit card. For businesses with more complex booking structures, we recommend starting with a discovery call."
+    },
+    {
+      "question": "What counts as a bookable unit?",
+      "answer": "A bookable unit is something with its own availability, such as a room, dorm bed or rental. For group lessons and tours, a unit is usually a place for one person, not the full activity. A private lesson or tour can also be a unit when it is booked as a whole."
+    },
+    {
+      "question": "Can I change plans later?",
+      "answer": "Yes. You can change plans or add more capacity as your operation grows."
+    },
+    {
+      "question": "Is the channel manager included?",
+      "answer": "The channel manager is an optional add-on for accommodation businesses that need to connect inventory with external booking channels."
+    },
+    {
+      "question": "Does Hightide support both accommodation and activities?",
+      "answer": "Yes. Bringing accommodation, activities and packages together is one of Hightide’s biggest strengths. You can manage them in one system, with connected availability whether they are booked separately or as part of a package."
+    }
+  ],
+  "vatNote": "All prices are exclusive of VAT. VAT may be added at checkout depending on your country and business status."
+}

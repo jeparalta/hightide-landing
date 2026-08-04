@@ -1,65 +1,79 @@
 ---
 layout: layouts/base.njk
 title: Hightide Video Tutorials | Booking Software for Surf Camps & Retreats
-description: Watch step-by-step tutorials to learn Hightide's booking software for surf camps, retreats, and tour operators.
+description: Watch step-by-step Hightide tutorials to set up your platform, manage bookings and run your operation.
 permalink: /video-tutorials/
+bodyClass: page-tutorials
 ---
 
-<section class="page-header">
+<section class="page-header tutorials-hero">
   <div class="container">
     <h1>Video Tutorials</h1>
-    <p class="section-lead">Step-by-step guides to help you get the most out of Hightide.</p>
+    <p class="section-lead">Set up Hightide, manage individual bookings and run the wider operation.</p>
+  </div>
+</section>
+
+<section class="section tutorials-intro">
+  <div class="container tutorials-intro-inner">
+    <p class="tutorials-intro-eyebrow">{{ videoTutorials.intro.eyebrow }}</p>
+    <h2>{{ videoTutorials.intro.title }}</h2>
+    <p class="tutorials-intro-copy">{{ videoTutorials.intro.description }}</p>
+    <div class="video-embed tutorials-intro-video">
+      <iframe
+        src="{{ videoTutorials.intro.embedUrl }}"
+        title="{{ videoTutorials.intro.videoTitle }}"
+        loading="eager"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt tutorials-categories">
+  <div class="container">
+    {% if videoTutorials.videoCount >= videoTutorials.searchThreshold %}
+    <form class="tutorials-search" role="search" data-tutorials-search>
+      <label class="visually-hidden" for="tutorials-search-input">Search tutorials</label>
+      <input
+        id="tutorials-search-input"
+        type="search"
+        name="q"
+        placeholder="Search tutorials, for example cancel booking"
+        autocomplete="off"
+        data-tutorials-search-input
+      >
+    </form>
+    {% endif %}
+
+    <div class="tutorials-category-grid">
+      {% for category in videoTutorials.categories %}
+      <article
+        class="tutorials-category-card"
+        data-tutorials-category
+        data-search-text="{{ category.title }} {{ category.description }} {{ category.examples | join(' ') }} {{ category.topics | join(' ') }}"
+      >
+        <h2>{{ category.title }}</h2>
+        <p class="tutorials-category-desc">{{ category.description }}</p>
+        <p class="tutorials-category-count">
+          {% if category.videos.length == 1 %}
+          1 tutorial
+          {% else %}
+          {{ category.videos.length }} tutorials
+          {% endif %}
+        </p>
+        <ul class="tutorials-category-examples">
+          {% for example in category.examples %}
+          <li>{{ example }}</li>
+          {% endfor %}
+        </ul>
+        <a class="tutorials-category-link" href="/video-tutorials/{{ category.slug }}/">View tutorials →</a>
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container video-grid">
-    <article class="video-card">
-      <h3>Understanding Items and Listings</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/38b9358e63b04bc2a00d57a053fa5f3c?hideEmbedTopBar=true" title="Understanding Items and Listings" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-    <article class="video-card">
-      <h3>Setting Up Accommodations</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/b7ac9ffc5a92475f9ea373fbd55035a3?hideEmbedTopBar=true" title="Setting Up Accommodations" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-    <article class="video-card">
-      <h3>Setting Up Tours</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/3e8a864a2c094e2789e09d56126aaa2f?hideEmbedTopBar=true" title="Setting Up Tours" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-    <article class="video-card">
-      <h3>Adding &amp; Managing Bookings</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/ff4a136920ff4cd9a3ffce0921d773a5?hideEmbedTopBar=true" title="Adding and Managing Bookings" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-    <article class="video-card">
-      <h3>Customising your Online Store</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/efd07252d79648a79e935f40078527d4?hideEmbedTopBar=true" title="Customising your Online Store" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-    <article class="video-card">
-      <h3>Setting Up Extras</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/a7b76593ade54fea87f55af969504c3b?hideEmbedTopBar=true" title="Setting Up Extras" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-    <article class="video-card">
-      <h3>Setting Up Taxes &amp; Fees</h3>
-      <div class="video-embed">
-        <iframe src="https://www.loom.com/embed/1a61a249665a4d52843101ec7a79f04c?hideEmbedTopBar=true" title="Setting Up Taxes and Fees" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="section section-alt">
   <div class="container">
     <div class="cta-band">
       <h2>Prefer reading?</h2>

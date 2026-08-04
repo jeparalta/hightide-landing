@@ -1,0 +1,102 @@
+{
+  "intro": {
+    "eyebrow": "New to Hightide?",
+    "title": "Take a quick tour of the platform",
+    "description": "A short overview of the Online Store, calendar, booking workspace and Day Planner to help you get oriented.",
+    "embedUrl": "https://www.loom.com/embed/38b9358e63b04bc2a00d57a053fa5f3c?hideEmbedTopBar=true",
+    "videoTitle": "Understanding Items and Listings"
+  },
+  "searchThreshold": 15,
+  "videoCount": 6,
+  "categories": [
+    {
+      "slug": "get-started",
+      "title": "Get Started",
+      "description": "Initial configuration and launch.",
+      "examples": [
+        "Set up accommodation",
+        "Create activities and tours",
+        "Build packages"
+      ],
+      "topics": [
+        "Set up accommodation",
+        "Create activities and tours",
+        "Build packages",
+        "Configure the Online Store",
+        "Connect payments",
+        "Set up automated emails",
+        "Invite team members"
+      ],
+      "videos": [
+        {
+          "title": "Setting Up Accommodations",
+          "embedUrl": "https://www.loom.com/embed/b7ac9ffc5a92475f9ea373fbd55035a3?hideEmbedTopBar=true"
+        },
+        {
+          "title": "Setting Up Tours",
+          "embedUrl": "https://www.loom.com/embed/3e8a864a2c094e2789e09d56126aaa2f?hideEmbedTopBar=true"
+        },
+        {
+          "title": "Customising your Online Store",
+          "embedUrl": "https://www.loom.com/embed/efd07252d79648a79e935f40078527d4?hideEmbedTopBar=true"
+        },
+        {
+          "title": "Setting Up Extras",
+          "embedUrl": "https://www.loom.com/embed/a7b76593ade54fea87f55af969504c3b?hideEmbedTopBar=true"
+        },
+        {
+          "title": "Setting Up Taxes & Fees",
+          "embedUrl": "https://www.loom.com/embed/1a61a249665a4d52843101ec7a79f04c?hideEmbedTopBar=true"
+        }
+      ]
+    },
+    {
+      "slug": "manage-bookings",
+      "title": "Manage Bookings",
+      "description": "Actions performed on individual bookings.",
+      "examples": [
+        "Create a booking",
+        "Add or change booked items",
+        "Send a payment request"
+      ],
+      "topics": [
+        "Create a booking",
+        "Update booking dates",
+        "Add or change booked items",
+        "Add extras or discounts",
+        "Record a payment",
+        "Send a payment request",
+        "Send an email",
+        "Create an invoice",
+        "Cancel a booking",
+        "Update check-in and booking statuses"
+      ],
+      "videos": [
+        {
+          "title": "Adding & Managing Bookings",
+          "embedUrl": "https://www.loom.com/embed/ff4a136920ff4cd9a3ffce0921d773a5?hideEmbedTopBar=true"
+        }
+      ]
+    },
+    {
+      "slug": "run-your-operation",
+      "title": "Run Your Operation",
+      "description": "Tools used across the wider business.",
+      "examples": [
+        "Use the calendar",
+        "Use the Day Planner",
+        "Create reports"
+      ],
+      "topics": [
+        "Use the calendar",
+        "Use the Day Planner",
+        "Work with booking lists and filters",
+        "Create reports",
+        "Manage partner bookings and commissions",
+        "Use channel manager bookings",
+        "Manage team access"
+      ],
+      "videos": []
+    }
+  ]
+}

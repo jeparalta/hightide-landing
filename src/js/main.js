@@ -77,7 +77,7 @@
     }
     yearlyBtn.addEventListener('click', function () { setPeriod('yearly'); });
     monthlyBtn.addEventListener('click', function () { setPeriod('monthly'); });
-    setPeriod('yearly');
+    setPeriod('monthly');
   }
 
   const heroRotate = document.querySelector('[data-hero-rotate]');

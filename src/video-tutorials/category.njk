@@ -1,0 +1,60 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: videoTutorials.categories
+  size: 1
+  alias: category
+permalink: "/video-tutorials/{{ category.slug }}/"
+eleventyExcludeFromCollections: true
+bodyClass: page-tutorials
+eleventyComputed:
+  title: "{{ category.title }} Video Tutorials | Hightide"
+  description: "Hightide video tutorials for {{ category.title | lower }}. {{ category.description }}"
+---
+
+<section class="page-header tutorials-category-hero">
+  <div class="container">
+    <p class="tutorials-breadcrumb">
+      <a href="/video-tutorials/">Video Tutorials</a>
+      <span aria-hidden="true"> / </span>
+      <span>{{ category.title }}</span>
+    </p>
+    <h1>{{ category.title }}</h1>
+    <p class="section-lead">{{ category.description }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {% if category.videos.length %}
+    <div class="video-grid">
+      {% for video in category.videos %}
+      <article class="video-card">
+        <h2>{{ video.title }}</h2>
+        <div class="video-embed">
+          <iframe
+            src="{{ video.embedUrl }}"
+            title="{{ video.title }}"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="tutorials-empty">
+      <p>Tutorials for this category are coming soon. Topics we plan to cover include:</p>
+      <ul class="tutorials-topic-list">
+        {% for topic in category.topics %}
+        <li>{{ topic }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <p class="tutorials-back">
+      <a href="/video-tutorials/">← Back to all tutorials</a>
+    </p>
+  </div>
+</section>
