@@ -1,0 +1,14 @@
+[
+  {
+    "src": "/assets/images/tab-bookings-detail-notes.webp",
+    "alt": "Booking notes with guest arrival details"
+  },
+  {
+    "src": "/assets/images/tab-bookings-detail-payments.webp",
+    "alt": "Payments and refunds for a booking"
+  },
+  {
+    "src": "/assets/images/tab-bookings-detail-actions.webp",
+    "alt": "Booking actions, email history and invoices"
+  }
+]

@@ -40,15 +40,26 @@
       {% endif %}
     </div>
     {% if page.workflow.image %}
-    <figure class="explore-industry-workflow-shot-wrap">
-      <img
-        class="explore-industry-workflow-shot"
-        src="{{ page.workflow.image.src }}"
-        alt="{{ page.workflow.image.alt }}"
-        loading="lazy"
-        width="1600"
-        height="1000"
-      >
+    <figure class="explore-industry-workflow-montage">
+      <div class="explore-industry-workflow-montage-stage">
+        <img
+          class="explore-industry-workflow-shot"
+          src="{{ page.workflow.image.src }}?v=2"
+          alt="{{ page.workflow.image.alt }}"
+          loading="lazy"
+          width="1600"
+          height="903"
+        >
+        {% for detail in bookingWorkspaceDetails %}
+        <img
+          class="explore-industry-workflow-detail explore-industry-workflow-detail-{{ loop.index }}"
+          src="{{ detail.src }}?v=2"
+          alt="{{ detail.alt }}"
+          loading="lazy"
+          decoding="async"
+        >
+        {% endfor %}
+      </div>
     </figure>
     {% endif %}
     {% if page.workflow.callouts %}

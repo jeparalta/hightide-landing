@@ -818,6 +818,10 @@ body.page-home .section.section-faq {
   max-width: none;
 }
 
+.explore-cta-heading-mobile {
+  display: none;
+}
+
 .explore-cta-lead {
   color: var(--text-muted);
   max-width: none;
@@ -868,6 +872,14 @@ body.page-home .section.section-faq {
 @media (max-width: 768px) {
   .explore-cta-band {
     padding: 2.125rem 1.25rem;
+  }
+
+  .explore-cta-heading-desktop {
+    display: none;
+  }
+
+  .explore-cta-heading-mobile {
+    display: block;
   }
 }
 

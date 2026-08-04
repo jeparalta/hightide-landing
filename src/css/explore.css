@@ -920,16 +920,54 @@ body.page-explore .explore-sandbox {
   font-weight: 700;
 }
 
-.explore-industry-workflow-shot-wrap {
+.explore-industry-workflow-shot-wrap,
+.explore-industry-workflow-montage {
   margin: 0 auto 1.25rem;
-  max-width: 42rem;
+  max-width: 48rem;
+}
+
+.explore-industry-workflow-montage-stage {
+  position: relative;
+  padding: 1.75rem 7% 2.75rem;
 }
 
 .explore-industry-workflow-shot {
   display: block;
-  width: 100%;
-  border-radius: var(--radius);
-  filter: drop-shadow(0 10px 24px rgb(26 61 46 / 10%));
+  width: 86%;
+  margin-inline: auto;
+  box-shadow:
+    0 -12px 20px -10px rgb(26 61 46 / 18%),
+    0 12px 20px -10px rgb(26 61 46 / 18%);
+}
+
+.explore-industry-workflow-detail {
+  position: absolute;
+  display: block;
+  border-radius: calc(var(--radius) - 2px);
+  background: #fff;
+  filter: drop-shadow(0 12px 28px rgb(26 61 46 / 14%));
+  pointer-events: none;
+}
+
+.explore-industry-workflow-detail-1 {
+  left: 0;
+  bottom: 0.35rem;
+  width: min(34%, 11.5rem);
+  z-index: 3;
+}
+
+.explore-industry-workflow-detail-2 {
+  right: 0;
+  top: 0.25rem;
+  width: min(36%, 12.5rem);
+  z-index: 2;
+}
+
+.explore-industry-workflow-detail-3 {
+  right: 1.5%;
+  bottom: 0;
+  width: min(52%, 17.5rem);
+  z-index: 4;
 }
 
 .explore-industry-workflow-callouts {
@@ -2453,7 +2491,7 @@ body.page-explore .section-alt {
   max-height: 100%;
   object-fit: contain;
   object-position: top center;
-  border-radius: var(--radius);
+  border-radius: 0;
   filter: drop-shadow(0 10px 24px rgb(26 61 46 / 10%));
   pointer-events: none;
 }
@@ -4224,6 +4262,31 @@ body.page-explore .section-alt {
   .explore-industry-bullet-list,
   .explore-industry-workflow-callouts {
     grid-template-columns: 1fr;
+  }
+
+  .explore-industry-workflow-montage {
+    max-width: 100%;
+  }
+
+  .explore-industry-workflow-montage-stage {
+    padding: 1.25rem 4% 2.1rem;
+  }
+
+  .explore-industry-workflow-shot {
+    width: 92%;
+  }
+
+  .explore-industry-workflow-detail-1 {
+    width: min(38%, 9.5rem);
+  }
+
+  .explore-industry-workflow-detail-2 {
+    width: min(40%, 10rem);
+    top: 0;
+  }
+
+  .explore-industry-workflow-detail-3 {
+    width: min(58%, 14rem);
   }
 
   .explore-industry-channel-logos {

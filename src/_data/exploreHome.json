@@ -77,7 +77,7 @@
         "tabLabel": "Calendar",
         "title": "Calendar",
         "text": "Your operational hub for accommodation, activities and packages.",
-        "src": "/assets/images/tab-calendar-1.webp",
+        "src": "/assets/images/tab-calendar-1.webp?v=2",
         "alt": "Hightide calendar",
         "icon": "/assets/images/icons/calendar.png",
         "capabilities": [
@@ -91,7 +91,7 @@
         "tabLabel": "Bookings",
         "title": "Booking Workspace",
         "text": "Everything your team needs to manage each booking from one shared workspace.",
-        "src": "/assets/images/tab-bookings-2.webp",
+        "src": "/assets/images/tab-bookings-2.webp?v=2",
         "alt": "Hightide booking workspace",
         "icon": "/assets/images/icons/booking-workspace.png",
         "capabilities": [
@@ -105,7 +105,7 @@
         "tabLabel": "Planning",
         "title": "Planning and Reports",
         "text": "See what is happening today, what is coming next and how your business is performing.",
-        "src": "/assets/images/tab-bookings-list.jpg",
+        "src": "/assets/images/tab-bookings-list.jpg?v=2",
         "alt": "Hightide planning and reports",
         "icon": "/assets/images/icons/notes.png",
         "capabilities": [
