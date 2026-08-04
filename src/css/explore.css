@@ -1602,6 +1602,14 @@ body.page-explore .section-alt {
   padding-bottom: 2.25rem;
 }
 
+.page-explore .explore-story-proof:has(+ .surfpreneurs-feature) {
+  padding-bottom: 0;
+}
+
+.page-explore .surfpreneurs-feature + .section-faq.explore-faq {
+  padding-top: 0;
+}
+
 .page-explore .section-faq.explore-faq {
   padding-bottom: 1.5rem;
 }

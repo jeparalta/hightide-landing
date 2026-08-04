@@ -27,6 +27,17 @@ bodyClass: page-about
   </div>
 </section>
 
+<section class="about-surfpreneurs-story" aria-labelledby="about-surfpreneurs-heading">
+  <div class="about-surfpreneurs-story-inner">
+    <p class="about-surfpreneurs-story-eyebrow">{{ surfpreneursFeature.about.eyebrow }}</p>
+    <h2 id="about-surfpreneurs-heading">{{ surfpreneursFeature.about.heading }}</h2>
+    <p>{{ surfpreneursFeature.about.copy }}</p>
+  </div>
+</section>
+
+{% set surfpreneursCta = surfpreneursFeature.about.cta %}
+{% include "partials/surfpreneurs-feature.njk" %}
+
 <section class="section section-alt">
   <div class="container">
     <h2 class="section-title">{{ aboutPage.team.title }}</h2>

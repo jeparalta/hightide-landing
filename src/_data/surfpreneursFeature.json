@@ -1,0 +1,19 @@
+{
+  "url": "https://www.surfpreneurs.club/interviews/building-the-surf-camp-booking-tool-he-wished-he-had",
+  "publication": "Surfpreneurs",
+  "logo": "/assets/images/press/surfpreneurs-logo.png",
+  "logoAlt": "Surfpreneurs Club logo",
+  "articleTitle": "Building the surf camp booking tool he wished he had",
+  "thumbnail": "/assets/images/press/surfpreneurs-interview-jose.jpg",
+  "thumbnailAlt": "José Paralta, founder of Hightide, featured in a Surfpreneurs Club interview",
+  "home": {
+    "eyebrow": "Featured in Surfpreneurs",
+    "cta": "Read the interview ↗"
+  },
+  "about": {
+    "eyebrow": "Featured in Surfpreneurs",
+    "heading": "The story behind Hightide",
+    "copy": "Surfpreneurs spoke with Hightide’s founder about the experience of running surf camps, the booking problems that inspired the platform and why Hightide was built for businesses that combine accommodation, activities and packages.",
+    "cta": "Read the full interview ↗"
+  }
+}

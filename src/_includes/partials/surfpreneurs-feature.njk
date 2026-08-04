@@ -1,0 +1,23 @@
+<section class="surfpreneurs-feature" aria-label="Featured in Surfpreneurs">
+  <a
+    class="surfpreneurs-feature-link-wrap"
+    href="{{ surfpreneursFeature.url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      class="surfpreneurs-feature-logo"
+      src="{{ surfpreneursFeature.logo }}"
+      alt="{{ surfpreneursFeature.logoAlt }}"
+      width="823"
+      height="210"
+      loading="lazy"
+      decoding="async"
+    >
+    <span class="surfpreneurs-feature-copy">
+      <span class="surfpreneurs-feature-eyebrow">{{ surfpreneursFeature.home.eyebrow }}</span>
+      <span class="surfpreneurs-feature-title">{{ surfpreneursFeature.articleTitle }}</span>
+      <span class="surfpreneurs-feature-cta">{{ surfpreneursCta or surfpreneursFeature.home.cta }}</span>
+    </span>
+  </a>
+</section>
