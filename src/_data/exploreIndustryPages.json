@@ -326,7 +326,7 @@
           "answer": "Yes. Hightide supports channel manager connections for accommodation while activities and packages can still be sold directly."
         },
         {
-          "question": "Can activities share capacity with other products?",
+          "question": "Can activities share capacity with other items?",
           "answer": "Yes. Activities that share guides, boats or equipment can use linked availability so one booking updates the capacity that matters."
         },
         {
@@ -478,7 +478,7 @@
       "title": "Built around how activity businesses actually work",
       "points": [
         "Tours, lessons and rentals in one store",
-        "Shared guides, boats or equipment across products",
+        "Shared guides, boats or equipment across items",
         "Direct online payments",
         "Request and instant booking modes",
         "Group and partner bookings",
@@ -514,9 +514,9 @@
           "title": "Direct bookings",
           "items": [
             "Sell tours, lessons and rentals from your Online Store",
-            "Choose request or instant booking for each product",
+            "Choose request or instant booking for each item",
             "Collect payments online without marketplace commission",
-            "Offer packages when guests combine multiple products"
+            "Offer packages when guests combine multiple items"
           ]
         },
         {
@@ -548,7 +548,7 @@
       "items": [
         {
           "question": "Can multiple activities share the same guide or equipment?",
-          "answer": "Yes. Products that share guides, boats or equipment can use linked availability so capacity stays accurate across the schedule."
+          "answer": "Yes. Items that share guides, boats or equipment can use linked availability so capacity stays accurate across the schedule."
         },
         {
           "question": "Can I avoid marketplace commissions?",
@@ -560,7 +560,7 @@
         },
         {
           "question": "Can I take request-only bookings?",
-          "answer": "Yes. Products can use request or instant booking modes depending on how you prefer to confirm availability."
+          "answer": "Yes. Items can use request or instant booking modes depending on how you prefer to confirm availability."
         },
         {
           "question": "Can partners send bookings to me?",
@@ -588,7 +588,7 @@
         },
         {
           "title": "Instructor capacity has to stay accurate",
-          "text": "Lesson slots depend on shared instructors, so overselling one product can disrupt the whole camp day."
+          "text": "Lesson slots depend on shared instructors, so overselling one item can disrupt the whole camp day."
         },
         {
           "title": "Direct and partner bookings need one place",
@@ -619,7 +619,7 @@
           "answer": "Yes. You can publish fixed-date camps alongside more flexible packages from the same operation."
         },
         {
-          "question": "Can lesson capacity stay connected across products?",
+          "question": "Can lesson capacity stay connected across items?",
           "answer": "Yes. Activities that share instructors can use linked availability so capacity updates when a booking is made."
         },
         {
@@ -867,7 +867,7 @@
       "title": "What outdoor activity centres need from booking software",
       "items": [
         {
-          "title": "Many products share the same resources",
+          "title": "Many items share the same resources",
           "text": "Guides, boats or equipment often sit behind several activities at once."
         },
         {
@@ -996,7 +996,7 @@
       "title": "How Hightide supports mountain guiding",
       "items": [
         "Fixed-departure trip packages",
-        "Guide capacity with linked availability where products share resources",
+        "Guide capacity with linked availability where items share resources",
         "Accommodation, transfers and equipment extras in one booking",
         "Participant information and payment tracking",
         "Partner referral links when agents send guests",
@@ -1012,7 +1012,7 @@
         },
         {
           "question": "Can guide capacity stay connected?",
-          "answer": "Yes. Products that share guides can use linked availability so capacity remains accurate."
+          "answer": "Yes. Items that share guides can use linked availability so capacity remains accurate."
         },
         {
           "question": "Can extras stay on the trip booking?",
@@ -1108,7 +1108,7 @@
       "title": "How Hightide supports sailing and surf charters",
       "items": [
         "Fixed-departure charter packages",
-        "Day-based and multi-day products in one Online Store",
+        "Day-based and multi-day items in one Online Store",
         "Capacity kept with linked availability where resources are shared",
         "Extras and transfers on the booking",
         "Partner referral links and booking codes",
@@ -1120,7 +1120,7 @@
       "items": [
         {
           "question": "Can I sell day trips and multi-day charters?",
-          "answer": "Yes. Both can be published as date-led products with their own capacity and pricing."
+          "answer": "Yes. Both can be published as date-led items with their own capacity and pricing."
         },
         {
           "question": "Does Hightide support hourly boat diaries?",

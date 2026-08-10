@@ -1180,6 +1180,9 @@ body.page-home .section.section-faq {
 }
 
 .addon-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1199,7 +1202,14 @@ body.page-home .section.section-faq {
 }
 
 .addon-price {
+  margin-top: auto;
+  margin-bottom: 0;
   font-size: 1.75rem !important;
+}
+
+.addon-card .pricing-billed {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
 }
 
 .pricing-vat-note {

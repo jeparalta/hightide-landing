@@ -172,26 +172,6 @@
     "title": "What our customers say",
     "stories": [
       {
-        "logo": "/assets/images/testimonials/the-village-alentejo.png",
-        "logoAlt": "The Village, Alentejo",
-        "websiteUrl": "https://www.instagram.com/thevillage.alentejo",
-        "quote": "Hightide has made it much easier to organise reservations, track payments and share availability. We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence. Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability.",
-        "name": "Pete Webb",
-        "role": "Founder",
-        "business": "The Village, Alentejo",
-        "industry": "Accommodation"
-      },
-      {
-        "logo": "/assets/images/testimonials/surf-clinic-lagos.png",
-        "logoAlt": "Surf Clinic Lagos",
-        "websiteUrl": "https://www.surfcliniclagos.com/",
-        "quote": "Direct bookings have been a game changer for us. Hightide makes bookings much easier to manage and brings everything together at a reasonable price, without hidden fees. Before Hightide, I managed everything through Google Calendar, which made the booking flow, blocking unavailable dates and offering direct bookings difficult. I am very happy with it.",
-        "name": "Alessandro Rista",
-        "role": "Owner",
-        "business": "Surf Clinic Lagos",
-        "industry": "Surf School"
-      },
-      {
         "logo": "/assets/images/testimonials/surf-and-travel-morocco.png",
         "logoAlt": "Surf & Travel Morocco",
         "websiteUrl": "https://surfandtravelmorocco.com/",
@@ -202,31 +182,34 @@
         "industry": "Surf Camp"
       },
       {
-        "logo": "/assets/images/testimonials/atlantic-surf-lodge.svg",
-        "logoAlt": "Atlantic Surf Lodge",
-        "quote": "Once beds, lessons and weekly bundles lived on our own store, guests started booking direct — and we stopped retyping the same reservation details into three places. We used to rely on OTAs for most surf-week packages, which meant less margin and more manual coordination across beds and lessons.",
-        "name": "Marta Silva",
-        "role": "Co-founder",
-        "business": "Atlantic Surf Lodge",
-        "industry": "Surf Camp"
+        "logo": "/assets/images/testimonials/the-village-alentejo.png",
+        "logoAlt": "The Village, Alentejo",
+        "websiteUrl": "https://www.instagram.com/thevillage.alentejo",
+        "quote": "Hightide has made it much easier to organise reservations, track payments and share availability. We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence. Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability.",
+        "name": "Pete Webb",
+        "role": "Founder",
+        "business": "The Village, Alentejo",
+        "industry": "Accommodation"
       },
       {
-        "logo": "/assets/images/testimonials/sage-sea-retreats.svg",
-        "logoAlt": "Sage & Sea Retreats",
-        "quote": "Now balances, dietary notes and room moves sit on the booking — and the team opens one day planner instead of five tabs. Retreat season used to mean chasing deposits in email and updating a shared spreadsheet every morning.",
-        "name": "Elena Vasquez",
-        "role": "Retreat director",
-        "business": "Sage & Sea Retreats",
-        "industry": "Retreat"
+        "logo": "/assets/images/testimonials/algarve-surf-school.png",
+        "logoAlt": "Algarve Surf School",
+        "websiteUrl": "https://www.algarvesurfschool.com",
+        "quote": "We moved to Hightide because we wanted a booking system that was easier to manage and better suited to the way our business operates. The transition was smooth, our team learned the system quickly, and we've never looked back. Before Hightide, we used Bookinglayer. It's a very capable system, but we wanted something that required less configuration and worked the way we needed it to from the start. Hightide gave us that without compromising on the functionality our business relies on. The Online Store provides a modern, polished booking experience for our customers, while managing bookings is straightforward for our team. The migration was supported throughout, making the switch much easier than we expected.",
+        "name": "Pedro",
+        "role": "Bookings Manager",
+        "business": "Algarve Surf School",
+        "industry": "Surf School"
       },
       {
-        "logo": "/assets/images/testimonials/cascada-adventure-lodge.svg",
-        "logoAlt": "Cascada Adventure Lodge",
-        "quote": "Hightide let us sell the full stay online, then run arrivals, payments and partner settlements from the same booking record. Lodge beds, guided hikes and partner agent bookings all shared the same calendar chaos before we moved everything into one workspace.",
-        "name": "James Okonkwo",
-        "role": "Operations manager",
-        "business": "Cascada Adventure Lodge",
-        "industry": "Adventure Lodge"
+        "logo": "/assets/images/testimonials/surf-clinic-lagos.png",
+        "logoAlt": "Surf Clinic Lagos",
+        "websiteUrl": "https://www.surfcliniclagos.com/",
+        "quote": "Direct bookings have been a game changer for us. Hightide makes bookings much easier to manage and brings everything together at a reasonable price, without hidden fees. Before Hightide, I managed everything through Google Calendar, which made the booking flow, blocking unavailable dates and offering direct bookings difficult. I am very happy with it.",
+        "name": "Alessandro Rista",
+        "role": "Owner",
+        "business": "Surf Clinic Lagos",
+        "industry": "Surf School"
       }
     ]
   },

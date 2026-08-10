@@ -95,7 +95,7 @@
           "Commission and settlement reporting",
           "Google Analytics 4",
           "Meta Pixel",
-          "Channel manager add-on",
+          "Channel manager (add-on)",
           "Invoicing integration"
         ]
       }
@@ -149,7 +149,7 @@
     },
     {
       "question": "Is guided setup included?",
-      "answer": "Yes. We begin by learning how your business works and help prepare the initial Hightide structure around your accommodation, activities and packages."
+      "answer": "Yes. We learn how your business works and help prepare your initial Hightide structure. If we do not believe Hightide is the right fit, we will tell you and try to point you towards a more suitable solution."
     },
     {
       "question": "Can I start with a free trial?",

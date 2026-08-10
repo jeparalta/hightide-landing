@@ -1838,25 +1838,26 @@ body.page-explore .section-alt {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: auto;
   z-index: 4;
   display: block;
   width: 100%;
-  /* Scale past the clip so only the bottom ~2% is cropped. */
-  height: calc(100% / 0.98);
+  /* Extend past the clip so overflow:hidden crops a thin strip at the bottom. */
+  height: calc(100% + 9px);
   margin: 0;
   padding: 0;
   border: 0;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
   background: transparent;
   pointer-events: none;
 }
 
-@media (max-width: 1020px) {
-  .explore-sell-video {
-    /* Mobile: crop an extra ~1% from the bottom (3% total). */
-    height: calc(100% / 0.97);
-  }
+.explore-sell-media.is-video-ready {
+  /* Shrink width with viewport height so the 16:9 frame scales as a unit. */
+  width: min(100%, 680px, calc(min(38vh, 370px) * 16 / 9));
+  margin-inline: auto;
 }
 
 .explore-sell-media.is-video-ready .explore-sell-video-clip {
@@ -1875,8 +1876,20 @@ body.page-explore .section-alt {
 
 .explore-sell-media.is-video-ready .explore-sell-montage {
   aspect-ratio: 16 / 9;
+  width: 100%;
   min-height: 0;
   height: auto;
+  flex: 0 0 auto;
+}
+
+.explore-sell-scroll-stage:not(.is-static) .explore-sell-scroll-pin .explore-sell-media.is-video-ready .explore-sell-montage,
+html.explore-prefer-static .explore-sell-scroll-stage .explore-sell-media.is-video-ready .explore-sell-montage,
+.explore-sell-scroll-stage.is-static .explore-sell-media.is-video-ready .explore-sell-montage {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 0;
 }
 
 .explore-sell-media.is-video-fallback .explore-sell-shot-wrap {
