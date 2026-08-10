@@ -249,11 +249,45 @@ body.page-home .section.section-faq {
 /* Footer */
 .site-footer { background: var(--bg-dark); color: var(--text-light); padding: 3rem 0 2rem; margin-top: 4rem; }
 .footer-inner { display: grid; gap: 2rem; }
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
 .footer-brand { display: flex; gap: 1rem; align-items: flex-start; }
 .footer-brand p { color: #aaa; font-size: 0.9rem; margin: 0.25rem 0 0; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; }
 .footer-nav a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
 .footer-nav a:hover { color: #fff; }
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  margin-left: auto;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
 .footer-copy { color: #888; font-size: 0.85rem; margin: 0; }
 .footer-heart { color: #fff; }
 

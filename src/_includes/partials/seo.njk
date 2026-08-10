@@ -23,18 +23,43 @@
       "@type": "Organization",
       "@id": "{{ site.url }}/#organization",
       "name": "{{ site.name }}",
+      "legalName": "Stay Paralta, Lda",
       "url": "{{ site.url }}",
-      "logo": "{{ site.url }}/assets/images/logo.svg",
-      "email": "{{ site.contactEmail }}"
+      "email": "{{ site.contactEmail }}",
+      "description": "{{ site.tagline }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/images/logo.svg"
+      },
+      "sameAs": [
+        "{{ site.social.instagram }}",
+        "{{ site.social.facebook }}",
+        "{{ site.social.x }}",
+        "{{ site.social.linkedin }}"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua José D'Abreu Pimenta, Lote 55",
+        "addressLocality": "Lagos",
+        "addressCountry": "PT"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "{{ site.url }}/#website",
       "url": "{{ site.url }}",
       "name": "{{ site.name }}",
-      "publisher": { "@id": "{{ site.url }}/#organization" }
+      "description": "{{ site.tagline }}",
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "inLanguage": "en"
     }
-    {% if jsonLd %},{{ jsonLd | safe }}{% endif %}
+    {% if jsonLdGraph %}
+      {%- for node in jsonLdGraph -%}
+        ,{{ node | dump | safe }}
+      {%- endfor -%}
+    {% elif jsonLd %}
+      ,{{ jsonLd | safe }}
+    {% endif %}
   ]
 }
 </script>

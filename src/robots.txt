@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.hightide.io/sitemap.xml
+
+# Machine-readable product summary for AI agents and researchers
+# https://www.hightide.io/llms.txt
