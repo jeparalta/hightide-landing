@@ -2,11 +2,11 @@
   <div class="container footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/assets/images/logo.svg" alt="" width="36" height="36">
-        <div>
+        <div class="footer-brand-title">
+          <img src="/assets/images/logo.svg" alt="" width="36" height="36">
           <strong>{{ site.name }}</strong>
-          <p>{% if bodyClass == 'page-explore' %}{{ explore.footerTagline }}{% else %}{{ site.tagline }}{% endif %}</p>
         </div>
+        <p>{% if bodyClass == 'page-explore' %}{{ explore.footerTagline }}{% else %}{{ site.tagline }}{% endif %}</p>
       </div>
       <nav class="footer-social" aria-label="Social media">
         <a href="{{ site.social.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Hightide on Instagram">
