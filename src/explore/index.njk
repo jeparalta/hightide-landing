@@ -313,7 +313,7 @@ bodyClass: page-explore
       <div class="explore-hero-cta-row">
         <img src="/assets/images/hero-sun.png" alt="" class="explore-hero-deco explore-hero-deco-sun" loading="lazy" decoding="async">
         <div class="explore-hero-actions">
-          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
+          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" data-ga-event="discovery_call_cta_click" data-ga-location="hero">{{ explore.primaryCtaLabel }}</a>
         </div>
         <img src="/assets/images/hero-moon.png" alt="" class="explore-hero-deco explore-hero-deco-moon" loading="lazy" decoding="async">
       </div>
@@ -379,6 +379,8 @@ bodyClass: page-explore
           href="{{ explore.demoStoreUrl }}"
           target="_blank"
           rel="noopener noreferrer"
+          data-ga-event="demo_store_click"
+          data-ga-location="online_store"
         >{{ exploreHome.sell.demoStore.label }}</a>
         </div>
 

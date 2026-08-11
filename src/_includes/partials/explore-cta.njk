@@ -13,7 +13,7 @@
         </h2>
         <p class="explore-cta-lead">{{ ctaLead or "Tell us how you sell and manage bookings today. We'll see whether Hightide fits and what your setup could look like." }}</p>
         <div class="explore-cta-actions">
-          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">Book a Discovery Call</a>
+          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" data-ga-event="discovery_call_cta_click" data-ga-location="explore_cta_band">Book a Discovery Call</a>
         </div>
         <p class="explore-cta-alt">
           <span class="explore-cta-alt-label">Prefer to explore on your own?</span>
@@ -21,10 +21,10 @@
             {% if ctaSecondaryLinks %}
             {% for link in ctaSecondaryLinks %}
             {% if not loop.first %}<span class="explore-cta-alt-sep" aria-hidden="true"> · </span>{% endif %}
-            <a href="{{ link.url }}"{% if link.external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.label }}</a>
+            <a href="{{ link.url }}" data-ga-location="{{ link.gaLocation or 'explore_cta_band' }}"{% if link.gaEvent %} data-ga-event="{{ link.gaEvent }}"{% endif %}{% if link.external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.label }}</a>
             {% endfor %}
             {% else %}
-            <a href="/video-tutorials/">Watch Video Tutorials</a><span class="explore-cta-alt-sep" aria-hidden="true"> · </span><a href="{{ site.signupUrl }}">Start a Free Trial</a>
+            <a href="/video-tutorials/" data-ga-event="tutorial_click" data-ga-location="explore_cta_band">Watch Video Tutorials</a><span class="explore-cta-alt-sep" aria-hidden="true"> · </span><a href="{{ site.signupUrl }}" data-ga-event="free_trial_click" data-ga-location="explore_cta_band">Start a Free Trial</a>
             {% endif %}
           </span>
         </p>

@@ -9,21 +9,21 @@
         <ul class="nav-list header-navigation">
           <li class="nav-item-wrapper"><a href="/" class="nav-link"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
           <li class="nav-item-wrapper"><a href="/about/" class="nav-link"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a></li>
-          <li class="nav-item-wrapper"><a href="/pricing/" class="nav-link"{% if page.url == '/pricing/' %} aria-current="page"{% endif %}>Pricing</a></li>
+          <li class="nav-item-wrapper"><a href="/pricing/" class="nav-link" data-ga-location="header_nav"{% if page.url == '/pricing/' %} aria-current="page"{% endif %}>Pricing</a></li>
           <li class="nav-item-wrapper nav-dropdown">
             <span class="nav-link nav-dropdown-label"><span class="dropdown-text">Resources</span></span>
             <ul class="nav-dropdown-menu">
               <li><a href="/blog/" class="nav-link"{% if page.url == '/blog/' or (page.url and '/post/' in page.url) %} aria-current="page"{% endif %}>Blog</a></li>
-              <li><a href="/video-tutorials/" class="nav-link"{% if page.url == '/video-tutorials/' %} aria-current="page"{% endif %}>Video Tutorials</a></li>
+              <li><a href="/video-tutorials/" class="nav-link" data-ga-location="header_nav"{% if page.url == '/video-tutorials/' %} aria-current="page"{% endif %}>Video Tutorials</a></li>
             </ul>
           </li>
-          <li class="nav-item-wrapper nav-cta-mobile"><a class="btn btn-primary" href="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}">{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a></li>
+          <li class="nav-item-wrapper nav-cta-mobile"><a class="btn btn-primary" href="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}" data-ga-event="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}discovery_call_cta_click{% else %}free_trial_click{% endif %}" data-ga-location="header_mobile">{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
-      <a class="btn btn-primary header-cta" href="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}">{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a>
+      <a class="btn btn-primary header-cta" href="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaUrl }}{% else %}{{ site.signupUrl }}{% endif %}" data-ga-event="{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}discovery_call_cta_click{% else %}free_trial_click{% endif %}" data-ga-location="header">{% if bodyClass == 'page-explore' or bodyClass == 'page-pricing' %}{{ explore.primaryCtaLabel }}{% else %}Start Free Trial{% endif %}</a>
     </div>
   </header>
 </div>

@@ -42,8 +42,8 @@ bodyClass: page-pricing
           {% endfor %}
         </ul>
         <div class="pricing-card-actions">
-          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">Book a Discovery Call</a>
-          <a class="btn btn-secondary" href="{{ site.signupUrl }}">Start a Free Trial</a>
+          <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" data-ga-event="discovery_call_cta_click" data-ga-location="pricing_card">Book a Discovery Call</a>
+          <a class="btn btn-secondary" href="{{ site.signupUrl }}" data-ga-event="free_trial_click" data-ga-location="pricing_card">Start a Free Trial</a>
           <p class="pricing-trial-note">{{ pricingPage.trialNote }}</p>
         </div>
       </article>
@@ -115,7 +115,7 @@ bodyClass: page-pricing
     <div class="pricing-complex-inner">
       <h2>{{ pricingPage.complex.title }}</h2>
       <p>{{ pricingPage.complex.copy }}</p>
-      <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">Book a Discovery Call</a>
+      <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" data-ga-event="discovery_call_cta_click" data-ga-location="pricing_complex">Book a Discovery Call</a>
     </div>
   </div>
 </section>

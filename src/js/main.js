@@ -1,4 +1,75 @@
 (function () {
+  function trackEvent(name, params) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', name, params || {});
+  }
+
+  function resolveLinkUrl(href) {
+    if (!href || href.charAt(0) === '#') return null;
+    try {
+      return new URL(href, window.location.origin);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function inferGaLocation(el) {
+    var explicit = el.getAttribute('data-ga-location');
+    if (explicit) return explicit;
+    if (el.closest('.site-header, .site-top')) return 'header';
+    if (el.closest('.site-footer')) return 'footer';
+    return 'content';
+  }
+
+  function eventNameFromLink(el) {
+    var explicit = el.getAttribute('data-ga-event');
+    if (explicit) return explicit;
+
+    var url = resolveLinkUrl(el.getAttribute('href'));
+    if (!url) return null;
+
+    var path = url.pathname || '';
+    if (path.indexOf('/explore/book-a-call') === 0) return 'discovery_call_cta_click';
+    if (path.indexOf('/accounts/signup') !== -1) return 'free_trial_click';
+    if (path.indexOf('/bookings/surf-camp-demo') !== -1) return 'demo_store_click';
+    if (path.indexOf('/video-tutorials') === 0) return 'tutorial_click';
+    return null;
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('a[href]');
+    if (!el) return;
+    var eventName = eventNameFromLink(el);
+    if (!eventName) return;
+    var url = resolveLinkUrl(el.getAttribute('href'));
+    trackEvent(eventName, {
+      location: inferGaLocation(el),
+      link_url: url ? url.href : undefined
+    });
+  });
+
+  if (
+    document.body.classList.contains('page-pricing') ||
+    (window.location.pathname || '').indexOf('/pricing') === 0
+  ) {
+    trackEvent('pricing_view', { location: 'page' });
+  }
+
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://calendly.com') return;
+    var data = e.data;
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (err) {
+        return;
+      }
+    }
+    if (data && data.event === 'calendly.event_scheduled') {
+      trackEvent('calendly_booking_complete', { location: 'book_a_call' });
+    }
+  });
+
   const navToggle = document.querySelector('.nav-toggle');
   const siteNav = document.querySelector('.site-nav');
   if (navToggle && siteNav) {

@@ -7,7 +7,7 @@
       <h1>{{ page.hero.headline }}</h1>
       <p class="section-lead explore-industry-hero-lead">{{ page.hero.lead }}</p>
       <div class="explore-industry-hero-actions">
-        <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}">{{ explore.primaryCtaLabel }}</a>
+        <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" data-ga-event="discovery_call_cta_click" data-ga-location="industry_hero">{{ explore.primaryCtaLabel }}</a>
       </div>
     </div>
     <img src="{{ industry.image }}" alt="{{ industry.imageAlt }}" loading="eager" width="960" height="640">
