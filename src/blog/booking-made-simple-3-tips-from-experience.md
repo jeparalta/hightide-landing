@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: "Booking Made Simple: 3 Tips from Experience"
-description: A few lessons from years of handling bookings, and how to keep things easy, clear, and reliable.
+description: Lessons from years of handling bookings — how to stay organised, keep booking simple, and focus on the offers that convert.
 date: 2025-08-19
 category: Best Practices
 author: José Paralta

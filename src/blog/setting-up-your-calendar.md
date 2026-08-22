@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: Setting Up Your Calendar
-description: Understanding how Items and Listings work on Hightide, the building blocks of your booking setup.
+description: Learn how Items and Listings work in Hightide — the building blocks for calendar setup, availability and a clear booking structure.
 date: 2025-08-19
 category: Getting Started
 author: José Paralta

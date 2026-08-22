@@ -2,7 +2,7 @@
   "hero": {
     "title": "About Hightide",
     "lead": "Built by an operator, for operators.",
-    "image": "/assets/images/about/about-couple.png",
+    "image": "/assets/images/about/about-couple.jpg",
     "imageAlt": "Illustration of two people using Hightide on a laptop and phone",
     "paragraphs": [
       "Hightide was created by José Paralta, a former surf camp owner and developer, with support from a small group of friends and collaborators who share a passion for surfing, travel, and independent businesses.",
@@ -20,27 +20,27 @@
       },
       {
         "name": "Katharina Joebstl",
-        "image": "/assets/images/about/team-katharina.png",
+        "image": "/assets/images/about/team-katharina.jpg",
         "bio": "With a strong background in design and brand strategy, Kat helps businesses find clarity and direction, always adding a splash of surfing and sunshine."
       },
       {
         "name": "Ale Rista",
-        "image": "/assets/images/about/team-alessandro.png",
+        "image": "/assets/images/about/team-alessandro.jpg",
         "bio": "Surf-school owner and early Hightide user whose operational experience and practical feedback helped shape the platform."
       },
       {
         "name": "Giuliana Biagioni",
-        "image": "/assets/images/about/team-giuliana.png",
+        "image": "/assets/images/about/team-giuliana.jpg",
         "bio": "Giuliana knows property and booking management inside out, keeping everything running smoothly, from calendars to listings, with a keen eye for detail."
       },
       {
         "name": "Saman Heiwawtihrana",
-        "image": "/assets/images/about/team-saman.png",
+        "image": "/assets/images/about/team-saman.jpg",
         "bio": "With years of coaching, shaping, and engineering know-how, he is all about the waves and making everything work just right for the perfect surf experience."
       },
       {
         "name": "Sarah Hardie",
-        "image": "/assets/images/about/team-sarah.png",
+        "image": "/assets/images/about/team-sarah.jpg",
         "bio": "As the artist and illustrator behind Hightide's design, Sarah brings her unique touch, adding beauty and style to every element of the app's experience."
       }
     ]

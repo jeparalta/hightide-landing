@@ -12,7 +12,7 @@
     {
       "slug": "get-started",
       "title": "Get Started",
-      "description": "Initial configuration and launch.",
+      "description": "Set up accommodation, activities, packages, your Online Store, payments and team access.",
       "examples": [
         "Set up accommodation",
         "Create activities and tours",
@@ -53,7 +53,7 @@
     {
       "slug": "manage-bookings",
       "title": "Manage Bookings",
-      "description": "Actions performed on individual bookings.",
+      "description": "Create and update bookings, add items, record payments, send emails and manage booking status.",
       "examples": [
         "Create a booking",
         "Add or change booked items",
@@ -81,7 +81,7 @@
     {
       "slug": "run-your-operation",
       "title": "Run Your Operation",
-      "description": "Tools used across the wider business.",
+      "description": "Use the calendar, Day Planner, booking lists, reports, partners and team access together.",
       "examples": [
         "Use the calendar",
         "Use the Day Planner",

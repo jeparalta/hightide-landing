@@ -1,7 +1,7 @@
 ---
 layout: layouts/explore.njk
-title: Booking & Operations Software for Accommodation, Activities & Packages | Hightide
-description: Hightide helps businesses sell accommodation, activities and packages online while managing bookings, payments, guest communication and daily operations in one place.
+title: Booking Software for Camps, Retreats & Tours | Hightide
+description: Sell accommodation, activities and packages online. Manage bookings, payments and operations in one place — no commission on Online Store bookings.
 permalink: /
 bodyClass: page-explore
 ---
@@ -25,7 +25,7 @@ bodyClass: page-explore
 <div class="explore-manage-product-heading">
   <img
     src="{{ product.icon }}"
-    alt=""
+    alt="{{ product.title }}"
     class="explore-manage-product-icon{% if product.iconClass %} {{ product.iconClass }}{% endif %}"
     loading="lazy"
     width="48"
@@ -67,7 +67,7 @@ bodyClass: page-explore
       {% if item.logo %}
       <img
         src="{{ item.logo }}"
-        alt="{{ item.name if item.logoOnly else '' }}"
+        alt="{{ item.name }}"
         class="explore-integration-logo{% if item.logoOnly %} explore-integration-logo-only{% endif %}"
         loading="lazy"
         width="72"
@@ -76,7 +76,7 @@ bodyClass: page-explore
       {% elif item.faIcon %}
       <span class="explore-integration-fa-icon" aria-hidden="true"><i class="{{ item.faIcon }}"></i></span>
       {% elif item.icon %}
-      <img src="{{ item.icon }}" alt="" class="explore-integration-icon" loading="lazy" width="28" height="28">
+      <img src="{{ item.icon }}" alt="{{ item.name }}" class="explore-integration-icon" loading="lazy" width="28" height="28">
       {% endif %}
       {% if not item.logoOnly %}
       <span{% if item.muted %} class="explore-integration-more"{% endif %}>{{ item.name }}</span>
@@ -98,7 +98,7 @@ bodyClass: page-explore
     {% for item in group.items %}
       {% if item.name in ['Airbnb', 'Booking.com', 'Hostelworld', 'Expedia', 'Vrbo'] %}
       <li class="explore-integrations-mobile-channel-item">
-        <img src="{{ item.logo }}" alt="" class="explore-integrations-mobile-channel-logo" loading="lazy" width="72" height="20">
+        <img src="{{ item.logo }}" alt="{{ item.name }}" class="explore-integrations-mobile-channel-logo" loading="lazy" width="72" height="20">
         <span>{{ item.name }}</span>
       </li>
       {% elif item.muted %}
@@ -119,7 +119,7 @@ bodyClass: page-explore
     <li class="explore-integrations-mobile-stack-item">
       <img
         src="{{ item.logo }}"
-        alt="{% if showNames %}{% else %}{{ item.name }}{% endif %}"
+        alt="{{ item.name }}"
         class="explore-integrations-mobile-stack-logo{% if modifier == 'payments' %} is-payment{% if item.name == 'Stripe' %} is-stripe{% endif %}{% endif %}"
         loading="lazy"
         width="72"
@@ -156,7 +156,7 @@ bodyClass: page-explore
     <li class="explore-integrations-mobile-named-inline-item">
       <img
         src="{{ item.logo }}"
-        alt=""
+        alt="{{ item.name }}"
         class="explore-integrations-mobile-named-inline-logo"
         loading="lazy"
         width="72"
@@ -208,8 +208,7 @@ bodyClass: page-explore
   data-proof-business="{{ story.business }}"
   data-proof-name="{{ story.name }}"
   data-proof-role="{{ story.role }}"
-  {% if story.logo %}data-proof-logo="{{ story.logo }}"{% endif %}
-  {% if story.logoAlt %}data-proof-logo-alt="{{ story.logoAlt }}"{% endif %}
+  {% if story.logo %}data-proof-logo="{{ story.logo }}" data-proof-logo-alt="{{ story.logoAlt or story.business }}"{% endif %}
   {% if story.websiteUrl %}data-proof-website="{{ story.websiteUrl }}"{% endif %}
 >
   <div class="explore-proof-card-body">
@@ -217,10 +216,10 @@ bodyClass: page-explore
       {% if story.logo %}
       {% if story.websiteUrl %}
       <a href="{{ story.websiteUrl }}" class="explore-proof-logo-link" target="_blank" rel="noopener noreferrer" aria-label="{{ story.logoAlt or story.business }}">
-        <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
+        <img src="{{ story.logo }}" alt="{{ story.logoAlt or story.business }}" class="explore-proof-logo" loading="lazy" width="80" height="80">
       </a>
       {% else %}
-      <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
+      <img src="{{ story.logo }}" alt="{{ story.logoAlt or story.business }}" class="explore-proof-logo" loading="lazy" width="80" height="80">
       {% endif %}
       {% endif %}
       <div class="explore-proof-card-heading">
@@ -274,6 +273,8 @@ bodyClass: page-explore
   {% endif %}
   src="{{ src }}"
   alt=""
+  role="presentation"
+  aria-hidden="true"
   decoding="async"
 >
 {% endmacro %}
@@ -311,11 +312,11 @@ bodyClass: page-explore
       </h1>
       <p class="explore-hero-lead">{{ explore.heroLead }}</p>
       <div class="explore-hero-cta-row">
-        <img src="/assets/images/hero-sun.png" alt="" class="explore-hero-deco explore-hero-deco-sun" loading="lazy" decoding="async">
+        <span class="explore-hero-deco explore-hero-deco-sun" aria-hidden="true"></span>
         <div class="explore-hero-actions">
           <a class="btn btn-primary" href="{{ explore.primaryCtaUrl }}" data-ga-event="discovery_call_cta_click" data-ga-location="hero">{{ explore.primaryCtaLabel }}</a>
         </div>
-        <img src="/assets/images/hero-moon.png" alt="" class="explore-hero-deco explore-hero-deco-moon" loading="lazy" decoding="async">
+        <span class="explore-hero-deco explore-hero-deco-moon" aria-hidden="true"></span>
       </div>
     </div>
   </div>
@@ -438,7 +439,7 @@ bodyClass: page-explore
           <span class="explore-tool-item{% if tool.logoOnly %} explore-tool-item-logo-only{% endif %}">
             <img
               src="{{ tool.logo }}"
-              alt="{{ tool.name if tool.logoOnly else '' }}"
+              alt="{{ tool.name }}"
               class="explore-tool-logo{% if tool.logoOnly %} explore-tool-logo-only{% endif %}"
               loading="lazy"
               width="72"
@@ -563,7 +564,7 @@ bodyClass: page-explore
             {{ integrationLineArt("/assets/images/integrations/connectors/partners-arrow.png?v=3", 480, 108, "tr", "tl", integrationOrbits[4], 4) }}
           </div>
           <div class="explore-integrations-logo" aria-hidden="true">
-            <img src="/assets/images/logo.svg" alt="" width="72" height="72" loading="lazy" decoding="async">
+            <img src="/assets/images/logo.svg" alt="Hightide" width="72" height="72" loading="lazy" decoding="async">
           </div>
           {% for group in exploreHome.integrations.groups %}
           <div

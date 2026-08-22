@@ -90,9 +90,20 @@ body.page-explore .explore-sandbox {
 
 .explore-hero-deco {
   width: clamp(72px, 14vw, 200px);
-  height: auto;
+  aspect-ratio: 1;
   flex: 0 0 auto;
   pointer-events: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.explore-hero-deco-sun {
+  background-image: url("/assets/images/hero-sun.png");
+}
+
+.explore-hero-deco-moon {
+  background-image: url("/assets/images/hero-moon.png");
 }
 
 @media (min-width: 1021px) {

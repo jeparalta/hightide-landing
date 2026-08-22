@@ -116,8 +116,7 @@
       data-proof-business="{{ story.business }}"
       data-proof-name="{{ story.name }}"
       data-proof-role="{{ story.role }}"
-      {% if story.logo %}data-proof-logo="{{ story.logo }}"{% endif %}
-      {% if story.logoAlt %}data-proof-logo-alt="{{ story.logoAlt }}"{% endif %}
+      {% if story.logo %}data-proof-logo="{{ story.logo }}" data-proof-logo-alt="{{ story.logoAlt or story.business }}"{% endif %}
       {% if story.websiteUrl %}data-proof-website="{{ story.websiteUrl }}"{% endif %}
     >
       <div class="explore-proof-card-body">
@@ -125,10 +124,10 @@
           {% if story.logo %}
           {% if story.websiteUrl %}
           <a href="{{ story.websiteUrl }}" class="explore-proof-logo-link" target="_blank" rel="noopener noreferrer" aria-label="{{ story.logoAlt or story.business }}">
-            <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
+            <img src="{{ story.logo }}" alt="{{ story.logoAlt or story.business }}" class="explore-proof-logo" loading="lazy" width="80" height="80">
           </a>
           {% else %}
-          <img src="{{ story.logo }}" alt="" class="explore-proof-logo" loading="lazy" width="80" height="80">
+          <img src="{{ story.logo }}" alt="{{ story.logoAlt or story.business }}" class="explore-proof-logo" loading="lazy" width="80" height="80">
           {% endif %}
           {% endif %}
           <div class="explore-proof-card-heading">

@@ -15,9 +15,6 @@ eleventyExcludeFromCollections: true
   </url>
   {%- endif %}
 {%- endfor %}
-  <url>
-    <loc>{{ site.url }}/explore/industries/</loc>
-  </url>
 {%- for industry in exploreIndustries %}
   <url>
     <loc>{{ site.url }}/explore/industries/{{ industry.slug }}/</loc>
