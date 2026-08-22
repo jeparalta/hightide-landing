@@ -182,14 +182,14 @@
         "industry": "Surf Camp"
       },
       {
-        "logo": "/assets/images/testimonials/the-village-alentejo.png",
-        "logoAlt": "The Village, Alentejo",
-        "websiteUrl": "https://www.instagram.com/thevillage.alentejo",
-        "quote": "Hightide has made it much easier to organise reservations, track payments and share availability. We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence. Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability.",
-        "name": "Pete Webb",
+        "logo": "/assets/images/testimonials/pura-vida-divehouse.png",
+        "logoAlt": "Pura Vida DiveHouse",
+        "websiteUrl": "https://puravidadivehouse.com/",
+        "quote": "Running a dive centre and a hostel means managing accommodation, dives, courses, and complete dive camp packages as part of the same guest experience. Previously, we used accommodation booking software alongside Google Calendar, so bookings had to be managed across several different places. We wanted customers to be able to book our complete dive camp packages online, while giving our team one place to manage everything included in their stay. Hightide gave us the opportunity to bring all of that together. Our customers and online travel agents can now see and book our dive camp packages alongside our accommodation-only options. At the same time, we can continue selling accommodation through channels such as Booking.com and Hostelworld, which helps us fill available rooms during quieter periods. Our operation is complex, and we have certainly pushed Hightide to its limits. Whenever we have encountered a challenge, the team has worked with us to find a solution. I never thought it would be possible for guests to book a complete dive camp online with little to no interaction from our staff, but we are now seeing that happen. We have gained all of this functionality while paying approximately the same as we did for our previous system, which only managed accommodation. If your business also has several sides to it, I would recommend booking a call with Hightide and seeing what it could do for you.",
+        "name": "Cristovão",
         "role": "Founder",
-        "business": "The Village, Alentejo",
-        "industry": "Accommodation"
+        "business": "Pura Vida DiveHouse",
+        "industry": "Dive Resort"
       },
       {
         "logo": "/assets/images/testimonials/algarve-surf-school.png",
@@ -200,6 +200,16 @@
         "role": "Bookings Manager",
         "business": "Algarve Surf School",
         "industry": "Surf Camp"
+      },
+      {
+        "logo": "/assets/images/testimonials/the-village-alentejo.png",
+        "logoAlt": "The Village, Alentejo",
+        "websiteUrl": "https://www.instagram.com/thevillage.alentejo",
+        "quote": "Hightide has made it much easier to organise reservations, track payments and share availability. We are now receiving many bookings directly through our Online Store, which saves time and gives customers more confidence. Before Hightide, I managed bookings through WhatsApp and Instagram and tracked everything in an Excel calendar, which meant a lot of back and forth over pricing, payments and availability.",
+        "name": "Pete Webb",
+        "role": "Founder",
+        "business": "The Village, Alentejo",
+        "industry": "Accommodation"
       },
       {
         "logo": "/assets/images/testimonials/surf-clinic-lagos.png",
