@@ -46,12 +46,80 @@
   </div>
 </section>
 
+{% if page.testimonial and page.testimonial.story %}
+<section class="section section-alt explore-industry-testimonial">
+  <div class="container">
+    <h2 class="section-title">{{ page.testimonial.title }}</h2>
+    {% set story = page.testimonial.story %}
+    <article
+      class="explore-proof-card explore-industry-proof-card"
+      data-proof-card
+      data-proof-business="{{ story.business }}"
+      data-proof-name="{{ story.name }}"
+      data-proof-role="{{ story.role }}"
+      {% if story.logo %}data-proof-logo="{{ story.logo }}" data-proof-logo-alt="{{ story.logoAlt or story.business }}"{% endif %}
+      {% if story.websiteUrl %}data-proof-website="{{ story.websiteUrl }}"{% endif %}
+    >
+      <div class="explore-proof-card-body">
+        <header class="explore-proof-card-header">
+          {% if story.logo %}
+          {% if story.websiteUrl %}
+          <a href="{{ story.websiteUrl }}" class="explore-proof-logo-link" target="_blank" rel="noopener noreferrer" aria-label="{{ story.logoAlt or story.business }}">
+            <img src="{{ story.logo }}" alt="{{ story.logoAlt or story.business }}" class="explore-proof-logo" loading="lazy" width="80" height="80">
+          </a>
+          {% else %}
+          <img src="{{ story.logo }}" alt="{{ story.logoAlt or story.business }}" class="explore-proof-logo" loading="lazy" width="80" height="80">
+          {% endif %}
+          {% endif %}
+          <div class="explore-proof-card-heading">
+            {% if story.websiteUrl %}
+            <h3 class="explore-proof-title">
+              <a href="{{ story.websiteUrl }}" target="_blank" rel="noopener noreferrer">{{ story.business }}</a>
+            </h3>
+            {% else %}
+            <h3 class="explore-proof-title">{{ story.business }}</h3>
+            {% endif %}
+            {% if story.industry %}
+            <span class="explore-proof-industry">{{ story.industry }}</span>
+            {% endif %}
+          </div>
+        </header>
+        <blockquote class="explore-proof-quote explore-industry-proof-quote">
+          <div class="explore-industry-proof-quote-text">
+            {% set quoteParagraphs = story.quoteParagraphs or [story.quote] %}
+            {% set previewCount = story.previewParagraphs or 2 %}
+            {% for paragraph in quoteParagraphs %}
+            <p{% if loop.index > previewCount %} data-industry-quote-rest hidden{% endif %}{% if loop.index == previewCount %} data-industry-quote-preview-end{% endif %}>{{ paragraph }}</p>
+            {% endfor %}
+          </div>
+        </blockquote>
+        {% if (quoteParagraphs | length) > previewCount %}
+        <div class="explore-proof-read-more-slot">
+          <button
+            type="button"
+            class="explore-proof-read-more"
+            data-industry-quote-toggle
+            aria-expanded="false"
+            aria-label="Read full review from {{ story.name }}"
+          >Read full review</button>
+        </div>
+        {% endif %}
+      </div>
+      <footer class="explore-proof-attribution">
+        <cite>{{ story.name }}</cite>
+        <span>{{ story.role }}</span>
+      </footer>
+    </article>
+  </div>
+</section>
+{% endif %}
+
 {% set ctaHeading = page.cta.headline %}
 {% set ctaLead = page.cta.lead %}
 {% include "partials/explore-cta.njk" %}
 
 {% if page.faq and page.faq.items and page.faq.items.length %}
-<section class="section section-faq explore-faq explore-industry-faq">
+<section class="section section-faq explore-faq explore-industry-faq{% if not page.testimonial %} section-alt{% endif %}">
   <div class="container">
     <h2 class="section-title">{{ page.faq.title }}</h2>
     <div class="faq-list">
