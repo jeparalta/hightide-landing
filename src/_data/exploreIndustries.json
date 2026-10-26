@@ -195,7 +195,7 @@
     "slug": "dive-resorts",
     "name": "Dive Resorts",
     "title": "Dive Resort Booking Software | Hightide",
-    "description": "Booking and operations software for dive resorts. Connect accommodation and dive packages without treating Hightide as hourly dive-centre scheduling software.",
+    "description": "Booking and operations software for dive resorts. Connect accommodation, dive packages and scheduled dive timeslots in one place.",
     "image": "/assets/images/industries/dive-resort-tropical-boat-dock.jpg",
     "imageAlt": "Dive resort tropical boat dock",
     "tier": "lightweight",

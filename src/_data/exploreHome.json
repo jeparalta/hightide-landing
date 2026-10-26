@@ -1,9 +1,9 @@
 {
   "sell": {
-    "title": "Your online store for direct bookings",
-    "titleLine1": "Your online store",
-    "titleLine2": "for direct bookings",
-    "lead": "Customise your store to match your brand and sell accommodation, activities and packages.",
+    "title": "Make it easier for guests to book directly",
+    "titleLine1": "Make it easier for guests",
+    "titleLine2": "to book directly",
+    "lead": "Let guests check availability, choose their options and see their price. Take direct bookings online without the back-and-forth emails.",
     "demoStore": {
       "label": "Try the Demo Store →",
       "text": "Experience a real Hightide Online Store. Browse the available options, submit a test booking request and receive the same confirmation email a guest would receive."
@@ -21,7 +21,7 @@
     "storyCards": [
       {
         "title": "Designed around your business",
-        "text": "Choose what you offer, how it is presented and how guests can book.",
+        "text": "Choose what you sell, how it looks and how guests book.",
         "faIcon": "fa-solid fa-paintbrush"
       },
       {
@@ -70,8 +70,8 @@
     ]
   },
   "manage": {
-    "title": "Manage every booking in one place",
-    "lead": "From booking to check-out, keep your team, guests, payments and daily operations organised in one place.",
+    "title": "Give your team more time for guests.",
+    "lead": "Keep bookings and payments together and your team in the loop. Automate guest emails and payment requests to cut down on follow-up.",
     "products": [
       {
         "tabLabel": "Calendar",
@@ -105,8 +105,8 @@
         "tabLabel": "Planning",
         "title": "Planning and Reports",
         "text": "See what is happening today, what is coming next and how your business is performing.",
-        "src": "/assets/images/tab-bookings-list.jpg?v=2",
-        "alt": "Hightide planning and reports",
+        "src": "/assets/images/tab-performance-report.jpg",
+        "alt": "Hightide performance report with occupancy, revenue and booking sources",
         "icon": "/assets/images/icons/notes.png",
         "capabilities": [
           "Check-ins, in-house guests and check-outs",
@@ -118,8 +118,8 @@
     ]
   },
   "integrations": {
-    "title": "Connect your booking operation",
-    "lead": "Bring your channels, payments, partners, invoicing and marketing together, with Hightide at the centre.",
+    "title": "Connect your tools and simplify your workflows",
+    "lead": "Connect your sales channels, payment providers, invoicing and marketing tools, and booking partners, with Hightide at the centre.",
     "groups": [
       {
         "title": "Channel Manager",

@@ -555,8 +555,8 @@
           "answer": "Hightide is built for direct bookings through your own Online Store, so you are not paying a marketplace commission on every booking you take there."
         },
         {
-          "question": "Does Hightide support hourly scheduling?",
-          "answer": "Hightide is built around day and night-based availability, not hourly appointment scheduling. It suits tours, lessons and rentals organised by date and capacity rather than hour-by-hour diaries."
+          "question": "Can tours and activities be scheduled with timeslots?",
+          "answer": "Yes. You can schedule tours and activities and add several timeslots to each one, so guests can book the start times you offer."
         },
         {
           "question": "Can I take request-only bookings?",
@@ -899,8 +899,8 @@
           "answer": "Yes. Linked availability helps keep shared capacity updated when related activities are booked."
         },
         {
-          "question": "Does Hightide schedule by the hour?",
-          "answer": "No. Hightide uses day and night-based availability, which suits date-led tours and activities rather than hourly appointment books."
+          "question": "Can tours and activities be scheduled with timeslots?",
+          "answer": "Yes. You can schedule tours and activities and add several timeslots to each one, so guests can book the start times you offer."
         },
         {
           "question": "Can group and partner bookings sit with direct sales?",
@@ -1123,8 +1123,8 @@
           "answer": "Yes. Both can be published as date-led items with their own capacity and pricing."
         },
         {
-          "question": "Does Hightide support hourly boat diaries?",
-          "answer": "No. Hightide is built for day and night-based availability, which suits departure-led charters rather than hourly scheduling."
+          "question": "Can charters be scheduled with timeslots?",
+          "answer": "Yes. You can schedule day trips and activities and add several timeslots to each one, so guests can book the departure times you offer."
         },
         {
           "question": "Can partners send charter bookings?",
@@ -1197,8 +1197,8 @@
       "title": "Dive resort FAQs",
       "items": [
         {
-          "question": "Is Hightide dive-centre scheduling software?",
-          "answer": "No. It is designed for dive resorts and multi-day packages with day-based availability, not hourly dive-centre appointment scheduling."
+          "question": "Can dives and activities be scheduled with timeslots?",
+          "answer": "Yes. You can schedule dives and activities and add several timeslots to each one, so guests can book the start times you offer. Accommodation and multi-day dive packages still sit alongside those bookings in the same system."
         },
         {
           "question": "Can accommodation and dive packages be sold together?",
