@@ -80,6 +80,7 @@
         "src": "/assets/images/tab-calendar-1.webp?v=2",
         "alt": "Hightide calendar",
         "icon": "/assets/images/icons/calendar.png",
+        "iconClass": "is-larger-icon",
         "capabilities": [
           "See your whole operation at a glance",
           "Track payments, check-ins and internal flags",
@@ -90,7 +91,7 @@
       {
         "tabLabel": "Bookings",
         "title": "Booking Workspace",
-        "text": "Everything your team needs to manage each booking from one shared workspace.",
+        "text": "Manage each booking from one shared workspace for your team.",
         "src": "/assets/images/tab-bookings-2.webp?v=2",
         "alt": "Hightide booking workspace",
         "icon": "/assets/images/icons/booking-workspace.png",
@@ -103,16 +104,31 @@
       },
       {
         "tabLabel": "Planning",
-        "title": "Planning and Reports",
-        "text": "See what is happening today, what is coming next and how your business is performing.",
-        "src": "/assets/images/tab-performance-report.jpg",
-        "alt": "Hightide performance report with occupancy, revenue and booking sources",
+        "title": "Planning",
+        "text": "See what is happening today and what is coming next for your team.",
+        "src": "/assets/images/tab-bookings-list.jpg?v=2",
+        "alt": "Hightide planning lists for check-ins, activities and bookings",
         "icon": "/assets/images/icons/notes.png",
         "capabilities": [
           "Check-ins, in-house guests and check-outs",
           "Today's tours, lessons and activities",
           "Filterable booking lists and latest bookings",
-          "Booking, transaction and customer reports"
+          "Shared operational views for your team"
+        ]
+      },
+      {
+        "tabLabel": "Reports",
+        "title": "Reports",
+        "text": "Track occupancy, revenue and booking sources for your business.",
+        "src": "/assets/images/tab-performance-report.jpg",
+        "alt": "Hightide performance report with occupancy, revenue and booking sources",
+        "icon": "/assets/images/icons/reports.png",
+        "iconClass": "is-larger-icon",
+        "capabilities": [
+          "Stays and tours occupancy at a glance",
+          "Revenue and bookings over time",
+          "Direct and channel booking sources",
+          "Partner and category performance"
         ]
       }
     ]

@@ -2465,19 +2465,20 @@ html.explore-prefer-static .explore-sell-scroll-stage .explore-sell-media.is-vid
 
 .explore-manage-products {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  row-gap: clamp(1.75rem, 3.5vw, 2.75rem);
   width: 100%;
 }
 
-.explore-manage-product + .explore-manage-product {
+.explore-manage-product:nth-child(even) {
   position: relative;
 }
 
-.explore-manage-product + .explore-manage-product::before {
+.explore-manage-product:nth-child(even)::before {
   content: "";
   position: absolute;
-  left: calc(-0.5 * clamp(1.25rem, 2.5vw, 2rem) - 0.5px);
+  left: calc(-0.5 * clamp(1.5rem, 3vw, 2.5rem) - 0.5px);
   top: 0;
   bottom: 0;
   width: 1px;
@@ -2525,25 +2526,32 @@ html.explore-prefer-static .explore-sell-scroll-stage .explore-sell-media.is-vid
   align-items: center;
   gap: 0.65rem;
   margin-top: 1rem;
+  min-height: 2.35rem;
 }
 
 .explore-manage-product-icon {
-  flex: 0 0 auto;
-  width: 2rem;
-  height: 2rem;
+  flex: 0 0 2.35rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0.175rem;
+  box-sizing: border-box;
   object-fit: contain;
+}
+
+.explore-manage-product-icon.is-larger-icon {
+  padding: 0;
 }
 
 .explore-manage-product-title {
   margin: 0;
-  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.2;
   color: var(--primary-1);
 }
 
 .explore-manage-product-description {
   margin: 0.55rem 0 0;
-  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+  font-size: clamp(0.88rem, 1.2vw, 0.98rem);
   line-height: 1.45;
   color: var(--neutral-600);
 }
@@ -4151,9 +4159,19 @@ html.explore-prefer-static .explore-sell-scroll-stage .explore-sell-media.is-vid
     margin-top: 0.85rem;
   }
 
+  .explore-manage-product-heading {
+    min-height: 2.05rem;
+  }
+
   .explore-manage-product-icon {
-    width: 1.75rem;
-    height: 1.75rem;
+    flex-basis: 2.05rem;
+    width: 2.05rem;
+    height: 2.05rem;
+    padding: 0.15rem;
+  }
+
+  .explore-manage-product-icon.is-larger-icon {
+    padding: 0;
   }
 
   .explore-manage-product-title {
